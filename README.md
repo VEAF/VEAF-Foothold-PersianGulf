@@ -1,0 +1,36 @@
+# VEAF Foothold Persian Gulf v2.4.5
+
+## Presentation
+
+This is a modification of the original Foothold Persian Gulf mission by Leka, that I adapted to make it load all the script files and config directly from the server.
+
+**Done using the latest version updated on 2025.11.15.**
+
+## Update
+
+### Triggers
+
+Add this triggers on MissionStart:
+
+**Modern:**
+name: `mission start - dynamic`
+do_script:
+```lua
+FOOTHOLD_DYNAMIC_PATH = [[C:\Users\veaf\Saved Games\DCS.missions\_servers\_TEMPLATES\Missions\foothold\PersianGulf\Modern\]]
+env.info("DYNAMIC LOADING")
+assert(loadfile(FOOTHOLD_DYNAMIC_PATH .. "VEAF_loader.lua")) ()
+```
+
+**Cold War:**
+name: `mission start - dynamic`
+do_script:
+```lua
+FOOTHOLD_DYNAMIC_PATH = [[C:\Users\veaf\Saved Games\DCS.missions\_servers\_TEMPLATES\Missions\foothold\PersianGulf\Coldwar\]]
+env.info("DYNAMIC LOADING")
+assert(loadfile(FOOTHOLD_DYNAMIC_PATH .. "VEAF_loader.lua")) ()
+```
+
+## Things to do
+
+- [x] prepare mission
+- [x] prepare presets
