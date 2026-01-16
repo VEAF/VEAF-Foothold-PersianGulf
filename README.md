@@ -16,7 +16,7 @@ Add this triggers on MissionStart:
 name: `mission start - dynamic`
 do_script:
 ```lua
-FOOTHOLD_DYNAMIC_PATH = [[C:\Users\veaf\Saved Games\DCS.missions\_servers\_TEMPLATES\Missions\foothold\PersianGulf\Modern\]]
+FOOTHOLD_DYNAMIC_PATH = [[C:\Users\veaf\Saved Games\DCS.missions\_TEMPLATES\Missions\foothold\PersianGulf\Modern\]]
 env.info("DYNAMIC LOADING")
 assert(loadfile(FOOTHOLD_DYNAMIC_PATH .. "VEAF_loader.lua")) ()
 ```
@@ -25,7 +25,7 @@ assert(loadfile(FOOTHOLD_DYNAMIC_PATH .. "VEAF_loader.lua")) ()
 name: `mission start - dynamic`
 do_script:
 ```lua
-FOOTHOLD_DYNAMIC_PATH = [[C:\Users\veaf\Saved Games\DCS.missions\_servers\_TEMPLATES\Missions\foothold\PersianGulf\Coldwar\]]
+FOOTHOLD_DYNAMIC_PATH = [[C:\Users\veaf\Saved Games\DCS.missions\_TEMPLATES\Missions\foothold\PersianGulf\Coldwar\]]
 env.info("DYNAMIC LOADING")
 assert(loadfile(FOOTHOLD_DYNAMIC_PATH .. "VEAF_loader.lua")) ()
 ```
