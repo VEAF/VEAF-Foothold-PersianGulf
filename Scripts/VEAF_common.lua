@@ -43,10 +43,12 @@ LogisticCommander.allowedTypes['OH58D'] = false
 LogisticCommander.allowedTypes['CH-47Fbl1'] = true
 LogisticCommander.allowedTypes['Bronco-OV-10A'] = false
 LogisticCommander.allowedTypes['OH-6A'] = false
+LogisticCommander.allowedTypes['C-130J-30'] = true
 
 LogisticCommander.doubleSupplyTypes = {}
 LogisticCommander.doubleSupplyTypes['CH-47Fbl1'] = true
 LogisticCommander.doubleSupplyTypes['Hercules'] = true
+LogisticCommander.doubleSupplyTypes['C-130J-30'] = true
 
 LogisticCommander.maxCarriedPilots = 4
 
