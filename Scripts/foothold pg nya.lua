@@ -338,8 +338,8 @@ local cwSwap = {
 	['Red Carrier Group Fixed 2'] 	= '',
 	['Red Carrier Group Fixed 3'] 	= '',
 	['Red SAM SHORAD SA-8']  = 'Red SAM AAA 4','Red SAM AAA 3',
-	['Red SAM SHORAD Tor M2']  = 'Red SAM SHORAD SA-8',
-	['Red SAM SHORAD Pantsir S1']  = 'Red SAM SHORAD SA-19',
+	['Red SAM SHORAD Tor M2']  = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9', 'Red SAM SHORAD SA-15'} },
+	['Red SAM SHORAD Pantsir S1']  = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9', 'Red SAM SHORAD SA-15'} },
 	['Red SAM SHORAD SA-15 Fixed Khasab']  = 'Red SAM SHORAD SA-8 Fixed Khasab',
 	['Red SAM SHORAD SA-15 Fixed'] = 'Red SAM SHORAD SA-8 Fixed',
 	['Red SAM SHORAD SA-15'] = 'Red SAM SHORAD SA-8',
@@ -355,9 +355,26 @@ local function deepSwap(t,s)
 				if sub == '' then
 					t[k] = nil
 				elseif type(sub)=='table' then
-					t[k] = sub[1]
-					for i=2,#sub do
-						table.insert(t,sub[i])
+					local mode = sub.mode
+					local list = sub.list
+					if type(list)=='table' then
+						if mode == 'random' then
+							if #list > 0 then
+								t[k] = list[math.random(1,#list)]
+							else
+								t[k] = nil
+							end
+						else
+							t[k] = list[1]
+							for i=2,#list do
+								table.insert(t,list[i])
+							end
+						end
+					else
+						t[k] = sub[1]
+						for i=2,#sub do
+							table.insert(t,sub[i])
+						end
 					end
 				else
 					t[k] = sub
@@ -373,33 +390,28 @@ end
 
 local SamSwap = {
 
-	['Red SAM SA-10'] = 'Red SAM SA-2',
-	['Red SAM SA-11'] = 'Red SAM SA-6',
-	['Red SAM SHORAD SA-15'] = 'Red SAM SHORAD SA-8',
-	['Red SAM SHORAD Pantsir S1'] = 'Red SAM SHORAD SA-19',
-	['Red SAM SHORAD Tor M2'] = 'Red SAM SHORAD SA-13',
+	['Red SAM SA-10'] = { mode='random', list={'Red SAM SA-2', 'Red SAM SA-3', 'Red SAM SA-6'} },
+	['Red SAM SA-11'] = { mode='random', list={'Red SAM SA-2', 'Red SAM SA-3', 'Red SAM SA-6'} },
 	
 }
 
-local function deepSwapAgain(t,s)
-	for k,v in pairs(t) do
-		if type(v)=='table' then
-			deepSwapAgain(v,s)
-		elseif s[v] then
-			if type(s[v])=='table' then
-				t[k]=s[v][1]
-				for i=2,#s[v] do
-					table.insert(t,s[v][i])
-				end
-			else
-				t[k]=s[v]
-			end
-		end
-	end
-end
+local SamSwapNoTorM2AndPantsir = {
+	['Red SAM SHORAD Pantsir S1'] = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9'} },
+	['Red SAM SHORAD Tor M2'] = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9'} },
+}
+
+local SamSwapNoSA15 = {
+	['Red SAM SHORAD SA-15'] = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9'} },
+}
 
 if NoSA10AndSA11 == true then
-	deepSwapAgain(upgrades,SamSwap)
+	deepSwap(upgrades,SamSwap)
+end
+if NoTorM2AndPantsir == true then
+	deepSwap(upgrades,SamSwapNoTorM2AndPantsir)
+end
+if NoSA15 == true then
+	deepSwap(upgrades,SamSwapNoSA15)
 end
 
 -- Randomized upgrade pools/templates (fresh start only)
@@ -459,7 +471,13 @@ if Era == 'Coldwar' then
 end
 
 if NoSA10AndSA11 == true then
-	deepSwapAgain(RandomRedPool, SamSwap)
+	deepSwap(RandomRedPool, SamSwap)
+end
+if NoTorM2AndPantsir == true then
+	deepSwap(RandomRedPool, SamSwapNoTorM2AndPantsir)
+end
+if NoSA15 == true then
+	deepSwap(RandomRedPool, SamSwapNoSA15)
 end
 
 RandomUpgradeTemplates = {
@@ -1054,10 +1072,11 @@ zones.kish:addGroups({
 
 
 zones.minhad:addGroups({
-	-- Supply missions
 	GroupCommander:new({name='Minhad-supply-sharjah', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
 	GroupCommander:new({name='Minhad-supply-Fujairan', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
 	GroupCommander:new({name='Minhad-attack-Al Huti', mission='attack', template='AttackConvoy', targetzone='Al Huti', type='surface'}),
+	GroupCommander:new({name='Minhad-patrol-Minhad', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Minhad', Altitude = CapAltitude()}),
+
 })
 
 zones.sharjah:addGroups({
@@ -1321,6 +1340,7 @@ bc:addConnection("Al Ain","Fuel Depo")
 bc:addConnection("Fujairah Intl","Fuel Depo")
 bc:addConnection("InsurgentCamp","Ras Al Khaimah")
 bc:addConnection("Al Dahid","InsurgentCamp")
+bc:addHiddenConnection("Al Minhad AFB","Al Ain")
 
 --zones.radio:addCriticalObject('CommandCenter1')
 --zones.qeshmisland:addCriticalObject('CommandCenter2')
@@ -3939,8 +3959,13 @@ DynamicHybridConfig = DynamicHybridConfig or {
 	runOnce = true,
 	airMaxNm = 120,
 	heloCasMaxNm = 40,
+	minGroundAttackNm = 10,
 	surfaceMaxNm = 30,
+	minTargetNm = 10,
 	filterDelaySec = 5,
+	minCapAttackNm = 35,
+	minPlaneAttackNm = 25,
+	minHeloAttackNm = 15,
 	log = true,
 }
 bc:startDynamicHybridFiller(DynamicHybridConfig)
