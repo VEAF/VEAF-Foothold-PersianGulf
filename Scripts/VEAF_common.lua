@@ -36,7 +36,7 @@ veafRemote.initialize()
 -- load first batch of scripts
 assert(loadfile(FOOTHOLD_DYNAMIC_SCRIPTS_PATH .. "Moose_.lua")) ()
 assert(loadfile(FOOTHOLD_DYNAMIC_SCRIPTS_PATH .. "Foothold Config.lua")) ()
-assert(loadfile(FOOTHOLD_DYNAMIC_SCRIPTS_PATH .. "zoneCommanderv2.lua")) ()
+assert(loadfile(FOOTHOLD_DYNAMIC_SCRIPTS_PATH .. "zoneCommander.lua")) ()
 assert(loadfile(FOOTHOLD_DYNAMIC_SCRIPTS_PATH .. "foothold pg nya.lua")) ()
 
 -- Set the autosuspend for performance

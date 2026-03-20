@@ -337,12 +337,9 @@ local cwSwap = {
 	['bluePD1'] 					= 'bluePD 2 Coldwar',
 	['Red Carrier Group Fixed 2'] 	= '',
 	['Red Carrier Group Fixed 3'] 	= '',
-	['Red SAM SHORAD SA-8']  = 'Red SAM AAA 4','Red SAM AAA 3',
 	['Red SAM SHORAD Tor M2']  = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9', 'Red SAM SHORAD SA-15'} },
 	['Red SAM SHORAD Pantsir S1']  = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9', 'Red SAM SHORAD SA-15'} },
-	['Red SAM SHORAD SA-15 Fixed Khasab']  = 'Red SAM SHORAD SA-8 Fixed Khasab',
-	['Red SAM SHORAD SA-15 Fixed'] = 'Red SAM SHORAD SA-8 Fixed',
-	['Red SAM SHORAD SA-15'] = 'Red SAM SHORAD SA-8',
+
 }
 
 local function deepSwap(t,s)
@@ -402,6 +399,8 @@ local SamSwapNoTorM2AndPantsir = {
 
 local SamSwapNoSA15 = {
 	['Red SAM SHORAD SA-15'] = { mode='random', list={'Red SAM SHORAD SA-19', 'Red SAM SHORAD SA-8', 'Red SAM SHORAD SA-13', 'Red SAM SHORAD SA-9'} },
+	['Red SAM SHORAD SA-15 Fixed Khasab']  = 'Red SAM SHORAD SA-8 Fixed Khasab',
+	['Red SAM SHORAD SA-15 Fixed'] = 'Red SAM SHORAD SA-8 Fixed',
 }
 
 if NoSA10AndSA11 == true then
@@ -497,6 +496,7 @@ RandomUpgradeTemplatesBlue = {
 
 RandomGroundGroups = true
 RandomBlueGroups = true
+AllowScriptedSupplies = AllowScriptedSupplies ~= false
 
 bc = BattleCommander:new(filepath, 13, 60)
 if RankingSystem then
@@ -1075,7 +1075,7 @@ zones.minhad:addGroups({
 	GroupCommander:new({name='Minhad-supply-sharjah', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
 	GroupCommander:new({name='Minhad-supply-Fujairan', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
 	GroupCommander:new({name='Minhad-attack-Al Huti', mission='attack', template='AttackConvoy', targetzone='Al Huti', type='surface'}),
-	GroupCommander:new({name='Minhad-patrol-Minhad', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Minhad', Altitude = CapAltitude()}),
+	GroupCommander:new({name='Minhad-patrol-Minhad', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
 
 })
 
@@ -1341,6 +1341,8 @@ bc:addConnection("Fujairah Intl","Fuel Depo")
 bc:addConnection("InsurgentCamp","Ras Al Khaimah")
 bc:addConnection("Al Dahid","InsurgentCamp")
 bc:addHiddenConnection("Al Minhad AFB","Al Ain")
+bc:addHiddenConnection("Lar","Lavan Island")
+bc:addHiddenConnection("Lar","Kish intl")
 
 --zones.radio:addCriticalObject('CommandCenter1')
 --zones.qeshmisland:addCriticalObject('CommandCenter2')
@@ -2093,7 +2095,7 @@ function(sender)
     return
 end,
 function(sender, params)
-    if params.zone and params.zone.side == 1 then
+    if params.zone and params.zone.side == 1 and not params.zone.suspended then
         if casActive then return 'CAS mission still in progress' end
         local minNM = 25
         local closestBlue, dist = findClosestBlueZoneOutside(params.zone.zone, minNM)
@@ -2145,7 +2147,7 @@ function(sender)
     return
 end,
 function(sender, params)
-    if params.zone and params.zone.side == 1 then
+    if params.zone and params.zone.side == 1 and not params.zone.suspended then
         if decoyActive then
             return 'Decoy mission still in progress'
         end
@@ -2200,7 +2202,7 @@ function(sender)
     return
 end,
 function(sender, params)
-    if params.zone and params.zone.side == 1 then
+    if params.zone and params.zone.side == 1 and not params.zone.suspended then
         if seadActive then
             return 'SEAD mission still in progress'
         end
@@ -2254,7 +2256,7 @@ function(sender)
     return
 end,
 function(sender, params)
-    if params.zone and params.zone.side == 1 then
+    if params.zone and params.zone.side == 1 and not params.zone.suspended then
         if bomberActive then
             return 'Bomb run mission still in progress'
         end
@@ -2365,9 +2367,37 @@ end)
 
 
 local upgradeMenu = nil
+local function clearFriendlySupplyMenu()
+    if upgradeMenu then
+        missionCommands.removeItemForCoalition(2, upgradeMenu)
+        upgradeMenu = nil
+    end
+end
+
 bc:registerShopItem('supplies2', 'Resupply friendly Zone', ShopPrices.supplies2, function(sender)
     if upgradeMenu then
         return 'Choose zone from F10 menu'
+    end
+
+    if not AllowScriptedSupplies and NoAIBlueSupplies == true then
+        return 'Blue AI supplies are disabled'
+    end
+
+    if not AllowScriptedSupplies then
+        local cost = ShopPrices.supplies2
+        local allow = bc:buildFriendlySupplyAllowTable()
+        if not next(allow) then
+            trigger.action.outTextForCoalition(2, 'No friendly zones currently need resupply.', 10)
+            return 'No friendly zones need resupply'
+        end
+
+        trigger.action.outTextForCoalition(2, 'Select zone from F10 menu', 15)
+        upgradeMenu = bc:showTargetZoneMenu(2, 'Select Zone for Friendly resupply',
+        function(zonename)
+            local chosenZone = bc:getZoneByName(zonename)
+            return bc:requestFriendlySupplyMission(chosenZone, cost, clearFriendlySupplyMenu)
+        end, 2, true, allow)
+        return nil
     end
 
     local upgradeZone = function(target)
@@ -2382,20 +2412,27 @@ bc:registerShopItem('supplies2', 'Resupply friendly Zone', ShopPrices.supplies2,
             upgradeMenu = nil
         end
     end
+
     upgradeMenu = bc:showTargetZoneMenu(2, 'Select Zone to resupply', upgradeZone, 2, true)
-    
     trigger.action.outTextForCoalition(2, 'Supplies prepared. Choose zone from F10 menu', 15)
 end,
 function(sender, params)
-    if params.zone and params.zone.side == 2 and not params.zone.suspended then
+    if not AllowScriptedSupplies then
+        if NoAIBlueSupplies == true then
+            return 'Blue AI supplies are disabled'
+        end
+        if params.zone then
+            return bc:requestFriendlySupplyMission(params.zone)
+        end
+        return 'Can only target friendly zone'
+    elseif params.zone and params.zone.side == 2 and not params.zone.suspended then
         params.zone:upgrade()
     else
         return 'Can only target friendly zone'
     end
 end)
 
-
-
+if AllowScriptedSupplies then
 local fullyUpgradeMenu=nil
 bc:registerShopItem('supplies','Fully Upgrade Friendly Zone',ShopPrices.supplies,
 function(sender)
@@ -2473,17 +2510,16 @@ function(sender,params)
             local now=Utils.getTableSize(zn.built)
             if repairs()>0 or now<#upgs then
                 timer.scheduleFunction(loop,{},timer.getTime()+2)
-			else
-				trigger.action.outTextForCoalition(2,params.zone.zone..' is now fully upgraded!',15)
-			end
+            else
+                trigger.action.outTextForCoalition(2,params.zone.zone..' is now fully upgraded!',15)
+            end
         end
         loop()
     else
         return'Can only target friendly zone'
     end
 end)
-
-
+end
 local jtacDrones
 local jtacTargetMenu = nil
 for _,n in ipairs({'jtacDroneColdwar1','jtacDroneColdwar2','jtacDrone1','jtacDrone2'}) do
@@ -3807,7 +3843,9 @@ bc:addShopItem(2, 'airdef', -1, 4, ShopRankRequirements.airdef, ShopCats.Combine
 -- Logistics & Strategic
 bc:addShopItem(2, 'capture', -1, 1, ShopRankRequirements.capture, ShopCats.LogisticsStrategic) -- emergency capture
 bc:addShopItem(2, 'supplies2', -1, 2, ShopRankRequirements.supplies2, ShopCats.LogisticsStrategic) -- upgrade friendly zone
-bc:addShopItem(2, 'supplies', -1, 3, ShopRankRequirements.supplies, ShopCats.LogisticsStrategic) -- fully upgrade friendly zone
+if AllowScriptedSupplies then
+    bc:addShopItem(2, 'supplies', -1, 3, ShopRankRequirements.supplies, ShopCats.LogisticsStrategic) -- fully upgrade friendly zone
+end
 if WarehouseLogistics then
     bc:addShopItem(2, 'zlogc', -1, 4, ShopRankRequirements.zlogc, ShopCats.LogisticsStrategic) -- upgrade zone to logistic center
     bc:addShopItem(2, 'zwh50', -1, 5, ShopRankRequirements.zwh50, ShopCats.LogisticsStrategic) -- resupply warehouse with 50
@@ -3868,6 +3906,11 @@ if not bc.saveLoaded then
 	applyRandomRedUpgrades()
 	applyRandomBlueUpgrades()
 end
+
+if RedReactiveConfig.enabled then
+	bc:startRedReactiveCounterpressure(RedReactiveConfig)
+end
+
 bc:init()
 budgetAI = BudgetCommander:new({ battleCommander = bc, side=1, decissionFrequency=20*60, decissionVariance=10*60, skipChance = 10})
 budgetAI:init()
@@ -3896,63 +3939,6 @@ GlobalSettings.autoSuspendNmRed = 100   		-- suspend red zones deeper than this 
 
 evc = EventCommander:new({ decissionFrequency=30*60, decissionVariance=30*60, skipChance = 10})
 mc = MissionCommander:new({side = 2, battleCommander = bc, checkFrequency = 60})
-
-local function _rrDiffRank(v)
-	v = string.lower(tostring(v or "medium"))
-	if v == "easy" then return 1 end
-	if v == "hard" then return 3 end
-	return 2
-end
-
-local rrLevel = math.max(_rrDiffRank(CapDifficulty), _rrDiffRank(CasSeadDifficulty))
-
-if rrLevel == 1 then
-	RedReactiveConfig = {
-		enabled = false,
-		log = false,
-	}
-elseif rrLevel == 2 then
-	RedReactiveConfig = {
-		enabled = true,
-		startDelaySec = 120,
-		tickSec = 60,
-		minPressureSoft = 3,
-		minPressureHard = 12,
-		captureHardWindowSec = 180,
-		hardZoneCooldownSec = 1200,
-		maxZonesPerTick = 2,
-		softSupplyBoostPerZone = 1,
-		softCapBoostPerZone = 1,
-		hardForcePerZone = 1,
-		hardForceTotalPerTick = 1,
-		groupReuseCooldownSec = 300,
-		hardSourceMode = "attack_plus_cap_attack",
-		log = false,
-	}
-else
-	-- hard: current/aggressive
-	RedReactiveConfig = {
-		enabled = true,
-		startDelaySec = 120,
-		tickSec = 45,
-		minPressureSoft = 3,
-		minPressureHard = 10,
-		captureHardWindowSec = 180,
-		hardZoneCooldownSec = 900,
-		maxZonesPerTick = 3,
-		softSupplyBoostPerZone = 1,
-		softCapBoostPerZone = 1,
-		hardForcePerZone = 1,
-		hardForceTotalPerTick = 2,
-		groupReuseCooldownSec = 300,
-		hardSourceMode = "attack_plus_cap_attack",
-		log = false,
-	}
-end
-
-if RedReactiveConfig.enabled then
-	bc:startRedReactiveCounterpressure(RedReactiveConfig)
-end
 
 DynamicHybridConfig = DynamicHybridConfig or {
 	enabled = true,
@@ -5690,9 +5676,31 @@ mc:trackMission({
 		end
 
 		if reconMissionCompleted and target and reconMissionWinner then
-			bc:addTempStat(reconMissionWinner, "Recon mission", 1)
+			local reward = 100
+			bc:addContribution(reconMissionWinner, 2, reward)
+			local jp = bc.jointPairs and bc.jointPairs[reconMissionWinner]
+			if jp and bc:_jointPartnerAlive(reconMissionWinner) and bc:_jointPartnerAlive(jp) and bc.playerContributions[2][jp] ~= nil then
+				bc:addContribution(jp, 2, reward)
+				bc:addTempStat(jp, "Recon mission (Joint mission)", 1)
+				bc:addTempStat(reconMissionWinner, "Recon mission (Joint mission)", 1)
+				trigger.action.outTextForCoalition(2, "[" .. reconMissionWinner .. "] and [" .. jp .. "] completed recon at " .. target .. "!\nReward pending: " .. reward .. " credits each (land to redeem).\nIntel active for 10 minutes.", 20)
+				local jgn = bc.groupNameByPlayer[jp]
+				local jgr = Group.getByName(jgn)
+				if jgr then
+					local ju = jgr:getUnit(1)
+					if ju and not Utils.isInAir(ju) then
+						SCHEDULER:New(nil, function()
+							if ju and ju:isExist() then
+								world.onEvent({id=world.event.S_EVENT_LAND,time=timer.getAbsTime(),initiator=ju,initiatorPilotName=jp,initiator_unit_type=ju:getTypeName(),initiator_coalition=ju:getCoalition(),skipRewardMsg=true})
+							end
+						end, {}, 5, 0)
+					end
+				end
+			else
+				bc:addTempStat(reconMissionWinner, "Recon mission", 1)
+				trigger.action.outTextForCoalition(2, "[" .. reconMissionWinner .. "] completed recon at " .. target .. ".\nReward pending: " .. reward .. " credits (land to redeem).\nIntel active for 10 minutes.", 20)
+			end
 			startZoneIntel(target, 10 * 60)
-			trigger.action.outTextForCoalition(2, "[" .. reconMissionWinner .. "] completed recon at " .. target .. ".\nIntel active for 10 minutes.", 20)
 			reconMissionCooldownUntil = timer.getTime() + 900
 		end
 
@@ -5706,6 +5714,7 @@ mc:trackMission({
 		end
 	end,
 	isActive = function()
+		if reconMissionCompleted then return false end
 		if not reconMissionTarget then return false end
 		local targetzn = bc:getZoneByName(reconMissionTarget)
 		return targetzn and targetzn.side == 1 and targetzn.active and not targetzn.suspended
