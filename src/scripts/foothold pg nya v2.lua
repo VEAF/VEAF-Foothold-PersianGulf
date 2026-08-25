@@ -546,20 +546,15 @@ if Era == 'Vietnam' then
 	deepSwap(RandomBluePool, vnSwap)
 end
 
-RandomRedPickKeepChance = {
-	["Red SAM SHORAD Pantsir S1"] = 50,
-	["Red SAM SHORAD Tor M2"] = 50,
-}
-
 RandomUpgradeTemplates = {
-	small = { sam = 0, shorad = {0,2}, aaa = {0,2}, ground = {0,3}, armor = {0,2}, arty = {0,2}, total = {4,6}, flakChance = 15, flakSecondChance = 0, flakMax = 1 },
-    medium = { sam = {0,1}, shorad = {0,3}, aaa = {0,3}, ground = {0,3}, armor = {0,3}, arty = {0,3}, total = {5,9}, flakChance = 20, flakSecondChance = 0, flakMax = 1 },
-    big = { sam = {0,1}, shorad = {0,4}, aaa = {0,3}, ground = {0,3}, armor = {0,4}, arty = {0,3}, total = {5,10}, flakChance = 40, flakSecondChance = 15, flakMax = 2 },
-    extrabig = { sam = {1,2}, shorad = {0,5}, aaa = {0,4}, ground = {0,4}, armor = {0,4}, arty = {0,4}, total = {7,12}, flakChance = 50, flakSecondChance = 30, flakMax = 2 },
-    sam = { sam = 1, shorad = {1,2}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {3,5}, flakChance = 10, flakSecondChance = 0, flakMax = 1 },
-    shorad = { sam = 0, shorad = {1,2}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {2,4}, flakChance = 10, flakSecondChance = 0, flakMax = 1 },
-    sam2 = { sam = {1,2}, shorad = {2,3}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {4,7}, flakChance = 50, flakSecondChance = 30, flakMax = 1 },
-    HiddenSam = { sam = 0, shorad = {3,7}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {4,9}, flakChance = 0, flakSecondChance = 0, flakMax = 1 },
+	small = { sam = 0, shorad = {0,2}, aaa = {0,2}, ground = {0,3}, armor = {0,2}, arty = {0,2}, total = {4,6}, flakChance = 15, flakSecondChance = 0, flakMax = 1, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 20, ["Red SAM SHORAD Tor M2"] = 20 } },
+    medium = { sam = {0,1}, shorad = {0,3}, aaa = {0,3}, ground = {0,3}, armor = {0,3}, arty = {0,3}, total = {5,9}, flakChance = 20, flakSecondChance = 0, flakMax = 1, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 40, ["Red SAM SHORAD Tor M2"] = 40 } },
+    big = { sam = {0,1}, shorad = {0,4}, aaa = {0,3}, ground = {0,3}, armor = {0,4}, arty = {0,3}, total = {5,10}, flakChance = 50, flakSecondChance = 15, flakMax = 2, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 70, ["Red SAM SHORAD Tor M2"] = 70 } },
+    extrabig = { sam = {1,2}, shorad = {0,5}, aaa = {0,4}, ground = {0,4}, armor = {0,4}, arty = {0,4}, total = {7,12}, flakChance = 60, flakSecondChance = 30, flakMax = 2, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 100, ["Red SAM SHORAD Tor M2"] = 100 } },
+    sam = { sam = 1, shorad = {1,2}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {3,5}, flakChance = 10, flakSecondChance = 0, flakMax = 1, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 90, ["Red SAM SHORAD Tor M2"] = 90 } },
+    shorad = { sam = 0, shorad = {1,2}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {2,4}, flakChance = 10, flakSecondChance = 0, flakMax = 1, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 20, ["Red SAM SHORAD Tor M2"] = 20 } },
+    sam2 = { sam = {1,2}, shorad = {2,3}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {4,7}, flakChance = 50, flakSecondChance = 30, flakMax = 1, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 70, ["Red SAM SHORAD Tor M2"] = 70 } },
+    HiddenSam = { sam = 0, shorad = {3,7}, aaa = {1,2}, ground = 0, armor = 0, arty = 0, total = {4,9}, flakChance = 0, flakSecondChance = 0, flakMax = 1, RandomRedPickKeepChance = { ["Red SAM SHORAD Pantsir S1"] = 0, ["Red SAM SHORAD Tor M2"] = 0 } },
     redarmycamp = { sam = 0, shorad = 0, aaa = 0, ground = {3,5}, armor = 0, arty = {0,5}, total = {6,8} },
     redarmycamp2 = { sam = 0, shorad = 0, aaa = {1,2}, ground = {3,5}, armor = 0, arty = {0,4}, total = {6,8}, flakChance = 0, flakSecondChance = 0, flakMax = 0 },
     redarmycamp3 = { sam = {0,2}, shorad = {0,3}, aaa = {1,3}, ground = 0, armor = 0, arty = 0, total = {6,8}, flakChance = 0, flakSecondChance = 0, flakMax = 0 },
@@ -1118,7 +1113,7 @@ zones.samathe:addGroups({
 	GroupCommander:new({name='HiddenGroup-attack-Samathe', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Samathe', Altitude = CapAltitude(), Redcondition = function() return end}),
 	GroupCommander:new({name='Samathe-attack-Paregaan', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Paregaan', Altitude = CapAltitude(), Redcondition = function() return end}),
 	-- Patrol missions
-	GroupCommander:new({name='HiddenGroup-patrol-Ramp-Kongo', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude(), Redcondition = function() return zones.lar.wasBlue end}),
+	GroupCommander:new({name='HiddenGroup-patrol-Ramp-Kongo', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude(), Redcondition = function() return zones.lar.side == 2 end}),
 	GroupCommander:new({name='Samathe-patrol-Samathe', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Samathe', Altitude = CapAltitude()}),
 	GroupCommander:new({name='Samathe-patrol-OilFields', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Oil Fields', Altitude = CapAltitude()}),
 	-- Supply missions
@@ -1296,7 +1291,7 @@ function SpawnFriendlyAssets(changedZone)
 		local ab = Airbase.getByName(airbName.name)
 		if ab then
 			if ab:autoCaptureIsOn() then ab:autoCapture(false) end
-			local side = airbName.zone.wasBlue and 2 or 1
+			local side = airbName.zone.side == 2 and 2 or 1
 			if ab:getCoalition() ~= side then
 				ab:setCoalition(side)
 				checkWeaponsList(airbName.name)
@@ -1359,6 +1354,7 @@ function SpawnFriendlyAssets(changedZone)
 				CVN72_AREA_ABU_MUSA = {
 					available = startNormalFalseAbuMusaReady,
 					via = "CVN72_AREA_TRANSITION_2",
+					viaFrom = "CVN72_AREA_KISH",
 					autoMove = false,
 				},
 				CVN72_AREA_TRANSITION_2 = {
@@ -1378,6 +1374,7 @@ function SpawnFriendlyAssets(changedZone)
 				CVN72_AREA_AL_AIEN = {
 					available = startNormalFalseKhasabReady,
 					via = "CVN72_AREA_TRANSITION_1",
+					viaFrom = "CVN72_AREA_KHASAB",
 					reverse = true,
 					autoMove = false,
 				},
@@ -1396,6 +1393,7 @@ function SpawnFriendlyAssets(changedZone)
 				CVN72_AREA_KHASAB = {
 					available = khasabReady,
 					via = "CVN72_AREA_TRANSITION_1",
+					viaFrom = "CVN72_AREA_AL_AIEN",
 					autoMove = khasabReady,
 				},
 				CVN72_AREA_BANDAR = {
@@ -1409,6 +1407,7 @@ function SpawnFriendlyAssets(changedZone)
 				CVN72_AREA_KISH = {
 					available = kishReady,
 					via = "CVN72_AREA_TRANSITION_2",
+					viaFrom = "CVN72_AREA_ABU_MUSA",
 					autoMove = kishReady,
 				},
 				CVN72_AREA_TRANSITION_1 = {
@@ -1464,16 +1463,16 @@ function checkAndDisableFriendlyZones()
 	if not StartNormal and zones.alhuti.side == 2 then
 		zones.hidden:MakeZoneRedAndUpgrade()
 	end
-	if not CustomFlags['StartNormalFalse'] and zones.alkhatim.wasBlue and zones.alain.wasBlue and zones.alhuti.wasBlue
+	if not CustomFlags['StartNormalFalse'] and zones.alkhatim.side == 2 and zones.alain.side == 2 and zones.alhuti.side == 2
 		and zones.hidden.side == 1 then
 		zones.hidden:DestroyHiddenZone()
 	end
 
-	if not CustomFlags['StartNormalFalse'] and zones.khasab.wasBlue and (zones.qeshmisland.wasBlue or zones.bandarabbas.wasBlue) and zones.hidden2.side == 1 then
+	if not CustomFlags['StartNormalFalse'] and zones.khasab.side == 2 and (zones.qeshmisland.side == 2 or zones.bandarabbas.side == 2) and zones.hidden2.side == 1 then
 		zones.hidden2:DestroyHiddenZone()
 		zones.hidden4:MakeZoneRedAndUpgrade()
 	end
-	if CustomFlags['StartNormalFalse'] == true and (zones.qeshmisland.wasBlue or zones.bandarabbas.wasBlue) and zones.khasab.wasBlue and zones.hidden4.side == 1 then
+	if CustomFlags['StartNormalFalse'] == true and (zones.qeshmisland.side == 2 or zones.bandarabbas.side == 2) and zones.khasab.side == 2 and zones.hidden4.side == 1 then
 		zones.hidden4:DestroyHiddenZone()
 		zones.hidden2:MakeZoneRedAndUpgrade()
 	end
@@ -1648,6 +1647,14 @@ bc:addHiddenConnection("Lar","Kish intl")
 bc:addHiddenConnection("Lar","Qeshm Island")
 bc:addHiddenConnection("BandarAbbas","Lar")
 bc:addHiddenConnection("Khasab","BandarAbbas")
+bc:addHiddenConnection("Khasab","Moradi")
+bc:addHiddenConnection("Khasab","Ras Al Khaimah")
+bc:addHiddenConnection("BandarAbbas","Ras Al Khaimah")
+bc:addHiddenConnection("Khasab","Sharjah")
+bc:addHiddenConnection("Qeshm Island","BandarAbbas")
+bc:addHiddenConnection("Al Minhad AFB","Ras Al Khaimah")
+bc:addHiddenConnection("Fujairah Intl","Khasab")
+bc:addHiddenConnection("Bandar Lengeh","Khasab")
 
 -- Block automatic DynamicHybrid ground convoys on water-only links.
 bc:BlockGroundConvoy("Bandar Lengeh","Kish intl")
@@ -3020,7 +3027,13 @@ function(sender, params)
         end
         return LTGet("SYRIA_SHOP_CAN_ONLY_TARGET_FRIENDLY")
     elseif params.zone and params.zone.side == 2 and not params.zone.suspended then
-        if not params.zone:upgrade() then
+        local supplied
+        if carrierSupplyTarget then
+            supplied = params.zone:upgrade()
+        else
+            supplied = params.zone:_addExpeditedRegularSupplyStock(1, timer.getAbsTime())
+        end
+        if not supplied then
             return LTGet("SYRIA_SHOP_ZONE_NO_RESUPPLY")
         end
     else
@@ -4067,11 +4080,12 @@ bc:addShopItem(2, 'gslot', 1, 5, ShopRankRequirements.gslot, ShopCats.ZoneUpgrad
 if Era == 'Modern' then
     bc:addShopItem(2, 'zhimars', -1, 4, ShopRankRequirements.zhimars, ShopCats.ZoneUpgrades) -- add HIMARS to a zone
     bc:addShopItem(2, 'zpat', -1, 6, ShopRankRequirements.zpat, ShopCats.ZoneUpgrades) -- Patriot system.
-    bc:addShopItem(2, 'zgci', -1, 7, ShopRankRequirements.zgci, ShopCats.ZoneUpgrades) -- GCI station.
 end
 
 -- JTAC & Intel
 if Era ~= 'Vietnam' then
+bc:addShopItem(2, 'zgci', -1, 7, ShopRankRequirements.zgci, ShopCats.ZoneUpgrades) -- GCI station.
+
 bc:addShopItem(2, 'jtac', -1, 1, ShopRankRequirements.jtac, ShopCats.JTACIntel) -- MQ-9 Reaper JTAC mission
 end
 bc:addShopItem(2, 'smoke', -1, 2, ShopRankRequirements.smoke, ShopCats.JTACIntel) -- smoke on target
@@ -4152,6 +4166,11 @@ TerritoryOverlayOuterDrawPushMeters = 500000
 lc = LogisticCommander:new({battleCommander = bc, supplyZones = supplyZones})
 bc:initCasMissions()
 bc:initSeadMissions()
+bc:initReconMissions()
+bc.seadMissionRegularSlots = bc.seadMissionMaxSlots
+bc.seadMissionDefenceReserveSlot = bc.seadMissionRegularSlots + 1
+bc.seadMissionMaxSlots = bc.seadMissionDefenceReserveSlot
+bc:resetSeadMissionSlot(bc.seadMissionDefenceReserveSlot)
 lc:init()
 
 bc:loadFromDisk()
@@ -4552,72 +4571,93 @@ mc:trackMission({
 -------------------------------------End of Helo Hunt ----------------------------------
 ---------------------------------------- Airstrike ---------------------------------------
 local airstrike_COOLDOWN = 3600
-local lastairstrike_COOLDOWN  = -airstrike_COOLDOWN
-local attackGrp =
-    CustomFlags['StartNormalFalse']
-    and (ColdWarTechEra and 'evt-attackcw-Otherway' or 'evt-attack-OtherWay')
-    or  (ColdWarTechEra and 'evt-attackcw'          or 'evt-attack')
+local attackGrp = ColdWarTechEra and 'evt-attackcw' or 'evt-attack'
+local airstrikeAltitudeFt = 20000
+local airstrikePickOptions = {
+	minTargetSpawnNm = 80,
+	preferredTargetSpawnNm = 100,
+	minPlayerSpawnNm = 80,
+	avoidPlayerCoalition = 'blue',
+	allowSuspendedSpawn = true,
+	preferNonSuspendedSpawn = true,
+	randomCandidateLimit = 3,
+	attackAltitudeFt = airstrikeAltitudeFt,
+}
 
 Group.getByName('evt-attack'):destroy()
 Group.getByName('evt-attackcw'):destroy()
-Group.getByName('evt-attack-OtherWay'):destroy()
-Group.getByName('evt-attackcw-Otherway'):destroy()
 evc:addEvent({
 	id='cas',
 	StrikeMission = true,
 	action=function()
-		RespawnGroup(attackGrp)
+		local director = Director:getForSide(coalition.side.RED)
+		local selection = director:consumeTacticalAirstrikePlan(airstrikePickOptions)
+		if not selection then return end
+		attackGrp = ColdWarTechEra and 'evt-attackcw' or (math.random(1, 2) == 1 and 'evt-attack' or 'evt-attackcw')
+		local spawned = Respawn.SpawnAtPoint(
+			attackGrp,
+			selection.spawnCoord,
+			selection.heading,
+			5,
+			airstrikeAltitudeFt,
+			nil,
+			true
+		)
+		if not spawned then return end
+		director:commitTacticalAirstrikeLaunch(selection, airstrike_COOLDOWN)
 		RegisterGroupTarget(attackGrp,500,L10N:Get("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_TITLE"),'cas')
-		timer.scheduleFunction(function(param, time)
-			local tgts = {
-				'BandarAbbas',
-				'Khasab',
-				'Qeshm Island',
-				'Delta',
-				'Echo',
-				'Sharjah'
-			}			
-			local validtgts = {}
-			for _,v in ipairs(tgts) do
-				if bc:getZoneByName(v).side == 2 and not bc:getZoneByName(v).suspended then
-					table.insert(validtgts, v)
-				end
+		timer.scheduleFunction(function(param)
+			if Group.getByName(attackGrp) then
+				bc:engageZone(param.targetZone, attackGrp)
 			end
-			if #validtgts ~= 0 then
-				local die = math.random(1,#validtgts)
-				local choice = validtgts[die]
-				
-				if Group.getByName(attackGrp) then 
-					bc:engageZone(choice,attackGrp)
-				end
-			end
-		end, {}, timer.getTime()+3)
+		end, { targetZone = selection.targetZone.zone }, timer.getTime()+3)
 	end,
 	canExecute = function()
 		if Era == 'Vietnam' then return false end
-		if timer.getTime()-lastairstrike_COOLDOWN<airstrike_COOLDOWN then return false end
 		if ActiveMission['cas'] then return false end
 		local gr = Group.getByName(attackGrp)
 		if gr then return false end
-		if math.random(1,100) < 50 then return false end
-		if not CustomFlags['StartNormalFalse'] and bc:getZoneByName('Lar').side ~= 1 then return false end
-		
-		local triggers = {'BandarAbbas', 'Khasab', 'Qeshm Island', 'Sharjah'}
-		for _,v in ipairs(triggers) do
-			if bc:getZoneByName(v).side == 2 and not bc:getZoneByName(v).suspended then
-				return true
-			end
-		end
-		
-		return false
+		return Director:getForSide(coalition.side.RED)
+			:getTacticalAirstrikePlan(airstrikePickOptions) ~= nil
 	end
 })
 
 mc:trackMission({
 	title = LTGet("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_TITLE"),
-	description = LTGet("PG_MISSION_INTERCEPT_AIRSTRIKE_WEST_SE_DESC"),
-	messageStart = LTGet("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_START"),
-	messageEnd =function(T) lastairstrike_COOLDOWN=timer.getTime() return LT(T):Get("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_END") end,
+	description = function(T)
+		local desc = LT(T):Get("PG_MISSION_INTERCEPT_AIRSTRIKE_WEST_SE_DESC")
+		local director = Director:getForSide(coalition.side.RED)
+		if Group.getByName(attackGrp)
+			and director.tacticalAirstrikeLastSpawnZone
+			and director.tacticalAirstrikeLastTarget
+		then
+			desc = desc .. "\n\n" .. LT(T):Format(
+				"PG_MISSION_INTERCEPT_AIRSTRIKE_DETAIL",
+				director.tacticalAirstrikeLastSpawnZone,
+				director.tacticalAirstrikeLastTarget
+			)
+		end
+		return desc
+	end,
+	messageStart = function(T)
+		local msg = LT(T):Get("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_START")
+		local director = Director:getForSide(coalition.side.RED)
+		if Group.getByName(attackGrp)
+			and director.tacticalAirstrikeLastSpawnZone
+			and director.tacticalAirstrikeLastTarget
+		then
+			msg = msg .. "\n\n" .. LT(T):Format(
+				"PG_MISSION_INTERCEPT_AIRSTRIKE_DETAIL",
+				director.tacticalAirstrikeLastSpawnZone,
+				director.tacticalAirstrikeLastTarget
+			)
+		end
+		return msg
+	end,
+	messageEnd =function(T)
+		Director:getForSide(coalition.side.RED):onTacticalAirstrikeEnded(airstrike_COOLDOWN)
+		return LT(T):Get("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_END")
+	end,
 	startAction = function()
          if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
             trigger.action.outSoundForCoalition(2, "ding.ogg")
@@ -5811,6 +5851,8 @@ mc:trackMission({
 
 attackTarget1 = nil
 attackTarget2 = nil
+attackTarget3 = nil
+attackTarget3Started = nil
 resupplyTarget1 = nil
 resupplyTarget2 = nil
 attackCombinedStart1 = nil
@@ -5829,7 +5871,6 @@ local function _isValidAttackMissionZone(zone)
 	if not zone or not zone.zone then return false end
 	local lname = zone.zone:lower()
 	return zone.side == 1 and zone.active and not zone.suspended and not zone.isHidden and
-		not isZoneUnderSEADMission(zone.zone) and
 		not lname:find('hidden') and not lname:find('sam') and not lname:find('defence') and
 		not lname:find('papa') and not lname:find('juliett') and not lname:find('india') and
 		not lname:find('bravo') and not lname:find('hotel')
@@ -5838,7 +5879,7 @@ end
 local function _getAttackAnchorZones()
 	local anchors = {}
 	local seen = {}
-	for _, zoneName in ipairs({ attackTarget1, attackTarget2 }) do
+	for _, zoneName in ipairs({ attackTarget1, attackTarget2, attackTarget3 }) do
 		if zoneName and not seen[zoneName] then
 			local targetzn = bc:getZoneByName(zoneName)
 			if targetzn and targetzn.zone and targetzn.side == 1 then
@@ -5903,7 +5944,8 @@ mc:trackMission({
 	isActive = function()
 		if not resupplyTarget1 then return false end
 		local targetzn = bc:getZoneByName(resupplyTarget1)
-		return targetzn and targetzn.side == 2 and targetzn:canRecieveSupply()
+		return targetzn and targetzn.side == 2
+			and bc:_regularSupplyTargetNeedsExternalSupply(2, targetzn.zone, {})
 	end
 })
 
@@ -5948,7 +5990,8 @@ mc:trackMission({
 	isActive = function()
 		if not resupplyTarget2 then return false end
 		local targetzn = bc:getZoneByName(resupplyTarget2)
-		return targetzn and targetzn.side == 2 and targetzn:canRecieveSupply()
+		return targetzn and targetzn.side == 2
+			and bc:_regularSupplyTargetNeedsExternalSupply(2, targetzn.zone, {})
 	end
 })
 
@@ -6045,6 +6088,45 @@ mc:trackMission({
 		return false
 	end
 })
+mc:trackMission({
+	title = function(T)
+		local wp = WaypointList[attackTarget3] or ""
+		return LT(T):Format("SYRIA_DYNAMIC_ATTACK_TITLE", attackTarget3, wp)
+	end,
+	description = function(T)
+		return LT(T):Format("SYRIA_DYNAMIC_ATTACK_DESC", attackTarget3)
+	end,
+	messageStart = nil,
+	messageEnd = function() return L10N:Format("SYRIA_DYNAMIC_ATTACK_END", attackTarget3Started or attackTarget3) end,
+	startAction = function()
+		attackTarget3Started = attackTarget3
+		bc:addMissionTag(attackTarget3, "Attack")
+		bc:refreshZoneLabel(attackTarget3)
+		local wp = WaypointList[attackTarget3] or ""
+		trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_DYNAMIC_ATTACK_START_ONE", attackTarget3, wp), 30)
+		if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
+			trigger.action.outSoundForCoalition(2, "cas.ogg")
+		end
+	end,
+	endAction = function()
+		local endedTarget = attackTarget3Started or attackTarget3
+		bc:removeMissionTag(endedTarget, "Attack")
+		bc:refreshZoneLabel(endedTarget)
+		attackTarget3Started = nil
+		attackTarget3 = nil
+		if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
+			trigger.action.outSoundForCoalition(2, "cancel.ogg")
+		end
+	end,
+	isActive = function()
+		if not attackTarget3 then return false end
+		local targetzn = bc:getZoneByName(attackTarget3)
+		if targetzn and targetzn.zone and targetzn.side == 1 then
+			return not targetzn.suspended
+		end
+		return false
+	end
+})
 
 captureTarget = nil
 mc:trackMission({
@@ -6059,6 +6141,10 @@ mc:trackMission({
         return LT(T):Format("SYRIA_DYNAMIC_CAPTURE_START", captureTarget, wp)
     end,
     messageEnd = function(T)
+        local targetzn = captureTarget and bc:getZoneByName(captureTarget) or nil
+        if targetzn and (targetzn.pendingCapture or targetzn._pendingCaptureRestore) then
+            return nil
+        end
         return LT(T):Format("SYRIA_DYNAMIC_CAPTURE_END", captureTarget) end,
     startAction = function()
         local MissionType = "Capture"
@@ -6070,10 +6156,12 @@ mc:trackMission({
     end,
     endAction = function()
         local MissionType = "Capture"
+        local targetzn = captureTarget and bc:getZoneByName(captureTarget) or nil
+        local capturePending = targetzn and (targetzn.pendingCapture ~= nil or targetzn._pendingCaptureRestore ~= nil)
         bc:removeMissionTag(captureTarget, MissionType)
         bc:refreshZoneLabel(captureTarget)
         captureTarget = nil
-        if not missionCompleted then
+        if not missionCompleted and not capturePending then
             trigger.action.outSoundForCoalition(2, "cancel.ogg")
         end
     end,
@@ -6081,114 +6169,103 @@ mc:trackMission({
         if not captureTarget then return false end
         local targetzn = bc:getZoneByName(captureTarget)
         return targetzn.side == 0 and targetzn.active
+            and not targetzn.pendingCapture and not targetzn._pendingCaptureRestore
     end
 })
 
 ---------------------------------------------------------------------
 --                         RECON MISSION                           --
-reconMissionTarget = nil
-reconMissionWinner = nil
-reconMissionCooldownUntil = 0
-reconMissionCompleted = false
-reconMissionCompletedTarget = nil
-
-mc:trackMission({
+function RegisterDirectorReconMission(slotIndex)
+	mc:trackMission({
 	title = function(T)
 		T = LT(T)
-		local target = reconMissionCompletedTarget or reconMissionTarget
+		local target = bc.reconMissions.slots[slotIndex].targetZone
 		if not target then return T:Get("SYRIA_DYNAMIC_RECON_TITLE_EMPTY") end
 		local wp = WaypointList[target] or ""
 		return T:Format("SYRIA_DYNAMIC_RECON_TITLE", target, wp)
 	end,
 	description = function(T)
 		T = LT(T)
-		local target = reconMissionCompletedTarget or reconMissionTarget
+		local target = bc.reconMissions.slots[slotIndex].targetZone
 		if not target then return T:Get("SYRIA_DYNAMIC_RECON_DESC_EMPTY") end
 		return T:Format("SYRIA_DYNAMIC_RECON_DESC", target)
 	end,
 	messageStart = function(T)
 		T = LT(T)
-		local target = reconMissionCompletedTarget or reconMissionTarget
+		local target = bc.reconMissions.slots[slotIndex].targetZone
 		if not target then return T:Get("SYRIA_DYNAMIC_RECON_START_EMPTY") end
 		local wp = WaypointList[target] or ""
 		return T:Format("SYRIA_DYNAMIC_RECON_START", target, wp)
 	end,
 	messageEnd = function(T)
 		T = LT(T)
-		if reconMissionCompleted and reconMissionCompletedTarget and reconMissionWinner then
-			return T:Format("SYRIA_DYNAMIC_RECON_END_BY", reconMissionCompletedTarget, reconMissionWinner)
+		local slot = bc.reconMissions.slots[slotIndex]
+		if slot.completed and slot.targetZone and slot.winner then
+			return T:Format("SYRIA_DYNAMIC_RECON_END_BY", slot.targetZone, slot.winner)
 		end
-		if reconMissionCompletedTarget then
-			return T:Format("SYRIA_DYNAMIC_RECON_END_TARGET", reconMissionCompletedTarget)
+		if slot.targetZone then
+			return T:Format("SYRIA_DYNAMIC_RECON_END_TARGET", slot.targetZone)
 		end
 		return T:Get("SYRIA_DYNAMIC_RECON_END")
 	end,
 	startAction = function()
-		reconMissionCompleted = false
-		reconMissionWinner = nil
-		reconMissionCompletedTarget = nil
+		local slot = bc.reconMissions.slots[slotIndex]
+		slot.completed = false
+		slot.winner = nil
+		slot.started = true
 
-		bc:addMissionTag(reconMissionTarget, "Recon")
-		bc:refreshZoneLabel(reconMissionTarget)
+		bc:addMissionTag(slot.targetZone, "Recon")
+		bc:refreshZoneLabel(slot.targetZone)
 
-		startReconMissionZoneTracker(reconMissionTarget)
+		startReconMissionZoneTracker(slot.targetZone)
 		if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
 			trigger.action.outSoundForCoalition(2, "ding.ogg")
 		end
 	end,
 	endAction = function()
-		local target = reconMissionCompletedTarget or reconMissionTarget
+		local slot = bc.reconMissions.slots[slotIndex]
+		local target = slot.targetZone
+		local winner = slot.winner
+		local completed = slot.completed
 		if target then
 			stopReconMissionZoneTracker(target)
 			bc:removeMissionTag(target, "Recon")
 			bc:refreshZoneLabel(target)
 		end
 
-		if reconMissionCompleted and target and reconMissionWinner then
+		if completed and target and winner then
 			local reward = 100
-			bc:addContribution(reconMissionWinner, 2, reward)
-			local jp = bc.jointPairs and bc.jointPairs[reconMissionWinner]
-			if jp and bc:_jointPartnerAlive(reconMissionWinner) and bc:_jointPartnerAlive(jp) and bc.playerContributions[2][jp] ~= nil then
-				bc:addContribution(jp, 2, reward)
-				bc:addTempStat(jp, "Recon mission (Joint mission)", 1)
-				bc:addTempStat(reconMissionWinner, "Recon mission (Joint mission)", 1)
-				trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_DYNAMIC_RECON_COMPLETED_JOINT", reconMissionWinner, jp, target, reward), 20)
-				local jgn = bc.groupNameByPlayer[jp]
-				local jgr = Group.getByName(jgn)
-				if jgr then
-					local ju = jgr:getUnit(1)
-					if ju and not Utils.isInAir(ju) then
-						SCHEDULER:New(nil, function()
-							if ju and ju:isExist() then
-								world.onEvent({id=world.event.S_EVENT_LAND,time=timer.getAbsTime(),initiator=ju,initiatorPilotName=jp,initiator_unit_type=ju:getTypeName(),initiator_coalition=ju:getCoalition(),skipRewardMsg=true})
-							end
-						end, {}, 5, 0)
-					end
-				end
+			local jp = bc:awardJointMissionReward(winner, 2, reward, "Recon mission")
+			if jp then
+				trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_DYNAMIC_RECON_COMPLETED_JOINT", winner, jp, target, reward), 20)
 			else
-				bc:addTempStat(reconMissionWinner, "Recon mission", 1)
-				trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_DYNAMIC_RECON_COMPLETED_SOLO", reconMissionWinner, target, reward), 20)
+				trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_DYNAMIC_RECON_COMPLETED_SOLO", winner, target, reward), 20)
 			end
 			startZoneIntel(target, 10 * 60, 2)
-			reconMissionCooldownUntil = timer.getTime() + 900
+			bc.reconMissions.cooldownByTarget[target] = timer.getTime() + 900
 		end
 
-		reconMissionTarget = nil
-		reconMissionWinner = nil
-		reconMissionCompleted = false
-		reconMissionCompletedTarget = nil
-
+		bc:resetReconMissionSlot(slotIndex)
 		if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
 			trigger.action.outSoundForCoalition(2, "cancel.ogg")
 		end
 	end,
 	isActive = function()
-		if reconMissionCompleted then return false end
-		if not reconMissionTarget then return false end
-		local targetzn = bc:getZoneByName(reconMissionTarget)
-		return targetzn and targetzn.side == 1 and targetzn.active and not targetzn.suspended
+		local slot = bc.reconMissions.slots[slotIndex]
+		if slot.completed or not slot.active or not slot.targetZone then return false end
+		local targetzn = bc:getZoneByName(slot.targetZone)
+		if not targetzn or targetzn.side ~= 1 or not targetzn.active or targetzn.suspended then
+			if not slot.started then bc:resetReconMissionSlot(slotIndex) end
+			return false
+		end
+		return true
 	end
-})
+	})
+end
+
+for slotIndex = 1, bc.reconMissionMaxSlots do
+	RegisterDirectorReconMission(slotIndex)
+end
 --                    End of RECON MISSION                         --
 ---------------------------------------------------------------------
 
@@ -6197,7 +6274,8 @@ function generateCaptureMission()
     
     local validzones = {}
     for _, v in ipairs(bc.zones) do
-        if v.active and v.side == 0 and (not v.NeutralAtStart or v.firstCaptureByRed) and
+        if v.active and v.side == 0 and not v.pendingCapture and not v._pendingCaptureRestore
+            and (not v.NeutralAtStart or v.firstCaptureByRed) and
            not v.zone:lower():find("hidden", 1, true) and  not v.zone:lower():find("carrier", 1, true) then
             table.insert(validzones, v.zone)
         end
@@ -6247,27 +6325,10 @@ mc:trackMission({
         if capWinner then
             local reward = capTargetPlanes * 100
             local pname  = capWinner
-            bc:addContribution(pname, 2, reward)
-            local jp = bc.jointPairs and bc.jointPairs[pname]
-            if jp and bc:_jointPartnerAlive(pname) and bc:_jointPartnerAlive(jp) and bc.playerContributions[2][jp] ~= nil then
-                bc:addContribution(jp, 2, reward)
-                bc:addTempStat(jp,'CAP mission (Joint mission)',1)
-                bc:addTempStat(pname,'CAP mission (Joint mission)',1)
+            local jp = bc:awardJointMissionReward(pname, 2, reward, 'CAP mission')
+            if jp then
                 trigger.action.outTextForCoalition(2,L10N:Format("MISSION_CAP_COMPLETED_JOINT", pname, jp, reward),20)
-                local jgn = bc.groupNameByPlayer[jp]
-                local jgr = Group.getByName(jgn)
-                if jgr then
-                    local ju = jgr:getUnit(1)
-                    if ju and not Utils.isInAir(ju) then
-                        SCHEDULER:New(nil,function()
-                            if ju and ju:isExist() then
-                                world.onEvent({id=world.event.S_EVENT_LAND,time=timer.getAbsTime(),initiator=ju,initiatorPilotName=jp,initiator_unit_type=ju:getTypeName(),initiator_coalition=ju:getCoalition(),skipRewardMsg=true})
-                            end
-                        end,{},5,0)
-                    end
-                end
             else
-                bc:addTempStat(pname,'CAP mission',1)
                 trigger.action.outTextForCoalition(2,L10N:Format("MISSION_CAP_COMPLETED_SOLO", pname, reward),20)
             end
             capMissionCooldownUntil = timer.getTime() + 900
@@ -6293,20 +6354,6 @@ mc:trackMission({
 
 ---------------------------------------------------------------------
 --                          CAS MISSION                            --
-function ScheduleCasRewardClaimIfLanded(playerName)
-	local groupName = bc.groupNameByPlayer[playerName]
-	local group = groupName and Group.getByName(groupName) or nil
-	if not group then return end
-	local unit = group:getUnit(1)
-	if unit and not Utils.isInAir(unit) then
-		SCHEDULER:New(nil,function()
-			if unit and unit:isExist() then
-				world.onEvent({id=world.event.S_EVENT_LAND,time=timer.getAbsTime(),initiator=unit,initiatorPilotName=playerName,initiator_unit_type=unit:getTypeName(),initiator_coalition=unit:getCoalition(),skipRewardMsg=true})
-			end
-		end,{},5,0)
-	end
-end
-
 function RegisterDirectorCasMission(slotIndex)
 	mc:trackMission({
 		title = function(T)
@@ -6330,7 +6377,7 @@ function RegisterDirectorCasMission(slotIndex)
 			local slot = bc.casMissions.slots[slotIndex]
 			return LT(T):Format("MISSION_CAS_START", slot.targetZone, slot.targetKills)
 		end,
-		messageEnd = '',
+		messageEnd = LTGet("MISSION_CAS_END"),
 		startAction = function()
 			local slot = bc.casMissions.slots[slotIndex]
 			slot.started = true
@@ -6344,7 +6391,7 @@ function RegisterDirectorCasMission(slotIndex)
 					local reward = rewards[playerName]
 					bc:addContribution(playerName, 2, reward, {playerName})
 					bc:addTempStat(playerName,'CAS mission',1)
-					ScheduleCasRewardClaimIfLanded(playerName)
+					bc:scheduleRewardClaimIfLanded(playerName)
 				end
 				if #participantNames == 0 then
 					trigger.action.outTextForCoalition(2,L10N:Get("MISSION_CAS_COMPLETED_NO_REWARD"),20)
@@ -6402,6 +6449,7 @@ local function _seadMissionAnchorZones()
     local packageRecommendation = blueDirector:getBluePackageRecommendation()
     addAnchor(attackTarget1)
     addAnchor(attackTarget2)
+    addAnchor(attackTarget3)
     addAnchor(packageRecommendation and packageRecommendation.runwayZone or nil)
     addAnchor(runwayTargetZone)
     return anchors
@@ -6424,16 +6472,53 @@ function generateSEADMission()
         local slot = bc.seadMissions.slots[slotIndex]
         if slot.active or slot.completed then
             selectedTargets[slot.targetZone] = true
-        else
+        elseif slotIndex <= bc.seadMissionRegularSlots then
             availableSlots[#availableSlots + 1] = slotIndex
         end
     end
-    if #availableSlots == 0 then return true end
 
     local catalog = bc:GetSeadThreatCatalog(coalition.side.RED)
     local catalogByZone = {}
     for _, threat in ipairs(catalog.rows) do
         catalogByZone[threat.zone] = threat
+    end
+
+    local anchorZones = _seadMissionAnchorZones()
+    local packageDefenceCandidates = {}
+    local packageDefenceSeen = {}
+    for _, anchorZoneName in ipairs(anchorZones) do
+        for _, defenceZoneName in ipairs(blueDirector.defenceZonesByParent[anchorZoneName] or {}) do
+            local defenceArea = blueDirector.areaByZone[defenceZoneName]
+            local member = defenceArea and defenceArea.zoneByName[defenceZoneName] or nil
+            local threat = catalogByZone[defenceZoneName]
+            local zone = bc:getZoneByName(defenceZoneName)
+            if member and member.operationalRoles.defence and threat and zone
+                and zone.side == coalition.side.RED and zone.active and not zone.suspended
+                and not zone.isHidden and defenceZoneName ~= deadTarget
+                and not selectedTargets[defenceZoneName] and not packageDefenceSeen[defenceZoneName]
+            then
+                packageDefenceSeen[defenceZoneName] = true
+                packageDefenceCandidates[#packageDefenceCandidates + 1] = defenceZoneName
+            end
+        end
+    end
+    while #availableSlots > 0 and #packageDefenceCandidates > 0 do
+        local pick = blueDirector:selectMissionTarget('SEAD', packageDefenceCandidates, {
+            primaryZone = attackTarget3 or attackTarget2 or attackTarget1 or anchorZones[1],
+        })
+        if not pick then break end
+        local slotIndex = availableSlots[1]
+        if bc:startSeadMissionSlot(slotIndex, pick) then
+            seadTargets[slotIndex] = pick
+            selectedTargets[pick] = true
+            table.remove(availableSlots, 1)
+        end
+        for candidateIndex, zoneName in ipairs(packageDefenceCandidates) do
+            if zoneName == pick then
+                table.remove(packageDefenceCandidates, candidateIndex)
+                break
+            end
+        end
     end
 
     local function anchorAlreadyCovered(anchorZoneName)
@@ -6446,7 +6531,7 @@ function generateSEADMission()
         return false
     end
 
-    for _, anchorZoneName in ipairs(_seadMissionAnchorZones()) do
+    for _, anchorZoneName in ipairs(anchorZones) do
         if #availableSlots == 0 then break end
         local directThreat = catalogByZone[anchorZoneName]
         local directCandidate = directThreat and directThreat.zone ~= deadTarget
@@ -6504,7 +6589,7 @@ function generateSEADMission()
 
         while #availableSlots > 0 and #frontlineCandidates > 0 do
             local pick = blueDirector:selectMissionTarget('SEAD', frontlineCandidates, {
-                primaryZone = attackTarget2 or attackTarget1,
+                primaryZone = attackTarget3 or attackTarget2 or attackTarget1,
             })
             if not pick then break end
             local slotIndex = availableSlots[1]
@@ -6518,6 +6603,70 @@ function generateSEADMission()
                     table.remove(frontlineCandidates, candidateIndex)
                     break
                 end
+            end
+        end
+    end
+
+    local reserveSlotIndex = bc.seadMissionDefenceReserveSlot
+    local reserveSlot = bc.seadMissions.slots[reserveSlotIndex]
+    if not reserveSlot.active and not reserveSlot.completed then
+        local reserveSeeds = {}
+        local reserveSeedSeen = {}
+        local function addReserveSeed(zoneName)
+            if zoneName and not reserveSeedSeen[zoneName] then
+                reserveSeedSeen[zoneName] = true
+                reserveSeeds[#reserveSeeds + 1] = zoneName
+            end
+        end
+
+        addReserveSeed(attackTarget1)
+        addReserveSeed(attackTarget2)
+        addReserveSeed(attackTarget3)
+        for slotIndex = 1, bc.seadMissionRegularSlots do
+            local slot = bc.seadMissions.slots[slotIndex]
+            if slot.active then addReserveSeed(slot.targetZone) end
+        end
+
+        local reserveCandidates = {}
+        local reserveCandidateSeen = {}
+        for _, seedZoneName in ipairs(reserveSeeds) do
+            local seedArea = blueDirector.areaByZone[seedZoneName]
+            if seedArea then
+                local neighbors = blueDirector:_operationalNeighbors(seedZoneName)
+                local defenceTargets = {}
+                local mappedDefences = blueDirector.defenceZonesByParent[seedZoneName]
+                local hasMappedDefence = mappedDefences ~= nil
+                for _, targetZoneName in ipairs(mappedDefences or {}) do
+                    defenceTargets[targetZoneName] = true
+                end
+                if not hasMappedDefence then defenceTargets = neighbors end
+
+                for neighborName in pairs(defenceTargets) do
+                    local defenceArea = blueDirector.areaByZone[neighborName]
+                    local member = defenceArea and defenceArea.zoneByName[neighborName] or nil
+                    local threat = catalogByZone[neighborName]
+                    local zone = bc:getZoneByName(neighborName)
+                    local relationshipEligible = hasMappedDefence
+                        or (neighbors[neighborName] and defenceArea == seedArea)
+                    if relationshipEligible and member and member.operationalRoles.defence and threat and zone
+                        and zone.side == coalition.side.RED and zone.active and not zone.suspended
+                        and not zone.isHidden and neighborName ~= deadTarget and not selectedTargets[neighborName]
+                        and not reserveCandidateSeen[neighborName]
+                    then
+                        reserveCandidateSeen[neighborName] = true
+                        reserveCandidates[#reserveCandidates + 1] = neighborName
+                    end
+                end
+            end
+        end
+
+        if #reserveCandidates > 0 then
+            local pick = blueDirector:selectMissionTarget('SEAD', reserveCandidates, {
+                primaryZone = attackTarget3 or attackTarget2 or attackTarget1 or reserveSeeds[1],
+            })
+            if pick and bc:startSeadMissionSlot(reserveSlotIndex, pick) then
+                seadTargets[reserveSlotIndex] = pick
+                selectedTargets[pick] = true
             end
         end
     end
@@ -6563,7 +6712,7 @@ function RegisterDirectorSeadMission(slotIndex)
                 for _, playerName in ipairs(participantNames) do
                     bc:addContribution(playerName, coalition.side.BLUE, rewards[playerName], {playerName})
                     bc:addTempStat(playerName, 'SEAD mission', 1)
-                    ScheduleCasRewardClaimIfLanded(playerName)
+                    bc:scheduleRewardClaimIfLanded(playerName)
                 end
                 if #participantNames == 1 then
                     local playerName = participantNames[1]
@@ -6642,7 +6791,7 @@ function generateDEADMission()
 
     if #validDEADZones == 0 then return false end
 
-    deadTarget = blueDirector:selectMissionTarget('DEAD', validDEADZones, { primaryZone = attackTarget1 or attackTarget2 })
+    deadTarget = blueDirector:selectMissionTarget('DEAD', validDEADZones, { primaryZone = attackTarget3 or attackTarget2 or attackTarget1 })
     return true
 end
 
@@ -6716,13 +6865,13 @@ function generateAttackMission()
 	if not attackTarget1 then
 		local pool = {}
 		for _, zoneName in ipairs(validzones) do
-			if zoneName ~= attackTarget2 then
+			if zoneName ~= attackTarget2 and zoneName ~= attackTarget3 then
 				table.insert(pool, zoneName)
 			end
 		end
 		if #pool > 0 then
 			attackTarget1 = blueDirector:selectMissionTarget('ATTACK', pool, {
-				anchorZone = attackTarget2,
+				anchorZone = attackTarget2 or attackTarget3,
 				captureZone = captureTarget,
 			})
 			created1 = true
@@ -6732,7 +6881,7 @@ function generateAttackMission()
 	if not attackTarget2 then
 		local pool = {}
 		local seenPool = {}
-		local anchor = attackTarget1 or attackTarget2
+		local anchor = attackTarget1 or attackTarget2 or attackTarget3
 		if anchor then
 			for _, redList in pairs(redByBlue) do
 				local hasAnchor = false
@@ -6744,7 +6893,8 @@ function generateAttackMission()
 				end
 				if hasAnchor then
 					for _, zoneName in ipairs(redList) do
-						if zoneName ~= attackTarget1 and zoneName ~= attackTarget2 and not seenPool[zoneName] then
+						if zoneName ~= attackTarget1 and zoneName ~= attackTarget2
+							and zoneName ~= attackTarget3 and not seenPool[zoneName] then
 							seenPool[zoneName] = true
 							table.insert(pool, zoneName)
 						end
@@ -6754,7 +6904,7 @@ function generateAttackMission()
 		end
 		if #pool == 0 then
 			for _, zoneName in ipairs(validzones) do
-				if zoneName ~= attackTarget1 and zoneName ~= attackTarget2 then
+				if zoneName ~= attackTarget1 and zoneName ~= attackTarget2 and zoneName ~= attackTarget3 then
 					table.insert(pool, zoneName)
 				end
 			end
@@ -6765,6 +6915,25 @@ function generateAttackMission()
 		end
 	end
 
+	if not attackTarget3 and attackTarget1 and attackTarget2 then
+		local thirdAttackDemand = blueDirector:hasBlueThirdAttackDemand(timer.getAbsTime())
+		if thirdAttackDemand then
+			local pool = {}
+			for _, zoneName in ipairs(validzones) do
+				if zoneName ~= attackTarget1 and zoneName ~= attackTarget2 then
+					pool[#pool + 1] = zoneName
+				end
+			end
+			if #pool > 0 then
+				attackTarget3 = blueDirector:selectMissionTarget('ATTACK_SUPPORT', pool, {
+					primaryZone = attackTarget1,
+					anchorZone = attackTarget2,
+					thirdAttack = true,
+				})
+			end
+		end
+	end
+
 	attackCombinedStart1 = nil
 	attackCombinedStart2 = nil
 	if created1 and created2 and attackTarget1 and attackTarget2 then
@@ -6772,11 +6941,12 @@ function generateAttackMission()
 		attackCombinedStart2 = attackTarget2
 	end
 
-	return attackTarget1 ~= nil or attackTarget2 ~= nil
+	return attackTarget1 ~= nil or attackTarget2 ~= nil or attackTarget3 ~= nil
 end
 
 function generateSupplyMission()
 	if bc._blueZoneCountRaw <= 1 then return false end
+	local resupplyDemandCache = {}
 	local preferred = {}
 	local validzones = {}
 	local attackFrontSet = {}
@@ -6789,14 +6959,16 @@ function generateSupplyMission()
 		local from, to = bc:getConnectionZones(connection)
 		if from and to and from.side ~= to.side and from.side ~= 0 and to.side ~= 0 and
 			((not to.suspended) or from.suspended) then
-			if from and to and attackFrontSet[from.zone] and to.side == 2 and to:canRecieveSupply() then
+			if from and to and attackFrontSet[from.zone] and to.side == 2
+				and bc:_regularSupplyTargetNeedsExternalSupply(2, to.zone, resupplyDemandCache) then
 				local found = false
 				for _, zoneName in ipairs(preferred) do
 					if zoneName == to.zone then found = true break end
 				end
 				if not found then table.insert(preferred, to.zone) end
 			end
-			if from and to and attackFrontSet[to.zone] and from.side == 2 and from:canRecieveSupply() then
+			if from and to and attackFrontSet[to.zone] and from.side == 2
+				and bc:_regularSupplyTargetNeedsExternalSupply(2, from.zone, resupplyDemandCache) then
 				local found = false
 				for _, zoneName in ipairs(preferred) do
 					if zoneName == from.zone then found = true break end
@@ -6807,7 +6979,8 @@ function generateSupplyMission()
 	end
 
 	for _, v in ipairs(bc.zones) do
-		if v.side == 2 and v:canRecieveSupply() then
+		if v.side == 2
+			and bc:_regularSupplyTargetNeedsExternalSupply(2, v.zone, resupplyDemandCache) then
 			local found = false
 			for _, zoneName in ipairs(validzones) do
 				if zoneName == v.zone then found = true break end
@@ -6883,6 +7056,19 @@ timer.scheduleFunction(function(_, time)
 		return time+120
 	end
 end, {}, timer.getTime() + 35)
+
+timer.scheduleFunction(function(_, time)
+	local hadThirdAttack = attackTarget3 ~= nil
+	if not hadThirdAttack and blueDirector:hasBlueThirdAttackDemand(timer.getAbsTime()) then
+		generateAttackMission()
+	end
+	if not hadThirdAttack and attackTarget3 then
+		checkAndGenerateCASMission()
+		generateSEADMission()
+		generateRunwayStrikeMission()
+	end
+	return time+30
+end, {}, timer.getTime() + 45)
 
 timer.scheduleFunction(function(_, time)
 	if generateSEADMission() then
