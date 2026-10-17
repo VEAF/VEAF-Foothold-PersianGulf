@@ -15,6 +15,38 @@ end
 
 local ColdWarTechEra = (Era == 'Coldwar' or Era == 'Vietnam')
 
+BlueUpgradeTemplateMigration = {
+	['bluePD'] = 'Blue SAM HAWK',
+	['BluePD'] = 'Blue SAM HAWK',
+	['bluePD_CW'] = 'Blue SAM HAWK',
+	['bluePD Coldwar'] = 'Blue SAM HAWK',
+	['bluePD Coldwar-1'] = 'Blue SAM HAWK',
+	['bluePD 2'] = 'Blue SAM HAWK',
+	['bluePD 2 Coldwar'] = 'Blue SAM HAWK',
+	['blueHAWK'] = 'Blue SAM HAWK',
+	['blueHAWK_CW'] = 'Blue SAM HAWK',
+	['blueHAWK Coldwar'] = 'Blue SAM HAWK',
+	['blueHAWK-Coldwar'] = 'Blue SAM HAWK',
+	['bluePD1'] = ColdWarTechEra and 'Blue SAM HAWK' or 'Blue SAM NASAMS',
+	['bluePATRIOT'] = 'Blue SAM PATRIOT',
+	['bluePATRIOT-Coldwar'] = 'Blue SAM PATRIOT',
+	['bSamIR'] = 'Blue SAM SHORAD Avenger',
+	['bluePD2'] = 'Blue SAM AAA Gepard',
+	['bluePD2 Coldwar'] = 'Blue SAM AAA Gepard',
+	['bluePD2-Coldwar'] = 'Blue SAM AAA Gepard',
+	['blueArmor'] = 'Blue Armor Modern',
+	['blueArmor_Cw'] = 'Blue Armor Coldwar',
+	['blueArmor_cw'] = 'Blue Armor Coldwar',
+	['blueArmor_CW'] = 'Blue Armor Coldwar',
+	['blueArmor-Coldwar'] = 'Blue Armor Coldwar',
+	['blueArmor Coldwar'] = 'Blue Armor Coldwar',
+	['blueArmor-VT'] = 'Blue Armor Vietnam',
+}
+if ColdWarTechEra then
+	BlueUpgradeTemplateMigration['Blue SAM NASAMS'] = 'Blue SAM HAWK'
+	BlueUpgradeTemplateMigration['Blue SAM AAA C-RAM'] = 'Blue SAM AAA Vulcan'
+end
+
 function merge(tbls)
 	local res = {}
 	for i,v in ipairs(tbls) do
@@ -66,106 +98,106 @@ upgrades = {
         red = {"Red Carrier Group Fixed 2", "Red Carrier Group Fixed 3"}
     },
     airfield = {
-        blue = { "blueInfantry", "bSamIR", "bluePD 2", "blueArmor", "bluePATRIOT" },
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "Blue SAM HAWK", "Blue Armor Modern", "Blue SAM PATRIOT", { n = 'Blue SAM NASAMS', p = true }},
         red = { "Enemy ground forces","Red SAM AAA", "Red Armour Group", "Red Armour Group 2", "Red SAM SA-3", "Red SAM SA-6", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15"}
     },
     Lengeh = {
-        blue = { "blueInfantry", "bSamIR", "bluePD 2", "blueArmor", "bluePATRIOT" },
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "Blue SAM HAWK", "Blue Armor Modern", "Blue SAM PATRIOT" },
         red = { "Enemy ground forces","Red SAM AAA", "Red Armour Group", "Red Armour Group 2", "Red SAM SA-3", "Red SAM SA-6", "Red SAM SHORAD SA-15", "Red SAM SHORAD Pantsir S1"}
     },
     Sharjah = {
-        blue = { "blueInfantry", "bSamIR", "bluePD 2", "blueArmor"},
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "Blue SAM HAWK", "Blue Armor Modern"},
         red = { "Enemy ground forces","Red SAM AAA", "Red Armour Group", "Sharjah HQ", "Red SAM SA-3","Red SAM AAA 2", "Red SAM SA-6", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15"}
     },
 	Bandarabbas = {
-        blue = { "blueInfantry", "bSamIR", "bluePD 2", "blueArmor", "bluePD1" },
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "Blue SAM HAWK", "Blue Armor Modern", "Blue SAM NASAMS" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red Armour Group", "Red SAM SHORAD Tor M2","Red SAM SHORAD Pantsir S1", "Red Armour Group 2", "Red Arty", "Red SAM SA-6", "Red SAM SA-11" }
     },
     Minhad = {
-        blue = { "blueInfantry", "bSamIR", "bluePD 2", "blueArmor" },
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "Blue SAM HAWK", "Blue Armor Modern" },
         red = {"Red SAM SA-6", "Enemy ground forces", "Red SAM AAA", "Red Armour Group", "Red Armour Group 2", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15" }
     },
     farp = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red SAM SHORAD SA-19", "Red Armour Group 2", "Red SAM SHORAD Tor M2", "Red SAM SHORAD Pantsir S1","Red Armour Group", "Red SAM SA-3", "Red Arty"}
     },
 	Khasab = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = { "Red SAM AAA", "Red Armour Group 2", "Red SAM SHORAD Tor M2", "Red SAM SHORAD Pantsir S1", "Red Armour Group", "Red SAM SA-3"}
     },
     Golf = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = { "Enemy ground forces", "Red SAM AAA","Golf Gaurdhouse", "Red Armour Group 2", "Red SAM SHORAD Pantsir S1", "Red SAM SHORAD SA-19", "Red SAM SHORAD Tor M2","Golf Troops acamady", "Red Armour Group", "Red SAM SA-3", "Golf Warehouse", "Golf Warehouse 2" }
     },
 	farpOilFields = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red SAM SHORAD SA-19", "Red Armour Group 2", "Red SAM SHORAD SA-19","Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15","Red Armour Group", "Red SAM SA-3","Oil Refinery Factory", "Oil Refinery Factory-2", 
 			"Oil Tank", "Oil Tank-2", "Oil Tank-3", "Oil Tank-4" }
     },
 	kishFixed = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2", "bluePD1" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK", "Blue SAM NASAMS" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red Armour Group 2", "Red SAM SHORAD SA-8", "Red Armour Group", "Red SAM SA-6" }
     },	
 	farpkongo = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = {"Red Armour Group", "Red SAM AAA", "Ramp Kongo Solider house","Red SAM AAA 2", "Red SAM SHORAD SA-8", "Red SAM SHORAD SA-8","Ramp Kongo Warehouse", "Ramp Kongo Warehouse 2", "Red SAM SA-3", "Ramp Kongo Troops academy"}
     },
     farp2 = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = { "Red SAM SHORAD SA-8","Red SAM AAA", "Red Armour Group", "Red SAM SHORAD SA-19", "Red Armour Group 2", "Red SAM SHORAD SA-19","Red SAM SHORAD SA-15","Red Arty"}
     },
     farp3 = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = { "Enemy ground forces","Red SAM AAA", "Red Armour Group","Red SAM SHORAD SA-19", "Red SAM SHORAD SA-19","Red SAM AAA 3", "Red SAM AAA 4", "Red Armour Group 2", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15", "Red Arty"}
     },
     Khatim = {
-        blue = { "blueInfantry", "blueArmor", "bluePD 2" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM HAWK" },
         red = { "Enemy ground forces", "Red SAM AAA", "Khatim Fuel tanks", "Red Armour Group", "Khatim Fuel tanks 2", "Red SAM SHORAD SA-19", "Red SAM AAA 3","Khatim Fuel tanks 3", "Red SAM AAA 4", "Red SAM SHORAD SA-15"}
     },
     regularzoneLavan = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red Armour Group", "Red SAM SHORAD SA-8", "Red SAM SHORAD SA-8","Red SAM SHORAD SA-15", "Red Armour Group 2", "Red SAM SHORAD SA-15"}
     },
 	regularzone = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red Armour Group", "Red SAM AAA 3","Red Armour Group 3", "Red SAM SHORAD SA-8", "Red Armour Group 2", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15"}
     },
 	Charlie = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Red SAM AAA","Charlie Tent 1", "Red Armour Group", "Charlie Tent 2","Charlie Tent 3", "Red SAM SHORAD SA-8", "Red Armour Group 2", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15"}
     },
 	RadioTower = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Enemy ground forces", "Red Armour Group", "Red SAM AAA 2", "Red SAM SHORAD SA-8", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15"}
     },
 	AlAin = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red Armour Group", "Al Ain Command building", "Red SAM SHORAD SA-8", "Red SAM SHORAD SA-8","Al Ain Command building 2", "Red Armour Group 2", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15"}
     },
 	regularzoneFactory = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red Armour Group", "Red SAM SHORAD SA-8", "Red SAM SHORAD SA-8","Red SAM SHORAD SA-15", "Red Armour Group 2", "Red SAM SHORAD SA-15","Factory Compound",
 	"Factory Compound-2", "Factory Hanger", "Factory Hanger-2", "Factory Hanger-3", "Factory Shipping Containers", "Factory Shipping Containers-2",
 	"Factory Shipping Containers-3", "Factory Shipping Containers-4"}
     },
 	regularzoneAFB = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = {"Red SAM AAA", "Red Armour Group", "Red SAM SHORAD SA-8", "Red SAM SHORAD SA-8","Red SAM SHORAD SA-15", "Red Armour Group 2", "Red SAM SHORAD SA-15","Tunb island SilkWorm Fixed","Tunb Island Communication Tower" }
     },
 	Foxtrot = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red SAM SHORAD SA-8", "Red Armour Group 2", "Red SAM SHORAD SA-8","Foxtrot OutPost", "Red Armour Group", "Red SAM SHORAD Pantsir S1"}
     },
 	regularzoneParegaan = {
-        blue = { "blueInfantry", "blueArmor", "bSamIR" },
+        blue = { "blueInfantry", "Blue Armor Modern", "Blue SAM SHORAD Avenger" },
         red = { "Red Armour Group", "Red SAM AAA", "Red SAM SHORAD Pantsir S1", "Red Armour Group 2", "Red SAM SA-11","Red SAM SHORAD Tor M2" }
     },
     specialSAMSamathe = {
-        blue = { "blueInfantry", "bSamIR", "blueInfantry", "blueInfantry" },
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "blueInfantry", "blueInfantry" },
         red = { "Red SAM AAA", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15","Red SAM AAA 2", "Samathe Fuel Depo" ,"Samathe Fuel Depo-2", "Enemy ground forces","Samathe HQ Building", "Samathe Factory", "Red SAM SA-3", "Red SAM SA-6" }
     },
     specialSAM2 = {
-        blue = { "blueInfantry", "bSamIR", "blueInfantry", "blueInfantry" },
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "blueInfantry", "blueInfantry" },
         red = { "Red SAM AAA", "Red Armour Group 2", "Red SAM SHORAD Tor M2", "Red Armour Group", "Red SAM SA-3", "Red SAM SA-2" }
     },
 	specialSAM2fixed = {
@@ -173,7 +205,7 @@ upgrades = {
         red = { "Red SAM SA-11", "Red SAM AAA" }
     },
     mission2 = {
-        blue = { "blueInfantry", "blueArmor" },
+        blue = { "blueInfantry", "Blue Armor Modern" },
         red = { "Enemy ground forces", "Red SAM AAA", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15","Red Armour Group 2", "Red SAM SHORAD SA-19" ,"Fuel Depo", "Fuel Depo-1", "Fuel Depo-2", "Fuel Depo-3", 
 		"Fuel Depo-4", "Fuel Depo-5", "Fuel Depo-6", "Fuel Depo-7", "Fuel Depo Factory", "Fuel Depo Factory-2"}
     },
@@ -190,7 +222,7 @@ upgrades = {
         red = { "Enemy Task forces", "Red Armour Group", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15","Red SAM SA-10", "Secrect Tech Waste", "Red Armour Group 2", "Secrect Tech Building", "Secrect Tech Building 2"}
     },
     mission5Fixed = {
-        blue = { "blueInfantry", "blueArmor" },
+        blue = { "blueInfantry", "Blue Armor Modern" },
         red = { "TankFactory Fixed Group 1", "TankFactory Fixed Group 2", "Red SAM AAA Fixed Group 3", "Red SAM SHORAD SA-19", "redInfantry Fixed Manpad-TankFacotory", "Tank Factory main",
 		 "Tank Factory secondary", "Red SAM AAA 3 Fixed TankFactory", "Red SAM AAA 4 Fixed TankFactory" }
     },
@@ -199,16 +231,16 @@ upgrades = {
         red = { "Scuds", "Scuds", "Scuds", "Scuds","Scuds", "Scuds", "Scuds", "Scuds", "Scuds","Scuds"}
     },
 	KhasabDefencefixed = {
-        blue = { "blueInfantry", "blueArmor" },
+        blue = { "blueInfantry", "Blue Armor Modern" },
         red = {}
     },
 	 
 	SharjahDefencefixed = {
-        blue = { "blueInfantry", "blueArmor" },
+        blue = { "blueInfantry", "Blue Armor Modern" },
         red = { "Red SAM AAA", "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-19", "Red SAM SHORAD SA-8","Red SAM SA-6" }
     },
     specialLar = {
-        blue = { "blueInfantry", "bSamIR", "bluePD", "bluePD1" },
+        blue = { "blueInfantry", "Blue SAM SHORAD Avenger", "Blue SAM HAWK", { n = 'Blue SAM NASAMS', p = true } },
         red = { "Red SAM SHORAD SA-15", "Red SAM SHORAD SA-15","Red SAM AAA", "Red Armour Group 2", "Red SAM SA-6", "Red Armour Group", "Red SAM SA-6" }
     },
 	
@@ -362,10 +394,12 @@ if lfs then
 end
 
 local cwSwap = {
+	['Blue SAM NASAMS'] = 'Blue SAM HAWK',
+	['Blue SAM AAA C-RAM'] = 'Blue SAM AAA Vulcan',
 	['Red Armour Group']   			= 'Red Armor Group7',
 	['Red Armour Group 2']   		= 'Red Armor Group9',
 	['Red Armour Group 3']  		= 'Red Armor Group6',
-	['blueArmor']  					= 'blueArmor_cw',
+	['Blue Armor Modern']  					= 'Blue Armor Coldwar',
 	['bluePD'] 						= 'bluePD_CW',
 	['bluePD 2'] 					= 'bluePD 2 Coldwar',
 	['bluePD1'] 					= 'bluePD 2 Coldwar',
@@ -374,7 +408,7 @@ local cwSwap = {
 }
 
 local vnSwap = {
-	['blueArmor_cw'] = 'blueArmor-VT',
+	['Blue Armor Coldwar'] = 'Blue Armor Vietnam',
 	['Enemy Task forces'] = 'Enemy task forces Vietnam',
 	['Enemy ground forces'] = 'Enemy ground forces Vietnam',
 	['Molniya'] = 'MissileBoat',
@@ -454,6 +488,8 @@ end
 
 if ColdWarTechEra then
 	deepSwap(upgrades,cwSwap)
+	upgrades.airfield.blue[3] = upgrades.airfield.blue[6]
+	upgrades.airfield.blue[6] = nil
 end
 if Era == 'Vietnam' then
 	deepSwap(upgrades,vnSwap)
@@ -519,13 +555,31 @@ RandomRedPool = {
 	"Red Arty 9",
 }
 
+if Era ~= 'Vietnam' then
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-1"
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-2"
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-3"
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-4"
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-5"
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-6"
+end
+
+if Era == 'Modern' then
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-Modern-1"
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-Modern-2"
+	RandomRedPool[#RandomRedPool + 1] = "Enemy Ground-Light-Modern-3"
+end
+
 RandomBluePool = {
 	"blueInfantry",
-	"blueArmor",
-	"bSamIR",
-	"bluePD",
-	"bluePD 2",
-	"bluePD1",
+	"Blue Armor Modern",
+	"Blue SAM SHORAD Avenger",
+	"Blue SAM HAWK",
+	"Blue SAM NASAMS",
+	"Blue SAM SHORAD Roland",
+	"Blue SAM AAA Gepard",
+	"Blue SAM AAA Vulcan",
+	"Blue SAM AAA C-RAM",
 }
 
 ZoneSizeExclusions = {
@@ -561,10 +615,10 @@ RandomUpgradeTemplates = {
 }
 
 RandomUpgradeTemplatesBlue = {
-	small = { sam = {0,1}, ground = 1, armor = 1, total = {2,3} },
-	medium = { sam = {0,1}, ground = 1, armor = 1, total = {2,3} },
-	big = { sam = {0,1}, ground = 1, armor = 1, total = {2,4} },
-	extrabig = { sam = 1, ground = 1, armor = 1, total = {3,4} },
+	small = { sam = 0, ground = {0,1}, armor = 1, aaa = {0,1}, shorad = {0,1}, total = 2 },
+	medium = { sam = 0, ground = {0,1}, armor = 1, aaa = {0,1}, shorad = {0,1}, total = {2,3} },
+	big = { sam = {0,1}, ground = {0,1}, armor = 1, aaa = {0,1}, shorad = {0,1}, total = {3,4} },
+	extrabig = { sam = {0,1}, ground = {0,1}, armor = 1, aaa = {0,1}, shorad = {0,1}, total = {3,4} },
 }
 
 RandomGroundGroups = true
@@ -579,76 +633,76 @@ end
 Hunt = true
 
 zones = {
-	redcarrier = ZoneCommander:new({zone='Red Carrier', side=1, level=25, upgrades=upgrades.reDcarrier, crates={}, flavorText=flavor.redcarrier}),
-    aldhafra = ZoneCommander:new({zone='Al Dhafra', size='big', side= StartNormal and 2 or 1, level=20, upgrades=upgrades.airfield, crates={}, flavorText=flavor.aldhafra,customSuspendNmRed = 80}),
-    alhuti = ZoneCommander:new({zone='Al Huti', size='small', side=1, level=25, upgrades=upgrades.farp2, crates={}, flavorText=flavor.alhuti}),
-    alain = ZoneCommander:new({zone='Al Ain', size='big', side=1, level=25, upgrades=upgrades.AlAin, crates={}, flavorText=flavor.alain}),
-    fujairah = ZoneCommander:new({zone='Fujairah Intl', size='big', side=1, level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.fujairah}),
-    minhad = ZoneCommander:new({zone='Al Minhad AFB', size='big', side=1, level=25, upgrades=upgrades.Minhad, crates={}, flavorText=flavor.minhad}),
-    sharjah = ZoneCommander:new({zone='Sharjah', size='big', side=1, level=25, upgrades=upgrades.Sharjah, crates={}, flavorText=flavor.sharjah}),
-    khaimah = ZoneCommander:new({zone='Ras Al Khaimah', size='big', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.khaimah}),
-    carrier = ZoneCommander:new({zone='Carrier Group', side=StartNormal and 2 or 0, level=25, upgrades=upgrades.carrier, crates={}, flavorText=flavor.carrier}),
-    alpha = ZoneCommander:new({zone='Alpha', size='small', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.alpha}),
-    khasab = ZoneCommander:new({zone='Khasab', size='big', side=1, level=25, upgrades=upgrades.Khasab, crates={}, flavorText=flavor.khasab}),
-    charlie = ZoneCommander:new({zone='Charlie', size='small', side=1, level=25, upgrades=upgrades.Charlie, crates={}, flavorText=flavor.charlie}),
-    convoy = ZoneCommander:new({zone='Convoy', size='small', side=1, level=25, upgrades=upgrades.convoy, crates={}, flavorText=flavor.convoy}),
-    bandarabbas = ZoneCommander:new({zone='BandarAbbas', size='extrabig', side=1, level=25, upgrades=upgrades.Bandarabbas, crates={}, flavorText=flavor.bandarabbas}),
-    radio = ZoneCommander:new({zone='Radio Tower', size='medium', side=1, level=25, upgrades=upgrades.RadioTower, crates={}, flavorText=flavor.radio}),
-    dehbarez = ZoneCommander:new({zone='Dehbarez', size='medium', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.dehbarez}),
-    abumusa = ZoneCommander:new({zone='Abu Musa Island', size='big', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.abumusa}),
-    sirri = ZoneCommander:new({zone='Sirri Island', size='medium', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.sirri}),
-    tunbisland = ZoneCommander:new({zone='Tunb Island AFB', size='small', side=1, level=25, upgrades=upgrades.regularzoneAFB, crates={}, flavorText=flavor.tunbisland}),
-    moradi = ZoneCommander:new({zone='Moradi', size='big', side=1, level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.moradi}),
-    lavan = ZoneCommander:new({zone='Lavan Island', size='big', side=1, level=25, upgrades=upgrades.regularzoneLavan, crates={}, flavorText=flavor.lavan}),
+	redcarrier = ZoneCommander:new({facility='carrier', isHeloSpawn=Era ~= 'Vietnam' and true or nil, zone='Red Carrier', side=1, level=25, upgrades=upgrades.reDcarrier, crates={}, flavorText=flavor.redcarrier}),
+    aldhafra = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Al Dhafra', size='big', side= StartNormal and 2 or 1, level=20, upgrades=upgrades.airfield, crates={}, flavorText=flavor.aldhafra,customSuspendNmRed = 80}),
+    alhuti = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Al Huti', size='small', side=1, level=25, upgrades=upgrades.farp2, crates={}, flavorText=flavor.alhuti}),
+    alain = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Al Ain', size='big', side=1, level=25, upgrades=upgrades.AlAin, crates={}, flavorText=flavor.alain}),
+    fujairah = ZoneCommander:new({facility='airbase', isHeloSpawn=true, zone='Fujairah Intl', size='big', side=1, level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.fujairah}),
+    minhad = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Al Minhad AFB', size='big', side=1, level=25, upgrades=upgrades.Minhad, crates={}, flavorText=flavor.minhad}),
+    sharjah = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Sharjah', size='big', side=1, level=25, upgrades=upgrades.Sharjah, crates={}, flavorText=flavor.sharjah}),
+    khaimah = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Ras Al Khaimah', size='big', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.khaimah}),
+    carrier = ZoneCommander:new({facility='carrier', isHeloSpawn=Era ~= 'Vietnam' and true or nil, zone='Carrier Group', side=StartNormal and 2 or 0, level=25, upgrades=upgrades.carrier, crates={}, flavorText=flavor.carrier}),
+    alpha = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Alpha', size='small', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.alpha}),
+    khasab = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Khasab', size='big', side=1, level=25, upgrades=upgrades.Khasab, crates={}, flavorText=flavor.khasab}),
+    charlie = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Charlie', size='small', side=1, level=25, upgrades=upgrades.Charlie, crates={}, flavorText=flavor.charlie}),
+    convoy = ZoneCommander:new({facility='none', zone='Convoy', size='small', side=1, level=25, upgrades=upgrades.convoy, crates={}, flavorText=flavor.convoy}),
+    bandarabbas = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='BandarAbbas', size='extrabig', side=1, level=25, upgrades=upgrades.Bandarabbas, crates={}, flavorText=flavor.bandarabbas}),
+    radio = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Radio Tower', size='medium', side=1, level=25, upgrades=upgrades.RadioTower, crates={}, flavorText=flavor.radio}),
+    dehbarez = ZoneCommander:new({facility='none', zone='Dehbarez', size='medium', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.dehbarez}),
+    abumusa = ZoneCommander:new({facility='airbase', isHeloSpawn=true, zone='Abu Musa Island', size='big', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.abumusa}),
+    sirri = ZoneCommander:new({facility='airbase', isHeloSpawn=true, zone='Sirri Island', size='medium', side=1, level=25, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.sirri}),
+    tunbisland = ZoneCommander:new({facility='airbase', isHeloSpawn=true, zone='Tunb Island AFB', size='small', side=1, level=25, upgrades=upgrades.regularzoneAFB, crates={}, flavorText=flavor.tunbisland}),
+    moradi = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Moradi', size='big', side=1, level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.moradi}),
+    lavan = ZoneCommander:new({facility='airbase', isHeloSpawn=true, zone='Lavan Island', size='big', side=1, level=25, upgrades=upgrades.regularzoneLavan, crates={}, flavorText=flavor.lavan}),
    
-    bandarlengeh = ZoneCommander:new({zone='Bandar Lengeh', size='big', side=1, level=25, upgrades=upgrades.Lengeh, crates={}, flavorText=flavor.bandarlengeh}),
-    delta = ZoneCommander:new({zone='Delta', size='medium', side=1, level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.delta}),
+    bandarlengeh = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Bandar Lengeh', size='big', side=1, level=25, upgrades=upgrades.Lengeh, crates={}, flavorText=flavor.bandarlengeh}),
+    delta = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Delta', size='medium', side=1, level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.delta}),
 
-	factory = ZoneCommander:new({zone='Factory', side=1, level=20, upgrades=upgrades.regularzoneFactory, crates={}, flavorText=flavor.factory, income=2}),
-	golf = ZoneCommander:new({zone='Golf', size='medium', side=1, level=20, upgrades=upgrades.Golf, crates={}, flavorText=flavor.golf}),
-	oilfields = ZoneCommander:new({zone='Oil Fields', side=1, level=20, upgrades=upgrades.farpOilFields, crates={}, flavorText=flavor.oilfields, income=2}),
-	foxtrot = ZoneCommander:new({zone='Foxtrot', size='medium', side=1, level=20, upgrades=upgrades.Foxtrot, crates={}, flavorText=flavor.foxtrot}),
-	samathe = ZoneCommander:new({zone='Samathe', size='big', side=1, level=20, upgrades=upgrades.specialSAMSamathe, crates={}, flavorText=flavor.samathe}),
-	paregaan = ZoneCommander:new({zone='Paregaan', size='big', side=1, level=20, upgrades=upgrades.regularzoneParegaan, crates={}, flavorText=flavor.paregaan}),
-	sunny = ZoneCommander:new({zone='Sunny', size='small', side=1, level=20, upgrades=upgrades.farp, crates={}, flavorText=flavor.sunny}),
-	khamets = ZoneCommander:new({zone='Khamets', size='small', side=1, level=20, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.khamets}),
-	rampkongo = ZoneCommander:new({zone='Ramp-Kongo', size='big', side=1, level=20, upgrades=upgrades.farpkongo, crates={}, flavorText=flavor.rampkongo}),
-    lar = ZoneCommander:new({zone='Lar', size='extrabig', side= StartNormal and 1 or 2, level=20, upgrades=upgrades.specialLar, crates={}, flavorText=flavor.lar, income=2}),
+	factory = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Factory', side=1, level=20, upgrades=upgrades.regularzoneFactory, crates={}, flavorText=flavor.factory, income=2}),
+	golf = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Golf', size='medium', side=1, level=20, upgrades=upgrades.Golf, crates={}, flavorText=flavor.golf}),
+	oilfields = ZoneCommander:new({facility='none', zone='Oil Fields', side=1, level=20, upgrades=upgrades.farpOilFields, crates={}, flavorText=flavor.oilfields, income=2}),
+	foxtrot = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Foxtrot', size='medium', side=1, level=20, upgrades=upgrades.Foxtrot, crates={}, flavorText=flavor.foxtrot}),
+	samathe = ZoneCommander:new({facility='farp', isPlaneSpawn=true, isHeloSpawn=true, zone='Samathe', size='big', side=1, level=20, upgrades=upgrades.specialSAMSamathe, crates={}, flavorText=flavor.samathe}),
+	paregaan = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Paregaan', size='big', side=1, level=20, upgrades=upgrades.regularzoneParegaan, crates={}, flavorText=flavor.paregaan}),
+	sunny = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Sunny', size='small', side=1, level=20, upgrades=upgrades.farp, crates={}, flavorText=flavor.sunny}),
+	khamets = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Khamets', size='small', side=1, level=20, upgrades=upgrades.regularzone, crates={}, flavorText=flavor.khamets}),
+	rampkongo = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Ramp-Kongo', size='big', side=1, level=20, upgrades=upgrades.farpkongo, crates={}, flavorText=flavor.rampkongo}),
+    lar = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Lar', size='extrabig', side= StartNormal and 1 or 2, level=20, upgrades=upgrades.specialLar, crates={}, flavorText=flavor.lar, income=2}),
 	
 	    
-    qeshmisland = ZoneCommander:new({zone='Qeshm Island', size='extrabig', side=1, level=20, upgrades=upgrades.specialSAM2, crates={}, flavorText=flavor.qeshmisland}),
-    echo = ZoneCommander:new({zone='Echo', size='medium', side=1, level=25, upgrades=upgrades.farp3, crates={}, flavorText=flavor.echo}),
+    qeshmisland = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Qeshm Island', size='extrabig', side=1, level=20, upgrades=upgrades.specialSAM2, crates={}, flavorText=flavor.qeshmisland}),
+    echo = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Echo', size='medium', side=1, level=25, upgrades=upgrades.farp3, crates={}, flavorText=flavor.echo}),
 
 	
-    kish = ZoneCommander:new({zone='Kish intl', size='big', side=1, level=25, upgrades=upgrades.kishFixed, crates={}, flavorText=flavor.kish}),
-    alkhatim = ZoneCommander:new({zone='Al Khatim', size='small', side=1, level=25, upgrades=upgrades.Khatim, crates={}, flavorText=flavor.alkhatim}),
-    dahid = ZoneCommander:new({zone='Al Dahid', size='small', side=1, level=25, upgrades=upgrades.farp3, crates={}, flavorText=flavor.dahid}),
-    insurgentcamp = ZoneCommander:new({zone='InsurgentCamp', side=1,size='shorad', level=25, upgrades=upgrades.InsurgentCampmission, crates={}, flavorText=flavor.insurgentcamp, income=0.3}),
-    chemsite = ZoneCommander:new({zone='ChemSite', side=1, level=25, upgrades=upgrades.mission3, crates={}, flavorText=flavor.ChemSite, income=0.3}),
-    secrettechfacility = ZoneCommander:new({zone='SecretTechFacility', side=1, level=25, upgrades=upgrades.mission4, crates={}, flavorText=flavor.secrettechfacility, income=0.5}),
-    fueldepo = ZoneCommander:new({zone='Fuel Depo', side=1, level=25, upgrades=upgrades.mission2, crates={}, flavorText=flavor.fueldepo, income=0.5}),
-	tankfactory = ZoneCommander:new({zone='TankFactory', side=1, level=25, upgrades=upgrades.mission5Fixed, crates={}, flavorText=flavor.tankfactory, income=0.4}),
-	scudcity = ZoneCommander:new({zone='Scud City', side=1, level=25, upgrades=upgrades.scudcity, crates={}, flavorText=flavor.scudcity,NeutralAtStart=true,Popup=true}),
+    kish = ZoneCommander:new({facility='airbase', isPlaneSpawn=true, isHeloSpawn=true, zone='Kish intl', size='big', side=1, level=25, upgrades=upgrades.kishFixed, crates={}, flavorText=flavor.kish}),
+    alkhatim = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Al Khatim', size='small', side=1, level=25, upgrades=upgrades.Khatim, crates={}, flavorText=flavor.alkhatim}),
+    dahid = ZoneCommander:new({facility='farp', isHeloSpawn=true, zone='Al Dahid', size='small', side=1, level=25, upgrades=upgrades.farp3, crates={}, flavorText=flavor.dahid}),
+    insurgentcamp = ZoneCommander:new({facility='none', zone='InsurgentCamp', side=1,size='shorad', level=25, upgrades=upgrades.InsurgentCampmission, crates={}, flavorText=flavor.insurgentcamp, income=0.3}),
+    chemsite = ZoneCommander:new({facility='none', zone='ChemSite', side=1, level=25, upgrades=upgrades.mission3, crates={}, flavorText=flavor.ChemSite, income=0.3}),
+    secrettechfacility = ZoneCommander:new({facility='none', zone='SecretTechFacility', side=1, level=25, upgrades=upgrades.mission4, crates={}, flavorText=flavor.secrettechfacility, income=0.5}),
+    fueldepo = ZoneCommander:new({facility='none', zone='Fuel Depo', side=1, level=25, upgrades=upgrades.mission2, crates={}, flavorText=flavor.fueldepo, income=0.5}),
+	tankfactory = ZoneCommander:new({facility='none', zone='TankFactory', side=1, level=25, upgrades=upgrades.mission5Fixed, crates={}, flavorText=flavor.tankfactory, income=0.4}),
+	scudcity = ZoneCommander:new({facility='none', zone='Scud City', side=1, level=25, upgrades=upgrades.scudcity, crates={}, flavorText=flavor.scudcity,NeutralAtStart=true,Popup=true}),
 	
-	dhafradefence = ZoneCommander:new({zone='Al Dhafra-Defence',size='sam', side=1, level=25, upgrades=upgrades.specialLarSAM, crates={}, flavorText=flavor.dhafradefence,NeutralAtStart=true,Popup=true}),
-	khasabdefence = ZoneCommander:new({zone='Khasab-Defence', side=1, size='sam', level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.khasabdefence}),
-	sharjadefence = ZoneCommander:new({zone='Sharjah-Defence', size='sam', side=1, level=25, upgrades=upgrades.SharjahDefencefixed, crates={}, flavorText=flavor.sharjadefence}),
-	lardefence = ZoneCommander:new({zone='Lar-Defence', side=1, level=25, upgrades=upgrades.specialLarSAM, crates={}, flavorText=flavor.lardefence}),
-	qeshmislanddefence = ZoneCommander:new({zone='Qeshm-Island-Defence', size='sam2', side=1, level=25, upgrades=upgrades.specialSAM2fixed, crates={}, flavorText=flavor.qeshmislanddefence}),
-	tunbdefence = ZoneCommander:new({zone='Tunb Defence', side=1, size='sam', level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.tunbdefence}),
+	dhafradefence = ZoneCommander:new({facility='none', zone='Al Dhafra-Defence',size='sam', side=1, level=25, upgrades=upgrades.specialLarSAM, crates={}, flavorText=flavor.dhafradefence,NeutralAtStart=true,Popup=true}),
+	khasabdefence = ZoneCommander:new({facility='none', zone='Khasab-Defence', side=1, size='sam', level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.khasabdefence}),
+	sharjadefence = ZoneCommander:new({facility='none', zone='Sharjah-Defence', size='sam', side=1, level=25, upgrades=upgrades.SharjahDefencefixed, crates={}, flavorText=flavor.sharjadefence}),
+	lardefence = ZoneCommander:new({facility='none', zone='Lar-Defence', side=1, level=25, upgrades=upgrades.specialLarSAM, crates={}, flavorText=flavor.lardefence}),
+	qeshmislanddefence = ZoneCommander:new({facility='none', zone='Qeshm-Island-Defence', size='sam2', side=1, level=25, upgrades=upgrades.specialSAM2fixed, crates={}, flavorText=flavor.qeshmislanddefence}),
+	tunbdefence = ZoneCommander:new({facility='none', zone='Tunb Defence', side=1, size='sam', level=25, upgrades=upgrades.farp, crates={}, flavorText=flavor.tunbdefence}),
 
-	hidden = ZoneCommander:new({zone='Hidden', side=0, level=20, upgrades=upgrades.HiddenGroup, crates={}, flavorText=flavor.hidden, NeutralAtStart=true}),
-	hiddenewrnetwork = ZoneCommander:new({zone='Hidden1', side=1, level=25, upgrades=upgrades.Hidden1GroupEWR, crates={}, flavorText=flavor.hiddenewrnetwork}),
-	hiddenminhadmission = ZoneCommander:new({zone='HiddenMinhadMission', side=0, level=20, upgrades=upgrades.HiddenMinhadMission, crates={}, flavorText=flavor.hiddenminhadmission,NeutralAtStart=true}),
-	hiddensharjahmission = ZoneCommander:new({zone='HiddenSharjahMission', side=0, level=20, upgrades=upgrades.HiddenSharjahMission, crates={}, flavorText=flavor.hiddensharjahmission,NeutralAtStart=true}),
-	hiddenkhaimahmission = ZoneCommander:new({zone='HiddenKhaimahMission', side=0, level=20, upgrades=upgrades.HiddenKhaimahMission, crates={}, flavorText=flavor.hiddenkhaimahmission,NeutralAtStart=true}),
-	hidden2 = ZoneCommander:new({zone='Hidden2', side=1, level=20, size='HiddenSam', upgrades=upgrades.Hidden2Group, crates={}, flavorText=flavor.hidden2,NeutralAtStart=true}),
-	hiddenmoradiqeshmmission = ZoneCommander:new({zone='HiddenMoradiQeshmMission', side=0, level=20, upgrades=upgrades.HiddenMoradiQeshmMission, crates={}, flavorText=flavor.hiddenmoradiqeshmmission,NeutralAtStart=true}),
-	hidden4 = ZoneCommander:new({zone='Hidden4', side=0, level=20,size='HiddenSam', upgrades=upgrades.Hidden4Group, crates={}, flavorText=flavor.hidden4,NeutralAtStart=true}),
-	hiddenwaters = ZoneCommander:new({zone='HiddenWaters', side=1, level=20, upgrades=upgrades.reDcarrierhidden, crates={}, flavorText=flavor.hiddenwaters,NeutralAtStart=true,Popup=true}),
+	hidden = ZoneCommander:new({facility='none', zone='Hidden', side=0, level=20, upgrades=upgrades.HiddenGroup, crates={}, flavorText=flavor.hidden, NeutralAtStart=true}),
+	hiddenewrnetwork = ZoneCommander:new({facility='none', zone='Hidden1', side=1, level=25, upgrades=upgrades.Hidden1GroupEWR, crates={}, flavorText=flavor.hiddenewrnetwork}),
+	hiddenminhadmission = ZoneCommander:new({facility='none', zone='HiddenMinhadMission', side=0, level=20, upgrades=upgrades.HiddenMinhadMission, crates={}, flavorText=flavor.hiddenminhadmission,NeutralAtStart=true}),
+	hiddensharjahmission = ZoneCommander:new({facility='none', zone='HiddenSharjahMission', side=0, level=20, upgrades=upgrades.HiddenSharjahMission, crates={}, flavorText=flavor.hiddensharjahmission,NeutralAtStart=true}),
+	hiddenkhaimahmission = ZoneCommander:new({facility='none', zone='HiddenKhaimahMission', side=0, level=20, upgrades=upgrades.HiddenKhaimahMission, crates={}, flavorText=flavor.hiddenkhaimahmission,NeutralAtStart=true}),
+	hidden2 = ZoneCommander:new({facility='none', zone='Hidden2', side=1, level=20, size='HiddenSam', upgrades=upgrades.Hidden2Group, crates={}, flavorText=flavor.hidden2,NeutralAtStart=true}),
+	hiddenmoradiqeshmmission = ZoneCommander:new({facility='none', zone='HiddenMoradiQeshmMission', side=0, level=20, upgrades=upgrades.HiddenMoradiQeshmMission, crates={}, flavorText=flavor.hiddenmoradiqeshmmission,NeutralAtStart=true}),
+	hidden4 = ZoneCommander:new({facility='none', zone='Hidden4', side=0, level=20,size='HiddenSam', upgrades=upgrades.Hidden4Group, crates={}, flavorText=flavor.hidden4,NeutralAtStart=true}),
+	hiddenwaters = ZoneCommander:new({facility='none', zone='HiddenWaters', side=1, level=20, upgrades=upgrades.reDcarrierhidden, crates={}, flavorText=flavor.hiddenwaters,NeutralAtStart=true,Popup=true}),
 
-    insurgencygridcn76 = ZoneCommander:new({zone='Insurgency Grid CN76', size=(math.random(1,2) == 1 and 'redarmycamp' or 'redarmycamp2'), side=1, level=20, upgrades=upgrades.farp, crates={}, flavorText=flavor.insurgencygridcn76,NeutralAtStart=true,Popup=true}),
-    insurgencygridcq37 = ZoneCommander:new({zone='Insurgency Grid CQ37', size=(math.random(1,2) == 1 and 'redarmycamp' or 'redarmycamp2'), side=1, level=20, upgrades=upgrades.farp, crates={}, flavorText=flavor.insurgencygridcq37,NeutralAtStart=true,Popup=true}),
+    insurgencygridcn76 = ZoneCommander:new({facility='none', zone='Insurgency Grid CN76', size=(math.random(1,2) == 1 and 'redarmycamp' or 'redarmycamp2'), side=1, level=20, upgrades=upgrades.farp, crates={}, flavorText=flavor.insurgencygridcn76,NeutralAtStart=true,Popup=true}),
+    insurgencygridcq37 = ZoneCommander:new({facility='none', zone='Insurgency Grid CQ37', size=(math.random(1,2) == 1 and 'redarmycamp' or 'redarmycamp2'), side=1, level=20, upgrades=upgrades.farp, crates={}, flavorText=flavor.insurgencygridcq37,NeutralAtStart=true,Popup=true}),
 
 }
 if ColdWarTechEra then
@@ -697,7 +751,7 @@ AllCapPlaneTemplates = {
 	'RED_MIRAGE_F1CE_CAP_R530F_EMx2_MAGIC2x2',
 	'RED_MIG29S_CAP_R77x3_R27ET_R73x2',
 	'RED_MIG29S_CAP_R77x2_R73x2_TANKSx3',
-	'RED_MIG29A_CAP_R73x6',
+	'RED_MIG29A_CAP_R73x4_R27R2x',
 	'RED_MIG29A_CAP_R73x4_R27ER2X',
 	'RED_SU27_CAP_R27Rx4_R27ER_R73x3_ECM',
 	'RED_SU27_CAP_R27ERx6_R73x2_ECM',
@@ -715,6 +769,7 @@ AllCapPlaneTemplates = {
 	'BLUE_FA18C_CAP_AIM120Cx6_AIM9Xx2',
 	'BLUE_F15C_CAP_AIM120Bx3_AIM120Cx5',
 	'BLUE_F16C_CAP_AIM120Bx4_AIM120C_AIM9M',
+	'BLUE_F16_CAP_AIM120Cx5_AIM9Xx1',
 	'BLUE_F14B_CAP_AIM54A_MK47x4_AIM7Mx2_AIM9Mx2_TANKSx2',
 	'BLUE_F14B_CAP_AIM54C_MK47x4_AIM7Mx2_AIM9Mx2_TANKSx2',
 	'BLUE_F14B_CAP_AIM54C_MK60x4_AIM7Mx2_AIM9Mx2_TANKSx2',
@@ -727,18 +782,18 @@ AllCapPlaneTemplates = {
 }
 
 AllCasPlaneTemplates = {
-	'RED_SU25_CAS_KH25ML_S25Lx2_RBK500x2_B8x2_SPPU_1SHIP',
-	'RED_SU25_CAS_FAB250x2_RBK250x2_B8x4_1SHIP',
-	'RED_SU25_CAS_S25Lx6_B13x2_1SHIP',
-	'RED_SU25_CAS_KH25ML_S25Lx2_RBK500x2_B8x2_SPPU_2SHIP',
-	'RED_SU25_CAS_FAB250x2_RBK250x2_B8x4_2SHIP',
-	'RED_SU25_CAS_S25Lx6_B13x2_1SHIP_DUPLICATE',
-	'RED_SU25T_CAS_KH25MP_MPU_VIKHRx2_SPPUx2_1SHIP',
-	'RED_SU25T_CAS_S25Lx6_B13x2_1SHIP',
-	'RED_SU25T_CAS_VIKHRx2_S25Lx2_SPPUx2_1SHIP',
-	'RED_SU25T_CAS_KH25MP_MPU_VIKHRx2_SPPUx2_2SHIP',
-	'RED_SU25T_CAS_S25Lx6_B13x2_2SHIP',
-	'RED_SU25T_CAS_VIKHRx2_S25Lx2_SPPUx2_2SHIP',
+	'RED_SU25_CAS_KH25ML_S25Lx2_FAB500M62x2_B8x2_SPPU_1SHIP',
+	'RED_SU25_CAS_FAB250x2_FAB500M62x2_B8x2_S24Bx2_1SHIP',
+	'RED_SU25_CAS_KH25MLx2_S25Lx2_FAB500M62x2_B13x2_1SHIP',
+	'RED_SU25_CAS_KH25ML_S25Lx2_FAB500M62x2_B8x2_SPPU_2SHIP',
+	'RED_SU25_CAS_FAB250x2_FAB500M62x2_B8x2_S24Bx2_2SHIP',
+	'RED_SU25_CAS_KH25MLx2_S25Lx2_FAB500M62x2_B13x2_2SHIP',
+	'RED_SU25T_CAS_KH25MPx2_VIKHRx2_KH29Tx2_1SHIP',
+	'RED_SU25T_CAS_KH25MLx4_KH29Tx2_1SHIP',
+	'RED_SU25T_CAS_VIKHRx2_FAB500M62x2_KH29Tx2_1SHIP',
+	'RED_SU25T_CAS_KH25MPx2_VIKHRx2_KH29Tx2_2SHIP',
+	'RED_SU25T_CAS_KH25MLx4_KH29Tx2_2SHIP',
+	'RED_SU25T_CAS_VIKHRx2_FAB500M62x2_KH29Tx2_2SHIP',
 	'RED_MIRAGE_F1BQ_CAS_SAMP400x2_SAMP250x2_2SHIP',
 	'RED_MIRAGE_F1BQ_CAS_MIXED_SNEB_SAMP_2SHIP',
 	'RED_MIG21BIS_CAS_RBK250x2_UB32x2_1SHIP',
@@ -759,6 +814,7 @@ AllCasPlaneTemplates = {
 	'RED_L39C_CAS_FAB100Mx2_2SHIP',
 	'BLUE_F4E_CAS_WALLEYEIIx2_GBU12x2_PAVESPIKE_2SHIP',
 	'BLUE_F4E_CAS_AGM65Dx6_GBU12x2_PAVESPIKE_2SHIP',
+	'BLUE_F16_CAS_AGM65Dx4_GBU12x2_PAVESPIKE_2SHIP',
 	'BLUE_F4E_CAS_M117x12_AIM7E2x3_TANKSx2_ALQ131',
 	'BLUE_F4E_CAS_AGM12Bx2_AIM7E2x3_TANK600_ALQ131',
 	'BLUE_F4E_CAS_WALLEYEIx4_TANK600_ALQ131',
@@ -786,6 +842,9 @@ AllSeadPlaneTemplates = {
 	'RED_SU17M4_SEAD_KH25MRx4_R60x2_TANKSx2_2SHIP',
 	'BLUE_F100D_SEAD_AGM45Ax2_CBU7x2_TANKSx2_2SHIP',
 	'BLUE_F4E_SEAD_AGM45Ax4_AIM7E2x3_TANK600_ALQ131',
+	'BLUE_F16_SEAD_AGM88Cx4_AIM120Cx2_AIM9Xx2',
+	'BLUE_F18_SEAD_AGM88Cx2_ADM141Ax6_AIM120Cx1_AIM9Xx2',
+	'BLUE_F18_SEAD_AGM88Cx2_AGM154CAx4_AIM120Cx1_AIM9Xx2',
 }
 
 AllRunwayStrikePlaneTemplates = {
@@ -796,18 +855,20 @@ AllRunwayStrikePlaneTemplates = {
 }
 
 AllCasHeloTemplates = {
-	'RED_MI8_CAS_FAB100x6_1SHIP',
-	'RED_MI8_CAS_FAB100x6_2SHIP',
+	'RED_MI8_CAS_FAB100x4_UPK23x2_KORD_PKT_1SHIP',
+	'RED_MI8_CAS_FAB100x4_UPK23x2_KORD_PKT_2SHIP',
 	'RED_MI8_CAS_GUV_YAKB_GSHPx2_KORD_PKT_1SHIP',
 	'RED_MI8_CAS_GUV_YAKB_GSHPx2_KORD_PKT_2SHIP',
 	'RED_MI24P_CAS_9M114x8_B8x2_1SHIP',
 	'RED_MI24P_CAS_9M114x8_B8x2_2SHIP',
+	'RED_MI24P_CAS_B13Lx2_B8x2_1SHIP',
+	'RED_MI24P_CAS_B13Lx2_B8x2_2SHIP',
 	'RED_MI28N_CAS_9M120x8_9M120Fx8_B13x2_1SHIP',
 	'RED_MI28N_CAS_9M114x8_B8x2_1SHIP',
 	'RED_MI28N_CAS_9M114x8_B8x2_2SHIP',
 	'RED_MI28N_CAS_9M120x8_9M120Fx8_B13x2_2SHIP',
-	'RED_MI24V_CAS_B8x4_1SHIP',
-	'RED_MI24V_CAS_B8x4_2SHIP',
+	'RED_MI24V_CAS_B8x2_B13x2_1SHIP',
+	'RED_MI24V_CAS_B8x2_B13x2_2SHIP',
 	'BLUE_AH64D_CAS_AGM114Kx4_AGM114Lx4_M261x2_FCR_1SHIP',
 	'BLUE_AH64D_CAS_AGM114Kx4_AGM114Lx4_M261x2_FCR_2SHIP',
 	'BLUE_AH64D_CAS_AGM114Kx8_M261x2_1SHIP',
@@ -872,387 +933,391 @@ function RunwayStrikeAltitude() return math.random(23,28)*1000 end
 
 zones.bandarabbas:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='bandar-attack-Qeshm-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Qeshm Island', Altitude = CapAltitude()}),
-	GroupCommander:new({name='bandar-attack-khasab-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Khasab', Altitude = CapAltitude()}),
-	GroupCommander:new({name='bandar-attack-Qeshm-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Qeshm Island', Altitude = CasAltitude()}),
-	GroupCommander:new({name='bandar-attack-factory-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Factory', Altitude = CasAltitude()}),
-	GroupCommander:new({name='bandar-attack-khasab-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Khasab', Altitude = CasAltitude()}),
-	GroupCommander:new({name='bandar-attack-oil-fields-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Oil Fields'}),
-	GroupCommander:new({name='Bandar-attack-radio-tower-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Radio Tower'}),
-	GroupCommander:new({name='Bandar-attack-Khasab', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Khasab', Altitude = RunwayStrikeAltitude()}),
+	DirectorCapability:new({name='bandar-attack-Qeshm-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Qeshm Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='bandar-attack-khasab-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Khasab', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='bandar-attack-Qeshm-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Qeshm Island', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='bandar-attack-factory-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Factory', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='bandar-attack-khasab-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Khasab', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='bandar-attack-oil-fields-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Oil Fields'}),
+	DirectorCapability:new({name='Bandar-attack-radio-tower-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Radio Tower'}),
+	DirectorCapability:new({name='Bandar-attack-Khasab', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Khasab', Altitude = RunwayStrikeAltitude()}),
 	-- Patrol missions
-	GroupCommander:new({name='bandar-patrol-Bandar-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='BandarAbbas', Altitude = CapAltitude()}),
-	GroupCommander:new({name='bandar-patrol-Qeshm-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Qeshm Island', Altitude = CapAltitude()}),
-	GroupCommander:new({name='bandar-patrol-khasab-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Khasab', Altitude = CapAltitude()}),
-	GroupCommander:new({name='bandar-patrol-radio-tower', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Radio Tower', Altitude = CapAltitude()}),
-	GroupCommander:new({name='bandar-patrol-Delta-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Delta', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='bandar-patrol-Bandar-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='BandarAbbas', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='bandar-patrol-Qeshm-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Qeshm Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='bandar-patrol-khasab-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Khasab', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='bandar-patrol-radio-tower', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Radio Tower', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='bandar-patrol-Delta-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Delta', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='bandar-supply-Delta', mission='supply', template='HeloSupplyTemplate', targetzone='Delta'}),
-	GroupCommander:new({name='bandar-supply-factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
-	GroupCommander:new({name='bandar-supply-qeshm', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
-	GroupCommander:new({name='bandar-supply-khasab', mission='supply', template='HeloSupplyTemplate', targetzone='Khasab'}),
-	GroupCommander:new({name='bandar-supply-oilfields', mission='supply', template='HeloSupplyTemplate', targetzone='Oil Fields'}),
-	GroupCommander:new({name='bandar-supply-radio-tower', mission='supply', template='HeloSupplyTemplate', targetzone='Radio Tower'}),
-	GroupCommander:new({name='bandar-supply-Dehbarez', mission='supply', template='HeloSupplyTemplate', targetzone='Dehbarez'}),
+	DirectorCapability:new({name='bandar-supply-Delta', mission='supply', template='HeloSupplyTemplate', targetzone='Delta'}),
+	DirectorCapability:new({name='bandar-supply-factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
+	DirectorCapability:new({name='bandar-supply-qeshm', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
+	DirectorCapability:new({name='bandar-supply-khasab', mission='supply', template='HeloSupplyTemplate', targetzone='Khasab'}),
+	DirectorCapability:new({name='bandar-supply-oilfields', mission='supply', template='HeloSupplyTemplate', targetzone='Oil Fields'}),
+	DirectorCapability:new({name='bandar-supply-radio-tower', mission='supply', template='HeloSupplyTemplate', targetzone='Radio Tower'}),
+	DirectorCapability:new({name='bandar-supply-Dehbarez', mission='supply', template='HeloSupplyTemplate', targetzone='Dehbarez'}),
 	-- Surface missions
-	GroupCommander:new({name='bandar-attack-Delta', template='AttackConvoy', mission='attack', targetzone='Delta', type='surface'}),
-	GroupCommander:new({name='bandar-attack-Oil Fields', template='AttackConvoy', mission='attack', targetzone='Oil Fields', type='surface'}),
-	GroupCommander:new({name='bandar-attack-Delta-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Delta', type='surface', SetActiveMission = true}),
-	GroupCommander:new({name='bandar-attack-factory-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Factory', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='bandar-attack-Delta', template='AttackConvoy', mission='attack', targetzone='Delta', type='surface'}),
+	DirectorCapability:new({name='bandar-attack-Oil Fields', template='AttackConvoy', mission='attack', targetzone='Oil Fields', type='surface'}),
+	DirectorCapability:new({name='bandar-attack-Delta-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Delta', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='bandar-attack-factory-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Factory', type='surface', SetActiveMission = true}),
 
 })
 
 zones.delta:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='delta-supply-qeshm-island', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
-	GroupCommander:new({name='Delta-supply-Bandar', mission='supply', template='HeloSupplyTemplate', targetzone='BandarAbbas'}),
-	GroupCommander:new({name='delta-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
-	GroupCommander:new({name='delta-supply-echo', mission='supply', template='HeloSupplyTemplate', targetzone='Echo'}),
-	GroupCommander:new({name='Delta-supply-Factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
-	GroupCommander:new({name='Delta-attack-Qeshm Island',template='CasHeloTemplate', mission='attack',MissionType='CAS', targetzone='Qeshm Island'}),
+	DirectorCapability:new({name='delta-supply-qeshm-island', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
+	DirectorCapability:new({name='Delta-supply-Bandar', mission='supply', template='HeloSupplyTemplate', targetzone='BandarAbbas'}),
+	DirectorCapability:new({name='delta-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
+	DirectorCapability:new({name='delta-supply-echo', mission='supply', template='HeloSupplyTemplate', targetzone='Echo'}),
+	DirectorCapability:new({name='Delta-supply-Factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
+	DirectorCapability:new({name='Delta-attack-Qeshm Island',template='CasHeloTemplate', mission='attack',MissionType='CAS', targetzone='Qeshm Island'}),
 
 	-- Attack missions
-	GroupCommander:new({name='Delta-attack-BandarAbbas-Cas', mission='attack', template='CasHeloTemplate',MissionType='CAS', targetzone='BandarAbbas'}),
+	DirectorCapability:new({name='Delta-attack-BandarAbbas-Cas', mission='attack', template='CasHeloTemplate',MissionType='CAS', targetzone='BandarAbbas'}),
 	-- Surface missions
-	GroupCommander:new({name='Delta-attack-BandarAbbas', mission='attack', template='AttackConvoy', targetzone='BandarAbbas',type='surface'}),
+	DirectorCapability:new({name='Delta-attack-BandarAbbas', mission='attack', template='AttackConvoy', targetzone='BandarAbbas',type='surface'}),
 })
 zones.paregaan:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='Paregaan-supply-oil-fields', mission='supply', template='HeloSupplyTemplate', targetzone='Oil Fields'}),
-	GroupCommander:new({name='Paregaan-supply-samathe', mission='supply', template='HeloSupplyTemplate', targetzone='Samathe'}),
+	DirectorCapability:new({name='Paregaan-supply-oil-fields', mission='supply', template='HeloSupplyTemplate', targetzone='Oil Fields'}),
+	DirectorCapability:new({name='Paregaan-supply-samathe', mission='supply', template='HeloSupplyTemplate', targetzone='Samathe'}),
 })
 
 zones.echo:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Echo-Attack-Delta-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Delta'}),
+	DirectorCapability:new({name='Echo-Attack-Delta-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Delta'}),
 	-- Supply missions
-	GroupCommander:new({name='Echo-Supply-qeshm-island', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
-	GroupCommander:new({name='Echo-supply-Sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
-	GroupCommander:new({name='Echo-Supply-Delta', mission='supply', template='HeloSupplyTemplate', targetzone='Delta'}),
-	GroupCommander:new({name='Echo-Supply-Factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
-	GroupCommander:new({name='Echo-Supply-golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
+	DirectorCapability:new({name='Echo-Supply-qeshm-island', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
+	DirectorCapability:new({name='Echo-supply-Sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
+	DirectorCapability:new({name='Echo-Supply-Delta', mission='supply', template='HeloSupplyTemplate', targetzone='Delta'}),
+	DirectorCapability:new({name='Echo-Supply-Factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
+	DirectorCapability:new({name='Echo-Supply-golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
 	-- Surface missions
-	GroupCommander:new({name='Echo-attack-delta-art', mission='attack', targetzone='Delta', type='surface'}), -- Me template
-	GroupCommander:new({name='Echo-attack-Delta', mission='attack', template='AttackConvoy', targetzone='Delta', type='surface'}),
-	GroupCommander:new({name='Echo-attack-Delta-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Delta', type='surface', SetActiveMission = true}),
+	GroupCommander:new({name='Echo-attack-delta-art', mission='attack', targetzone='Delta', type='surface', FixedArty = true}), -- Me template
+	DirectorCapability:new({name='Echo-attack-Delta', mission='attack', template='AttackConvoy', targetzone='Delta', type='surface'}),
+	DirectorCapability:new({name='Echo-attack-Delta-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Delta', type='surface', SetActiveMission = true}),
 
 })
 
 zones.khasab:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='khasab-attack-alpha-Cas', mission='attack', MissionType='CAS', template='CasHeloTemplate', targetzone='Alpha'}),
-	GroupCommander:new({name='khasab-attack-charlie-Cas', mission='attack', MissionType='CAS', template='CasHeloTemplate', targetzone='Charlie'}),
-	GroupCommander:new({name='khasab-attack-Khaima-Cap', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Ras Al Khaimah', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Khasab-attack-Sharjah-Cap', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Sharjah', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='khasab-attack-alpha-Cas', mission='attack', MissionType='CAS', template='CasHeloTemplate', targetzone='Alpha'}),
+	DirectorCapability:new({name='khasab-attack-charlie-Cas', mission='attack', MissionType='CAS', template='CasHeloTemplate', targetzone='Charlie'}),
+	DirectorCapability:new({name='khasab-attack-Khaima-Cap', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Ras Al Khaimah', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='khasab-attack-Khaima-Sead', mission='attack', MissionType='SEAD', template='SeadPlaneTemplate', targetzone='Ras Al Khaimah', Altitude = SeadAltitude()}),
+	DirectorCapability:new({name='Khasab-attack-Sharjah-Cap', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Sharjah', Altitude = CapAltitude()}),
 	-- Patrol missions
-	GroupCommander:new({name='khasab-patrol-khasab-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Khasab', Altitude = CapAltitude()}),
-	GroupCommander:new({name='khasab-Patrol-Convoy-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Convoy', Altitude = CapAltitude()}),
-	GroupCommander:new({name='khasab-Patrol-Alpha-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Alpha', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Khasab-Patrol-Khaimah-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Ras Al Khaimah', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='khasab-patrol-khasab-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Khasab', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='khasab-Patrol-Convoy-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Convoy', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='khasab-Patrol-Alpha-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Alpha', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Khasab-Patrol-Khaimah-Cap', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Ras Al Khaimah', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='khasab-supply-charlie', mission='supply', template='HeloSupplyTemplate', targetzone='Charlie'}),
-	GroupCommander:new({name='khasab-supply-bandar', mission='supply', template='HeloSupplyTemplate', targetzone='BandarAbbas'}),
-	GroupCommander:new({name='khasab-supply-alpha', mission='supply', template='HeloSupplyTemplate', targetzone='Alpha'}),
-	GroupCommander:new({name='khasab-supply-convoy', mission='supply', template='HeloSupplyTemplate', targetzone='Convoy'}),
-	GroupCommander:new({name='khasab-supply-qeshm-island', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
-	GroupCommander:new({name='khasab-supply-Khasab-Defence', mission='supply', template='SupplyConvoy', targetzone='Khasab-Defence', type='surface', condition = function(self) return not (self.side == 1 and CustomFlags["KhasabDefenceWarehouse"])end}),
+	DirectorCapability:new({name='khasab-supply-charlie', mission='supply', template='HeloSupplyTemplate', targetzone='Charlie'}),
+	DirectorCapability:new({name='khasab-supply-bandar', mission='supply', template='HeloSupplyTemplate', targetzone='BandarAbbas'}),
+	DirectorCapability:new({name='khasab-supply-alpha', mission='supply', template='HeloSupplyTemplate', targetzone='Alpha'}),
+	DirectorCapability:new({name='khasab-supply-convoy', mission='supply', template='HeloSupplyTemplate', targetzone='Convoy'}),
+	DirectorCapability:new({name='khasab-supply-qeshm-island', mission='supply', template='HeloSupplyTemplate', targetzone='Qeshm Island'}),
+	DirectorCapability:new({name='khasab-supply-Khasab-Defence', mission='supply', template='SupplyConvoy', targetzone='Khasab-Defence', type='surface', condition = function(self) return not (self.side == 1 and CustomFlags["KhasabDefenceWarehouse"])end}),
 })
 
 
 zones.khaimah:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Khaimah-attack-Sharjah-cap', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Sharjah', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Khaimah-attack-Sharjah-Cas', mission='attack', MissionType='CAS', template='CasPlaneTemplate', targetzone='Sharjah', Altitude = CasAltitude()}),
-	GroupCommander:new({name='Khaimah-attack-Al Huti-Cas', mission='attack', MissionType='CAS', template='CasPlaneTemplate', targetzone='Al Huti', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='Khaimah-attack-Sharjah-cap', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Sharjah', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Khaimah-attack-Sharjah-Cas', mission='attack', MissionType='CAS', template='CasPlaneTemplate', targetzone='Sharjah', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='Khaimah-attack-Al Huti-Cas', mission='attack', MissionType='CAS', template='CasPlaneTemplate', targetzone='Al Huti', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='Khaimah-attack-Al Huti-Sead', mission='attack', MissionType='SEAD', template='SeadPlaneTemplate', targetzone='Al Huti', Altitude = SeadAltitude()}),
 	-- Patrol missions
-	GroupCommander:new({name='Khaimah-Patrol-Sharjah', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Sharjah', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Khaimah-Patrol-Al Minhad', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Khaimah-Patrol-Sharjah', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Sharjah', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Khaimah-Patrol-Al Minhad', mission='patrol', MissionType='CAP', template='CapPlaneTemplate', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='khaimah-Supply-Alpha', mission='supply', template='HeloSupplyTemplate', targetzone='Alpha'}),
-	GroupCommander:new({name='khaimah-Supply-Charlie', mission='supply', template='HeloSupplyTemplate', targetzone='Charlie'}),
-	GroupCommander:new({name='Khaimah-supply-Sharja', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
-	GroupCommander:new({name='Khaimah-supply-fujairah', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
+	DirectorCapability:new({name='khaimah-Supply-Alpha', mission='supply', template='HeloSupplyTemplate', targetzone='Alpha'}),
+	DirectorCapability:new({name='khaimah-Supply-Charlie', mission='supply', template='HeloSupplyTemplate', targetzone='Charlie'}),
+	DirectorCapability:new({name='Khaimah-supply-Sharja', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
+	DirectorCapability:new({name='Khaimah-supply-fujairah', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
 	--GroupCommander:new({name='Khaimah-supply-Khasab', mission='supply', template='PlaneSupplyTemplate', targetzone='Khasab'}),
 	-- Surface missions
-	GroupCommander:new({name='Khaimah-attack-Al Dahid', mission='attack', template='AttackConvoy', targetzone='Al Dahid', type='surface'}),
-	GroupCommander:new({name='Khaimah-Supply-BandarAbbas', mission='supply', template='PlaneSupplyTemplate', targetzone='BandarAbbas'}),
-	GroupCommander:new({name='Khaimah-Supply-Qeshm', mission='supply', template='PlaneSupplyTemplate', targetzone='Qeshm Island'}),
-	GroupCommander:new({name='Khaimah-Supply-Kish Intl', mission='supply', template='PlaneSupplyTemplate', targetzone='Kish intl'}),
+	DirectorCapability:new({name='Khaimah-attack-Al Dahid', mission='attack', template='AttackConvoy', targetzone='Al Dahid', type='surface'}),
+	DirectorCapability:new({name='Khaimah-Supply-BandarAbbas', mission='supply', template='PlaneSupplyTemplate', targetzone='BandarAbbas'}),
+	DirectorCapability:new({name='Khaimah-Supply-Qeshm', mission='supply', template='PlaneSupplyTemplate', targetzone='Qeshm Island'}),
+	DirectorCapability:new({name='Khaimah-Supply-Kish Intl', mission='supply', template='PlaneSupplyTemplate', targetzone='Kish intl'}),
 })
 zones.fujairah:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='Fujaira-Supply-Dahid', mission='supply', template='HeloSupplyTemplate', targetzone='Al Dahid'}),
-	GroupCommander:new({name='Fujaira-Supply-Khaimah', mission='supply', template='HeloSupplyTemplate', targetzone='Ras Al Khaimah'}),
+	DirectorCapability:new({name='Fujaira-Supply-Dahid', mission='supply', template='HeloSupplyTemplate', targetzone='Al Dahid'}),
+	DirectorCapability:new({name='Fujaira-Supply-Khaimah', mission='supply', template='HeloSupplyTemplate', targetzone='Ras Al Khaimah'}),
 })	
 zones.dahid:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Dahid-attack-Fujairah', mission='attack',template='AttackConvoy', targetzone='Fujairah Intl', type='surface'}),
+	DirectorCapability:new({name='Dahid-attack-Fujairah', mission='attack',template='AttackConvoy', targetzone='Fujairah Intl', type='surface'}),
 	-- Supply missions
-	GroupCommander:new({name='Dahid-Supply-Sharjah', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
-	GroupCommander:new({name='Dahid-Supply-Fujairah', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
-	GroupCommander:new({name='Dahid-attack-Sharjah-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Sharjah', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='Dahid-Supply-Sharjah', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
+	DirectorCapability:new({name='Dahid-Supply-Fujairah', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
+	DirectorCapability:new({name='Dahid-attack-Sharjah-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Sharjah', type='surface', SetActiveMission = true}),
 
 
 })
 zones.factory:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='factory-attack-sunny', template='CasHeloTemplate', mission='attack',MissionType='CAS', targetzone='Sunny'}),
+	DirectorCapability:new({name='factory-attack-sunny', template='CasHeloTemplate', mission='attack',MissionType='CAS', targetzone='Sunny'}),
 	-- Supply missions
-	GroupCommander:new({name='factory-supply-delta', mission='supply',template='HeloSupplyTemplate', targetzone='Delta'}),
-	GroupCommander:new({name='factory-supply-Golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
-	GroupCommander:new({name='factory-supply-paregaan', mission='supply', template='HeloSupplyTemplate', targetzone='Paregaan'}),
-	GroupCommander:new({name='factory-supply-khamets', mission='supply', template='HeloSupplyTemplate', targetzone='Khamets'}),
-	GroupCommander:new({name='factory-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
+	DirectorCapability:new({name='factory-supply-delta', mission='supply',template='HeloSupplyTemplate', targetzone='Delta'}),
+	DirectorCapability:new({name='factory-supply-Golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
+	DirectorCapability:new({name='factory-supply-paregaan', mission='supply', template='HeloSupplyTemplate', targetzone='Paregaan'}),
+	DirectorCapability:new({name='factory-supply-khamets', mission='supply', template='HeloSupplyTemplate', targetzone='Khamets'}),
+	DirectorCapability:new({name='factory-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
 	-- Surface missions
-	GroupCommander:new({name='factory-supply-BandarAbbas', mission='supply',template='SupplyConvoy', targetzone='BandarAbbas', type='surface'}),
-	GroupCommander:new({name='factory-delta-supply', mission='supply', template='SupplyConvoy', targetzone='Delta', type='surface'}),
-	GroupCommander:new({name='factory-attack-BandarAbbas-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='BandarAbbas', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='factory-supply-BandarAbbas', mission='supply',template='SupplyConvoy', targetzone='BandarAbbas', type='surface'}),
+	DirectorCapability:new({name='factory-delta-supply', mission='supply', template='SupplyConvoy', targetzone='Delta', type='surface'}),
+	DirectorCapability:new({name='factory-attack-BandarAbbas-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='BandarAbbas', type='surface', SetActiveMission = true}),
 
 })
 
 zones.golf:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Golf-Attack-Echo', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Echo'}),
-	GroupCommander:new({name='Golf-Attack-Sunny', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Sunny'}),
-	GroupCommander:new({name='golf-attack-foxtrot-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Foxtrot'}),
-	GroupCommander:new({name='golf-attack-lar-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Lar'}),
-	GroupCommander:new({name='golf-attack-Lengeh-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Bandar Lengeh'}),
+	DirectorCapability:new({name='Golf-Attack-Echo', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Echo'}),
+	DirectorCapability:new({name='Golf-Attack-Sunny', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Sunny'}),
+	DirectorCapability:new({name='golf-attack-foxtrot-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Foxtrot'}),
+	DirectorCapability:new({name='golf-attack-lar-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Lar'}),
+	DirectorCapability:new({name='golf-attack-Lengeh-Cas', mission='attack', template='CasHeloTemplate', MissionType='CAS', targetzone='Bandar Lengeh'}),
 	-- Supply missions
-	GroupCommander:new({name='golf-supply-foxtrot', mission='supply', template='HeloSupplyTemplate', targetzone='Foxtrot'}),
-	GroupCommander:new({name='golf-supply-lar', mission='supply', template='HeloSupplyTemplate', targetzone='Lar'}),
-	GroupCommander:new({name='golf-supply-bandar-lengeh', mission='supply', template='HeloSupplyTemplate', targetzone='Bandar Lengeh'}),
-	GroupCommander:new({name='golf-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
-	GroupCommander:new({name='golf-supply-echo', mission='supply', template='HeloSupplyTemplate', targetzone='Echo'}),
+	DirectorCapability:new({name='golf-supply-foxtrot', mission='supply', template='HeloSupplyTemplate', targetzone='Foxtrot'}),
+	DirectorCapability:new({name='golf-supply-lar', mission='supply', template='HeloSupplyTemplate', targetzone='Lar'}),
+	DirectorCapability:new({name='golf-supply-bandar-lengeh', mission='supply', template='HeloSupplyTemplate', targetzone='Bandar Lengeh'}),
+	DirectorCapability:new({name='golf-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
+	DirectorCapability:new({name='golf-supply-echo', mission='supply', template='HeloSupplyTemplate', targetzone='Echo'}),
 	-- Surface missions
-	GroupCommander:new({name='golf-supply-Foxtrot', mission='supply', template='SupplyConvoy', targetzone='Foxtrot', type = 'surface'}),
+	DirectorCapability:new({name='golf-supply-Foxtrot-Convoy', mission='supply', template='SupplyConvoy', targetzone='Foxtrot', type = 'surface'}),
 })
 
 zones.lar:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='lar-attack-bandar-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='BandarAbbas', Altitude = CasAltitude()}),
-	GroupCommander:new({name='lar-attack-radio-tower-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Radio Tower', Altitude = CasAltitude()}),
-	GroupCommander:new({name='lar-attack-factory-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Factory', Altitude = CasAltitude()}),
-	GroupCommander:new({name='lar-attack-Ramp-Kongo-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Ramp-Kongo', Altitude = CasAltitude()}),
-	GroupCommander:new({name='Lar-attack-Foxtrot-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Lar-attack-BandarAbbas-Runway-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='BandarAbbas', Altitude = RunwayStrikeAltitude()}),
-	GroupCommander:new({name='Lar-attack-Kish-Runway-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Kish intl', Altitude = RunwayStrikeAltitude()}),
-	GroupCommander:new({name='Lar-attack-Kish-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Kish intl', Altitude = CasAltitude()}),
-	GroupCommander:new({name='Lar-attack-Lavan-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Lavan Island', Altitude = CasAltitude()}),
-	GroupCommander:new({name='Lar-attack-Lengeh-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Bandar Lengeh', Altitude = CasAltitude()}),
-	GroupCommander:new({name='Lar-attack-Qeshm-Runway-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Qeshm Island', Altitude = RunwayStrikeAltitude()}),
-	GroupCommander:new({name='Lar-attack-Qeshm-Lavan-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Lavan Island', Altitude = RunwayStrikeAltitude()}),
+	DirectorCapability:new({name='lar-attack-sam-site-Sead', mission='attack', template='SeadPlaneTemplate', MissionType='SEAD', targetzone='Qeshm Island', Altitude = SeadAltitude()}),
+	DirectorCapability:new({name='lar-attack-bandar-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='BandarAbbas', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='lar-attack-radio-tower-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Radio Tower', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='lar-attack-factory-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Factory', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='lar-attack-Ramp-Kongo-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Ramp-Kongo', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='Lar-attack-Foxtrot-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Lar-attack-BandarAbbas-Runway-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='BandarAbbas', Altitude = RunwayStrikeAltitude()}),
+	DirectorCapability:new({name='Lar-attack-Kish-Runway-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Kish intl', Altitude = RunwayStrikeAltitude()}),
+	DirectorCapability:new({name='Lar-attack-Kish-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Kish intl', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='Lar-attack-Lavan-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Lavan Island', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='Lar-attack-Lengeh-Cas', mission='attack', template='CasPlaneTemplate', MissionType='CAS', targetzone='Bandar Lengeh', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='Lar-attack-Qeshm-Runway-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Qeshm Island', Altitude = RunwayStrikeAltitude()}),
+	DirectorCapability:new({name='Lar-attack-Qeshm-Lavan-strike', mission='attack', template='RunwayStrikePlaneTemplate', MissionType='RUNWAYSTRIKE', targetzone='Lavan Island', Altitude = RunwayStrikeAltitude()}),
 	-- Patrol missions
-	GroupCommander:new({name='lar-patrol-golf-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Golf', Altitude = CapAltitude()}),
-	GroupCommander:new({name='lar-attack-golf-surface', mission='attack', template='AttackConvoy', targetzone='Golf', type='surface'}),
-	GroupCommander:new({name='lar-patrol-delta-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Delta', Altitude = CapAltitude()}),
-	GroupCommander:new({name='lar-patrol-factory-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Factory', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Shiraz-patrol-Lar-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lar', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Shiraz-patrol-Lar-Cap-2', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lar', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Shiraz-patrol-Lavan-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lavan Island', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Shiraz-patrol-Sunny-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Sunny', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Lar-patrol-Foxtrot-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Lar-patrol-Foxtrot-Cap-2', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
-	GroupCommander:new({name='lar-patrol-ramp-kongo-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude()}),
-	GroupCommander:new({name='lar-attack-ramp-kongo-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lar-patrol-golf-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Golf', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lar-attack-golf-surface', mission='attack', template='AttackConvoy', targetzone='Golf', type='surface'}),
+	DirectorCapability:new({name='lar-patrol-delta-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Delta', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lar-patrol-factory-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Factory', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Shiraz-patrol-Lar-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lar', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Shiraz-patrol-Lar-Cap-2', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lar', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Shiraz-patrol-Lavan-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lavan Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Shiraz-patrol-Sunny-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Sunny', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Lar-patrol-Foxtrot-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Lar-patrol-Foxtrot-Cap-2', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lar-patrol-ramp-kongo-Cap', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lar-attack-ramp-kongo-Cap', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='lar-supply-golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
-	GroupCommander:new({name='lar-supply-foxtrot', mission='supply', template='HeloSupplyTemplate', targetzone='Foxtrot'}),
-	GroupCommander:new({name='lar-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
-	GroupCommander:new({name='lar-supply-ramp-kongo', mission='supply', template='HeloSupplyTemplate', targetzone='Ramp-Kongo'}),
+	DirectorCapability:new({name='lar-supply-golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
+	DirectorCapability:new({name='lar-supply-foxtrot', mission='supply', template='HeloSupplyTemplate', targetzone='Foxtrot'}),
+	DirectorCapability:new({name='lar-supply-sunny', mission='supply', template='HeloSupplyTemplate', targetzone='Sunny'}),
+	DirectorCapability:new({name='lar-supply-ramp-kongo', mission='supply', template='HeloSupplyTemplate', targetzone='Ramp-Kongo'}),
 	-- Surface missions
-	GroupCommander:new({name='Lar-supply-lar-defence', mission='supply', template='AttackConvoy', targetzone='Lar-Defence', type='surface', condition = function(self) return not (self.side == 1 and CustomFlags["LarDefenceWarehouse"])end}),
-	GroupCommander:new({name='Lar-attack-Golf-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Golf', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='Lar-supply-lar-defence', mission='supply', template='SupplyConvoy', targetzone='Lar-Defence', type='surface', condition = function(self) return not (self.side == 1 and CustomFlags["LarDefenceWarehouse"])end}),
+	DirectorCapability:new({name='Lar-attack-Golf-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Golf', type='surface', SetActiveMission = true}),
 
 })
 
 zones.rampkongo:addGroups({
-	GroupCommander:new({name='ramp-kongo-supply-khamets', mission='supply',template='HeloSupplyTemplate', targetzone='Khamets'}),
+	DirectorCapability:new({name='ramp-kongo-supply-khamets', mission='supply',template='HeloSupplyTemplate', targetzone='Khamets'}),
 })
 zones.foxtrot:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='Foxtrot-supply-kishi', mission='supply',template='HeloSupplyTemplate', targetzone='Kish intl'}),
-	GroupCommander:new({name='Foxtrot-supply-Lar', mission='supply',template='HeloSupplyTemplate', targetzone='Lar'}),
-	GroupCommander:new({name='Foxtrot-supply-lavan', mission='supply',template='HeloSupplyTemplate', targetzone='Lavan Island'}),
+	DirectorCapability:new({name='Foxtrot-supply-kishi', mission='supply',template='HeloSupplyTemplate', targetzone='Kish intl'}),
+	DirectorCapability:new({name='Foxtrot-supply-Lar', mission='supply',template='HeloSupplyTemplate', targetzone='Lar'}),
+	DirectorCapability:new({name='Foxtrot-supply-lavan', mission='supply',template='HeloSupplyTemplate', targetzone='Lavan Island', spawnDelayFactor = 2}),
 	-- Surface missions
-	GroupCommander:new({name='foxtrot-attack-golf', mission='attack',template='AttackConvoy', targetzone='Golf', type='surface'}),
-	GroupCommander:new({name='foxtrot-attack-Kish intl-cas', mission='attack',template='CasHeloTemplate',MissionType='CAS', targetzone='Kish intl'}),
-	GroupCommander:new({name='foxtrot-artillery-fire-at-golf', mission='attack', targetzone='Golf', type='surface'}),
+	DirectorCapability:new({name='foxtrot-attack-golf', mission='attack',template='AttackConvoy', targetzone='Golf', type='surface'}),
+	DirectorCapability:new({name='foxtrot-attack-Kish intl-cas', mission='attack',template='CasHeloTemplate',MissionType='CAS', targetzone='Kish intl'}),
+	GroupCommander:new({name='foxtrot-artillery-fire-at-golf', mission='attack', targetzone='Golf', type='surface', FixedArty = true}),
 })
 zones.oilfields:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='oilfields-supply-dehbarez', mission='supply',template='HeloSupplyTemplate', targetzone='Dehbarez'}),
-	GroupCommander:new({name='oilfields-Supply-paragaan', mission='supply',template='HeloSupplyTemplate', targetzone='Paregaan'}),
+	DirectorCapability:new({name='oilfields-supply-dehbarez', mission='supply',template='HeloSupplyTemplate', targetzone='Dehbarez'}),
+	DirectorCapability:new({name='oilfields-Supply-paragaan', mission='supply',template='HeloSupplyTemplate', targetzone='Paregaan'}),
 	-- Surface missions
-	GroupCommander:new({name='oilfields-supply-bandar', mission='supply',template='SupplyConvoy', targetzone='BandarAbbas', type='surface'}),
+	DirectorCapability:new({name='oilfields-supply-bandar', mission='supply',template='SupplyConvoy', targetzone='BandarAbbas', type='surface', spawnDelayFactor = 3}),
 })
 zones.qeshmisland:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='qeshm-island-attack-Khasab-Cas', mission='attack',template='CasPlaneTemplate', MissionType='CAS', targetzone='Khasab', Altitude = CasAltitude()}),
-	GroupCommander:new({name='qeshm-island-attack-Khaima-Cas', mission='attack',template='CasPlaneTemplate', MissionType='CAS', targetzone='Ras Al Khaimah', Altitude = CasAltitude()}),
-	GroupCommander:new({name='qeshm-island-attack-Khaima-Cap', mission='attack',template='CapPlaneTemplate', MissionType='CAP', targetzone='Ras Al Khaimah', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='qeshm-island-attack-Khasab-Cas', mission='attack',template='CasPlaneTemplate', MissionType='CAS', targetzone='Khasab', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='qeshm-island-attack-Khaima-Cas', mission='attack',template='CasPlaneTemplate', MissionType='CAS', targetzone='Ras Al Khaimah', Altitude = CasAltitude()}),
+	DirectorCapability:new({name='qeshm-island-attack-Khaima-Cap', mission='attack',template='CapPlaneTemplate', MissionType='CAP', targetzone='Ras Al Khaimah', Altitude = CapAltitude()}),
 	-- Patrol missions
-	GroupCommander:new({name='qeshm-island-Patrol-Khasab-Cap', mission='patrol',template='CapPlaneTemplate', MissionType='CAP', targetzone='Khasab', Altitude = CapAltitude()}),
-	GroupCommander:new({name='qeshm-island-Supply-Khasab', mission='supply',template='HeloSupplyTemplate', targetzone='Khasab'}),
+	DirectorCapability:new({name='qeshm-island-Patrol-Khasab-Cap', mission='patrol',template='CapPlaneTemplate', MissionType='CAP', targetzone='Khasab', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='qeshm-island-Supply-Khasab', mission='supply',template='HeloSupplyTemplate', targetzone='Khasab'}),
 	-- Supply missions
-	GroupCommander:new({name='qeshm-island-Supply-Bandar-Lengeh', mission='supply',template='HeloSupplyTemplate', targetzone='Bandar Lengeh'}),
+	DirectorCapability:new({name='qeshm-island-Supply-Bandar-Lengeh', mission='supply',template='HeloSupplyTemplate', targetzone='Bandar Lengeh'}),
 	--GroupCommander:new({name='qeshm-island-Supply-Moradi', mission='supply',template='HeloSupplyTemplate', targetzone='Moradi'}),
 	-- Surface missions
-	GroupCommander:new({name='qeshm-island-supply-Moradi-Convoy', mission='supply', targetzone='Moradi',template='SupplyConvoy', type='surface'}),
+	DirectorCapability:new({name='qeshm-island-supply-Moradi-Convoy', mission='supply', targetzone='Moradi',template='SupplyConvoy', type='surface', spawnDelayFactor = 3}),
 	GroupCommander:new({name='qeshm-island-supply-qeshm-island-defence', mission='supply', targetzone='Qeshm-Island-Defence', type='surface', condition = function(self) return not (self.side == 1 and CustomFlags["QeshmDefenceWarehouse"])end}),
 })
 
 zones.khamets:addGroups({
-	GroupCommander:new({name='Khamets-supply-samathe', mission='supply',template='HeloSupplyTemplate', targetzone='Samathe'}),
-	GroupCommander:new({name='Khamets-supply-Factory', mission='supply',template='HeloSupplyTemplate', targetzone='Factory'}),
-	GroupCommander:new({name='Khamets-supply-Paregaan', mission='supply',template='HeloSupplyTemplate', targetzone='Paregaan'})
+	DirectorCapability:new({name='Khamets-supply-samathe', mission='supply',template='HeloSupplyTemplate', targetzone='Samathe'}),
+	DirectorCapability:new({name='Khamets-supply-Factory', mission='supply',template='HeloSupplyTemplate', targetzone='Factory'}),
+	DirectorCapability:new({name='Khamets-supply-Paregaan', mission='supply',template='HeloSupplyTemplate', targetzone='Paregaan'})
 })
 zones.samathe:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='HiddenGroup-attack-Lar', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lar', Altitude = CapAltitude(), Redcondition = function() return end}),
-	GroupCommander:new({name='HiddenGroup-attack-Ramp-Kongo', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude(), Redcondition = function() return end}),
-	GroupCommander:new({name='HiddenGroup-attack-Samathe', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Samathe', Altitude = CapAltitude(), Redcondition = function() return end}),
-	GroupCommander:new({name='Samathe-attack-Paregaan', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Paregaan', Altitude = CapAltitude(), Redcondition = function() return end}),
+	DirectorCapability:new({name='HiddenGroup-attack-Lar', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Lar', Altitude = CapAltitude(), Redcondition = function() return end}),
+	DirectorCapability:new({name='HiddenGroup-attack-Ramp-Kongo', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude(), Redcondition = function() return end}),
+	DirectorCapability:new({name='HiddenGroup-attack-Samathe', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Samathe', Altitude = CapAltitude(), Redcondition = function() return end}),
+	DirectorCapability:new({name='Samathe-attack-Paregaan', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Paregaan', Altitude = CapAltitude(), Redcondition = function() return end}),
 	-- Patrol missions
-	GroupCommander:new({name='HiddenGroup-patrol-Ramp-Kongo', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude(), Redcondition = function() return zones.lar.side == 2 end}),
-	GroupCommander:new({name='Samathe-patrol-Samathe', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Samathe', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Samathe-patrol-OilFields', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Oil Fields', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='HiddenGroup-patrol-Ramp-Kongo', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Ramp-Kongo', Altitude = CapAltitude(), Redcondition = function() return zones.lar.side == 2 end}),
+	DirectorCapability:new({name='Samathe-patrol-Samathe', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Samathe', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Samathe-patrol-OilFields', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Oil Fields', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='Samathe-supply-Paegaan', mission='supply', template='HeloSupplyTemplate', targetzone='Paregaan'}),
+	DirectorCapability:new({name='Samathe-supply-Paegaan', mission='supply', template='HeloSupplyTemplate', targetzone='Paregaan'}),
 	-- Surface missions
-	GroupCommander:new({name='Samathe-attack-Paegaan', mission='attack', template='AttackConvoy', targetzone='Paregaan', type='surface'}),
-	GroupCommander:new({name='Samathe-attack-Khamets-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Khamets', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='Samathe-attack-Paegaan', mission='attack', template='AttackConvoy', targetzone='Paregaan', type='surface'}),
+	DirectorCapability:new({name='Samathe-attack-Khamets-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Khamets', type='surface', SetActiveMission = true}),
 
 })
 
 
 zones.sunny:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='Sunny-Supply-Lar', mission='supply',template='HeloSupplyTemplate', targetzone='Lar'}),
-	GroupCommander:new({name='Sunny-Supply-Golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
-	GroupCommander:new({name='Sunny-Supply-Factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
-	GroupCommander:new({name='Sunny-Supply-kongo', mission='supply', template='HeloSupplyTemplate', targetzone='Ramp-Kongo'}),
+	DirectorCapability:new({name='Sunny-Supply-Lar', mission='supply',template='HeloSupplyTemplate', targetzone='Lar'}),
+	DirectorCapability:new({name='Sunny-Supply-Golf', mission='supply', template='HeloSupplyTemplate', targetzone='Golf'}),
+	DirectorCapability:new({name='Sunny-Supply-Factory', mission='supply', template='HeloSupplyTemplate', targetzone='Factory'}),
+	DirectorCapability:new({name='Sunny-Supply-kongo', mission='supply', template='HeloSupplyTemplate', targetzone='Ramp-Kongo'}),
 	-- Surface missions
-	GroupCommander:new({name='Sunny-attack-Echo', mission='attack', template='AttackConvoy', targetzone='Echo', type='surface'}),
+	DirectorCapability:new({name='Sunny-attack-Echo', mission='attack', template='AttackConvoy', targetzone='Echo', type='surface'}),
 })
 
 zones.bandarlengeh:addGroups({
 	-- Patrol missions
-	GroupCommander:new({name='lengeh-patrol-qeshm-island', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Qeshm Island', Altitude = CapAltitude()}),
-	GroupCommander:new({name='lengeh-patrol-Musa-island', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
-	GroupCommander:new({name='lengeh-attack-Musa-island', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lengeh-patrol-qeshm-island', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Qeshm Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lengeh-patrol-Musa-island', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='lengeh-attack-Musa-island', mission='attack', template='CapPlaneTemplate', MissionType='CAP', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='lengeh-supply-kish', mission='supply', template='HeloSupplyTemplate', targetzone='Kish intl'}),
+	DirectorCapability:new({name='lengeh-supply-kish', mission='supply', template='HeloSupplyTemplate', targetzone='Kish intl'}),
 	-- Surface missions
 	GroupCommander:new({name='lengeh-supply-tunb-sea', mission='supply', targetzone='Tunb Island AFB', type='surface', condition = function() return not CustomFlags["StrikePort"] end}),
 	GroupCommander:new({name='lengeh-supply-Musa-Sea', mission='supply', targetzone='Abu Musa Island', type='surface', condition = function() return not CustomFlags["StrikePort"] end}),
 	GroupCommander:new({name='lengeh-supply-Sirri-sea', mission='supply', targetzone='Sirri Island', type='surface', condition = function() return not CustomFlags["StrikePort"] end}),
-	GroupCommander:new({name='lengeh-supply-Tunb Island', mission='supply', template='HeloSupplyTemplate', targetzone='Tunb Island AFB', Bluecondition = function() return true end}),
-	GroupCommander:new({name='lengeh-supply-Abu Musa', mission='supply', template='HeloSupplyTemplate', targetzone='Abu Musa Island', Bluecondition = function() return true end}),
-	GroupCommander:new({name='lengeh-supply-Sirri', mission='supply', template='HeloSupplyTemplate', targetzone='Sirri Island', Bluecondition = function() return true end}),
+	DirectorCapability:new({name='lengeh-supply-Tunb Island', mission='supply', template='HeloSupplyTemplate', targetzone='Tunb Island AFB', Bluecondition = function() return true end}),
+	DirectorCapability:new({name='lengeh-supply-Abu Musa', mission='supply', template='HeloSupplyTemplate', targetzone='Abu Musa Island', Bluecondition = function() return true end}),
+	DirectorCapability:new({name='lengeh-supply-Sirri', mission='supply', template='HeloSupplyTemplate', targetzone='Sirri Island', Bluecondition = function() return true end}),
 })
 
 zones.aldhafra:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='al-dhafra-support-huti', mission='supply', template='HeloSupplyTemplate', targetzone='Al Huti'}),
-	GroupCommander:new({name='al-dhafra-patrol-al-huti', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Huti', Altitude = CapAltitude()}),
-	GroupCommander:new({name='al-dhafra-patrol-al-minhad', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
-	GroupCommander:new({name='al-dhafra-attack-al-minhad', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
-	GroupCommander:new({name='al-dhafra-patrol-al-Ain', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Ain', Altitude = CapAltitude()}),
-	GroupCommander:new({name='al-dhafra-attack-al-Ain', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Ain', Altitude = CapAltitude()}),
-	GroupCommander:new({name='al-dhafra-support-al-khatim', mission='supply', template='HeloSupplyTemplate', targetzone='Al Khatim'}),
-	GroupCommander:new({name='al-dhafra-support-Sharjah', mission='supply', template='PlaneSupplyTemplate', targetzone='Sharjah'}),
-	GroupCommander:new({name='al-dhafra-patrol-Sharjah', mission='supply', template='PlaneSupplyTemplate', targetzone='Sharjah'}),
-	GroupCommander:new({name='al-dhafra-support-Al Dhafra-Defence', mission='supply', template='SupplyConvoy', targetzone='Al Dhafra-Defence', type='surface', condition = function(self) return not (self.side == 1 and CustomFlags["DhafraDefenceWarehouse"])end}),
+	DirectorCapability:new({name='al-dhafra-support-huti', mission='supply', template='HeloSupplyTemplate', targetzone='Al Huti'}),
+	DirectorCapability:new({name='al-dhafra-patrol-al-huti', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Huti', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='al-dhafra-patrol-al-minhad', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='al-dhafra-attack-al-minhad', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='al-dhafra-patrol-al-Ain', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Ain', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='al-dhafra-attack-al-Ain', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Ain', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='al-dhafra-support-al-khatim', mission='supply', template='HeloSupplyTemplate', targetzone='Al Khatim'}),
+	DirectorCapability:new({name='al-dhafra-support-Sharjah', mission='supply', template='PlaneSupplyTemplate', targetzone='Sharjah'}),
+	DirectorCapability:new({name='al-dhafra-patrol-Sharjah', mission='supply', template='PlaneSupplyTemplate', targetzone='Sharjah'}),
+	DirectorCapability:new({name='al-dhafra-support-Al Dhafra-Defence', mission='supply', template='SupplyConvoy', targetzone='Al Dhafra-Defence', type='surface', condition = function(self) return not zones.dhafradefence.isHidden and not (self.side == 1 and CustomFlags["DhafraDefenceWarehouse"])end}),
 
 })
 
 zones.alhuti:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='Huti-supply-Minhad', mission='supply', template='HeloSupplyTemplate', targetzone='Al Minhad AFB'}),
-	GroupCommander:new({name='Huti-supply-ain', mission='supply', template='HeloSupplyTemplate', targetzone='Al Ain'}),
+	DirectorCapability:new({name='Huti-supply-Minhad', mission='supply', template='HeloSupplyTemplate', targetzone='Al Minhad AFB'}),
+	DirectorCapability:new({name='Huti-supply-ain', mission='supply', template='HeloSupplyTemplate', targetzone='Al Ain'}),
 })
 
 zones.charlie:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='Charlie-attack-Khaimah', mission='attack', template='AttackConvoy', targetzone='Ras Al Khaimah', type='surface'}),
-	GroupCommander:new({name='Khaimah-supply-Khasab', mission='supply', template='HeloSupplyTemplate', targetzone='Khasab'})
+	DirectorCapability:new({name='Charlie-attack-Khaimah', mission='attack', template='AttackConvoy', targetzone='Ras Al Khaimah', type='surface'}),
+	DirectorCapability:new({name='Khaimah-supply-Khasab', mission='supply', template='HeloSupplyTemplate', targetzone='Khasab'})
 })
 
 zones.alain:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Al-Ain-Attack-Al-Dhafra', mission='attack', template='AttackConvoy', targetzone='Al Dhafra', type='surface'}),
+	DirectorCapability:new({name='Al-Ain-Attack-Al-Dhafra-Convoy', mission='attack', template='AttackConvoy', targetzone='Al Dhafra', type='surface', spawnDelayFactor = 3, diceChance = 30}),
 	-- Supply missions
-	GroupCommander:new({name='Al-Ain-Supply-Al-Huti', mission='supply', template='HeloSupplyTemplate', targetzone='Al Huti'}),
-	GroupCommander:new({name='Al-Ain-Supply-Al-Khatim', mission='supply', template='HeloSupplyTemplate', targetzone='Al Khatim'}),
-	GroupCommander:new({name='Al-Ain-patrol-al-huti', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Huti', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Al-Ain-patrol-al-minhad', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Al-Ain-attack-al-minhad', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Al-Ain-patrol-al-Ain', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Ain', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Al-Ain-attack-al-Dhafra', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Dhafra', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Al-Ain-patrol-Fujairah Intl', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Fujairah Intl', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Al-Ain-Supply-Al-Huti', mission='supply', template='HeloSupplyTemplate', targetzone='Al Huti'}),
+	DirectorCapability:new({name='Al-Ain-Supply-Al-Khatim', mission='supply', template='HeloSupplyTemplate', targetzone='Al Khatim'}),
+	DirectorCapability:new({name='Al-Ain-patrol-al-huti', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Huti', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Al-Ain-patrol-al-minhad', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Al-Ain-attack-al-minhad', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Al-Ain-patrol-al-Ain', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Ain', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Al-Ain-attack-al-Dhafra', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Dhafra', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Al-Ain-patrol-Fujairah Intl', mission='patrol', template='CapPlaneTemplate',MissionType='CAP', targetzone='Fujairah Intl', Altitude = CapAltitude()}),
 
 })
 
 zones.moradi:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Moradi-attack-Qeshm', mission='attack', template='AttackConvoy', targetzone='Qeshm Island',type='surface'}),
+	DirectorCapability:new({name='Moradi-attack-Qeshm', mission='attack', template='AttackConvoy', targetzone='Qeshm Island',type='surface'}),
 	-- Patrol missions
-	GroupCommander:new({name='Moradi-patrol-tunb-island', mission='patrol', targetzone='Abu Musa Island'}),
+	GroupCommander:new({name='Moradi-patrol-tunb-island', mission='patrol', targetzone='Abu Musa Island', spawnDelayFactor = 3}),
 })
 
 zones.kish:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Kishi-attack-Abu-Musa', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Kishi-attack-Abu-Musa', mission='attack', MissionType='CAP', template='CapPlaneTemplate', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Kishi-attack-qeshm-island-Sead', mission='attack',template='SeadPlaneTemplate', MissionType='SEAD', targetzone='Qeshm Island', Altitude = SeadAltitude()}),
 	-- Patrol missions
-	GroupCommander:new({name='Kishi-patrol-kishi', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Kishi-patrol-Abu-Musa', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Kishi-patrol-bandarlengeh', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Bandar Lengeh', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Kishi-patrol-kishi', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Foxtrot', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Kishi-patrol-Abu-Musa', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Abu Musa Island', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Kishi-patrol-bandarlengeh', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Bandar Lengeh', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='Kish-supply-Foxtrot', mission='supply', template='HeloSupplyTemplate', targetzone='Foxtrot'}),
-	GroupCommander:new({name='Kish-supply-Lavan', mission='supply', template='HeloSupplyTemplate', targetzone='Lavan Island'}),
+	DirectorCapability:new({name='Kish-supply-Foxtrot', mission='supply', template='HeloSupplyTemplate', targetzone='Foxtrot'}),
+	DirectorCapability:new({name='Kish-supply-Lavan', mission='supply', template='HeloSupplyTemplate', targetzone='Lavan Island'}),
 })
 
 
 zones.minhad:addGroups({
-	GroupCommander:new({name='Minhad-supply-sharjah', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
-	GroupCommander:new({name='Minhad-supply-Fujairan', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
-	GroupCommander:new({name='Minhad-supply-Al Huti', mission='supply', template='HeloSupplyTemplate', targetzone='Al Huti'}),
-	GroupCommander:new({name='Minhad-attack-Al Huti', mission='attack', template='AttackConvoy', targetzone='Al Huti', type='surface'}),
-	GroupCommander:new({name='Minhad-patrol-Minhad', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
-	GroupCommander:new({name='Minhad-attack-Sharjah-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Sharjah', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='Minhad-supply-sharjah', mission='supply', template='HeloSupplyTemplate', targetzone='Sharjah'}),
+	DirectorCapability:new({name='Minhad-supply-Fujairan', mission='supply', template='HeloSupplyTemplate', targetzone='Fujairah Intl'}),
+	DirectorCapability:new({name='Minhad-supply-Al Huti', mission='supply', template='HeloSupplyTemplate', targetzone='Al Huti'}),
+	DirectorCapability:new({name='Minhad-attack-Al Huti', mission='attack', template='AttackConvoy', targetzone='Al Huti', type='surface'}),
+	DirectorCapability:new({name='Minhad-patrol-Minhad', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Minhad-attack-Sharjah-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Sharjah', type='surface', SetActiveMission = true}),
 
 })
 
 zones.sharjah:addGroups({
 	-- Attack missions
-	GroupCommander:new({name='Sharjah-attack-Al Dahid', mission='attack', template='AttackConvoy', targetzone='Al Dahid', type='surface'}),
-	GroupCommander:new({name='Sharjah-attack-Al Minhad AFB', mission='attack', template='AttackConvoy', targetzone='Al Minhad AFB', type='surface'}),
-	GroupCommander:new({name='Sharjah-attack-Al Minhad AFB-Cap', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Sharjah-attack-Al Dahid', mission='attack', template='AttackConvoy', targetzone='Al Dahid', type='surface'}),
+	DirectorCapability:new({name='Sharjah-attack-Al Minhad AFB', mission='attack', template='AttackConvoy', targetzone='Al Minhad AFB', type='surface'}),
+	DirectorCapability:new({name='Sharjah-attack-Al Minhad AFB-Cap', mission='attack', template='CapPlaneTemplate',MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
 	-- Patrol missions
-	GroupCommander:new({name='Sharjah-patrol-al-minhad', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
+	DirectorCapability:new({name='Sharjah-patrol-al-minhad', mission='patrol', template='CapPlaneTemplate', MissionType='CAP', targetzone='Al Minhad AFB', Altitude = CapAltitude()}),
 	-- Supply missions
-	GroupCommander:new({name='Sharjah-Supply-Khaimah', mission='supply', template='HeloSupplyTemplate', targetzone='Ras Al Khaimah'}),
-	GroupCommander:new({name='Sharjah-Supply-abu-musa', mission='supply', template='HeloSupplyTemplate', targetzone='Abu Musa Island'}),
-	GroupCommander:new({name='Sharjah-Supply-dahid', mission='supply', template='HeloSupplyTemplate', targetzone='Al Dahid'}),
+	DirectorCapability:new({name='Sharjah-Supply-Khaimah', mission='supply', template='HeloSupplyTemplate', targetzone='Ras Al Khaimah'}),
+	DirectorCapability:new({name='Sharjah-Supply-abu-musa', mission='supply', template='HeloSupplyTemplate', targetzone='Abu Musa Island'}),
+	DirectorCapability:new({name='Sharjah-Supply-dahid', mission='supply', template='HeloSupplyTemplate', targetzone='Al Dahid'}),
 	--GroupCommander:new({name='Sharjah-supply-Minhad', mission='supply', template='HeloSupplyTemplate', targetzone='Al Minhad AFB'}),
 
-	GroupCommander:new({name='Sharjah-supply-Minhad', mission='supply', template='PlaneSupplyTemplate', targetzone='Al Minhad AFB'}),
+	DirectorCapability:new({name='Sharjah-supply-Minhad', mission='supply', template='PlaneSupplyTemplate', targetzone='Al Minhad AFB'}),
 	-- Surface missions
 	GroupCommander:new({name='Sharjah-supply-sharjah-Defence', mission='supply', targetzone='Sharjah-Defence', type='surface', condition = function(self) return not (self.side == 1 and CustomFlags["SharjaDefenceWarehouse"])end}),
-	GroupCommander:new({name='Sharjah-attack-Ras Al Khaimah-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Ras Al Khaimah', type='surface', SetActiveMission = true}),
+	DirectorCapability:new({name='Sharjah-attack-Ras Al Khaimah-Arty', mission='attack',template='ArtilleryConvoyLong',MissionType='ARTY',Reward=250, targetzone='Ras Al Khaimah', type='surface', SetActiveMission = true}),
 
 })
 
 zones.abumusa:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='abu-musa-supply-tumb-island', mission='supply', template='HeloSupplyTemplate', targetzone='Tunb Island AFB', Bluecondition = function() return true end}),
-	GroupCommander:new({name='abu-musa-supply-sirri-island', mission='supply',template='HeloSupplyTemplate', targetzone='Sirri Island', Bluecondition = function() return true end}),
-	GroupCommander:new({name='abu-musa-supply-Sharjah', mission='supply',template='HeloSupplyTemplate', targetzone='Sharjah'}),
+	DirectorCapability:new({name='abu-musa-supply-tumb-island', mission='supply', template='HeloSupplyTemplate', targetzone='Tunb Island AFB', Bluecondition = function() return end}),
+	DirectorCapability:new({name='abu-musa-supply-sirri-island', mission='supply',template='HeloSupplyTemplate', targetzone='Sirri Island', Bluecondition = function() return end}),
+	DirectorCapability:new({name='abu-musa-supply-Sharjah', mission='supply',template='HeloSupplyTemplate', targetzone='Sharjah'}),
 })
 
 zones.tunbisland:addGroups({
 	-- Supply missions
-	GroupCommander:new({name='Tunb-Island-supply-moradi',template='HeloSupplyTemplate', mission='supply', targetzone='Moradi'})
+	DirectorCapability:new({name='Tunb-Island-supply-moradi',template='HeloSupplyTemplate', mission='supply', targetzone='Moradi'})
 })
 
 zones.hidden4:addGroups({
@@ -1478,49 +1543,6 @@ function checkAndDisableFriendlyZones()
 	end
 end
 timer.scheduleFunction(checkAndDisableFriendlyZones,{},timer.getTime()+5)
-
-zones.sharjah.isHeloSpawn = true
-zones.bandarlengeh.isHeloSpawn = true
-zones.kish.isHeloSpawn = true
-zones.khaimah.isHeloSpawn = true
-zones.minhad.isHeloSpawn = true
-zones.fujairah.isHeloSpawn = true
-zones.alain.isHeloSpawn = true
-zones.bandarabbas.isHeloSpawn = true
-zones.khasab.isHeloSpawn = true
-zones.echo.isHeloSpawn = true
-zones.foxtrot.isHeloSpawn = true
-zones.sunny.isHeloSpawn = true
-zones.dahid.isHeloSpawn = true
-zones.radio.isHeloSpawn = true
-zones.alhuti.isHeloSpawn = true
-zones.alkhatim.isHeloSpawn = true
-zones.qeshmisland.isHeloSpawn = true
-zones.factory.isHeloSpawn = true
-zones.aldhafra.isHeloSpawn = true
-zones.delta.isHeloSpawn = true
-zones.golf.isHeloSpawn = true
-zones.rampkongo.isHeloSpawn = true
-zones.khamets.isHeloSpawn = true
-zones.samathe.isHeloSpawn = true
-zones.paregaan.isHeloSpawn = true
-if Era ~= 'Vietnam' then
-	zones.carrier.isHeloSpawn = true
-end
-zones.abumusa.isHeloSpawn = true
-zones.sirri.isHeloSpawn = true
-zones.tunbisland.isHeloSpawn = true
-zones.lavan.isHeloSpawn = true
-zones.moradi.isHeloSpawn = true
-if Era ~= 'Vietnam' then
-	zones.redcarrier.isHeloSpawn = true
-end
-zones.charlie.isHeloSpawn = true
-zones.alpha.isHeloSpawn = true
-zones.lar.isHeloSpawn = true
-
-
-
 
 zones.sharjah.airbaseName = "Sharjah Intl"
 zones.bandarlengeh.airbaseName = "Bandar Lengeh"
@@ -2260,14 +2282,24 @@ local SHOP_PRICE_DEFAULTS = {
   artillery     = 100,
   recon         = 50,
   airdef        = 150,
+  calav         = 100,
+  camgs         = 100,
+  cadragoon     = 100,
   capture       = 500,
   advancecapture = 500,
   intel         = 150,
   groundattack  = 1000,
   zinf          = 500,
+  zhawk         = 2000, -- HAWK zone upgrade
+  zavenger      = 1000, -- Avenger zone upgrade
+  zroland       = 1000, -- Roland zone upgrade
+  zgepard       = 750, -- Gepard zone upgrade
+  zvulcan       = 500, -- Vulcan zone upgrade
+  zcram         = 1500, -- C-RAM zone upgrade
   zsam          = 2000,
   zhimars       = 2500,
   zlogc         = 2000,
+  zwhrepair     = 2000,
   zsup3         = 750,
   zwh50         = 500,
   zarm          = 1000,
@@ -2300,7 +2332,13 @@ local SHOP_RANK_DEFAULTS = {
   supplies       = 6,
   zinf           = 5,
   zarm           = 7,
-  zsam           = 6,
+  zhawk         = 6, -- HAWK zone upgrade
+  zavenger      = 5, -- Avenger zone upgrade
+  zroland       = 5, -- Roland zone upgrade
+  zgepard       = 4, -- Gepard zone upgrade
+  zvulcan       = 3, -- Vulcan zone upgrade
+  zcram         = 6, -- C-RAM zone upgrade
+  zsam          = 6,
   zhimars        = 8,
   zlogc          = 1,
   zsup3          = 2,
@@ -2312,6 +2350,9 @@ local SHOP_RANK_DEFAULTS = {
   artillery      = 3,
   recon          = 3,
   airdef         = 3,
+  calav          = 3,
+  camgs          = 3,
+  cadragoon      = 3,
   ["9lineam"]    = 1,
   ["9linefm"]    = 1,
   cruisemsl      = 10,
@@ -2468,7 +2509,7 @@ bc:registerShopItem('dynamicarco', LTGet("SYRIA_SHOP_ITEM_TANKER_DROGUE"), ShopP
 	trigger.action.outTextForCoalition(2, L10N:Get("SYRIA_SHOP_TANKER_DROGUE_UNLOCKED"), 20)
     return
 end,
-function (sender, params)
+function (sender, params, delayMenuRefresh)
     if ArcoActive then
         return LTFormat("SYRIA_SHOP_AIRCRAFT_STILL_AIRBORNE", "Arco")
     end
@@ -2476,7 +2517,7 @@ function (sender, params)
         if params.zone.side ~= 2 then
             return LTGet("SYRIA_SHOP_CAN_ONLY_SPAWN_FRIENDLY")
         end
-        spawnArcoAt(params.zone.zone, tonumber(params.heading) or 45, tonumber(params.leg) or 0)
+        spawnArcoAt(params.zone.zone, tonumber(params.heading) or 45, tonumber(params.leg) or 0, nil, nil, delayMenuRefresh)
         return
     end
     buildArcoMenu()
@@ -2536,7 +2577,7 @@ bc:registerShopItem('dynamictexaco', LTGet("SYRIA_SHOP_ITEM_TANKER_BOOM"), ShopP
 	trigger.action.outTextForCoalition(2, L10N:Get("SYRIA_SHOP_TANKER_BOOM_UNLOCKED"), 20)
     return
 end,
-function (sender, params)
+function (sender, params, delayMenuRefresh)
     if TexacoActive then
         return LTFormat("SYRIA_SHOP_AIRCRAFT_STILL_AIRBORNE", "Texaco")
     end
@@ -2544,7 +2585,7 @@ function (sender, params)
         if params.zone.side ~= 2 then
             return LTGet("SYRIA_SHOP_CAN_ONLY_SPAWN_FRIENDLY")
         end
-        spawnTexacoAt(params.zone.zone, tonumber(params.heading) or 45, tonumber(params.leg) or 0)
+        spawnTexacoAt(params.zone.zone, tonumber(params.heading) or 45, tonumber(params.leg) or 0, nil, nil, delayMenuRefresh)
         return
     end
     buildTexacoMenu()
@@ -2637,13 +2678,13 @@ function(sender, params)
         if decoyActive then
             return LTFormat("SYRIA_SHOP_MISSION_STILL_PROGRESS", "Decoy")
         end
-        local minNM = 40
+        local minNM, attackOffsetNM = getMinNMForZone(params.zone.zone)
         local closestBlue, dist = findClosestBlueZoneOutside(params.zone.zone, minNM)
         if not closestBlue then
             return LTFormat("SYRIA_SHOP_NO_FRIENDLY_SPAWN", "Decoy")
         end
         local offset = (dist and dist < minNM) and (minNM - dist) or 0
-        spawnDecoyAt(closestBlue, params.zone.zone, offset)
+        spawnDecoyAt(closestBlue, params.zone.zone, offset, nil, params.pushMode, attackOffsetNM)
         return
 	else
 		return LTGet("SYRIA_SHOP_CAN_ONLY_TARGET_ENEMY")
@@ -2653,6 +2694,31 @@ bc.shopItems['dynamicdecoy'].groupZoneSelector = {
 	targetzoneside = 1,
 	includeSuspended = false,
 	sortPolicy = 'enemy_frontline',
+	zoneMenuBuilder = function(bcRef, parentMenu, label, zoneObj, groupId, groupObj, itemInfo, track, rememberHandle)
+		local function remember(handle)
+			if rememberHandle then
+				return rememberHandle(handle)
+			end
+			if handle then
+				track[#track + 1] = handle
+			end
+			return handle
+		end
+
+		local zoneMenu = remember(missionCommands.addSubMenuForGroup(groupId, label, parentMenu))
+		local T = L10N:ForGroup(groupId)
+		local autoPushLabel = AIAttackTakeoffFromGround == true
+			and "SYRIA_SHOP_DECOY_PUSH_WHEN_READY"
+			or "SYRIA_SHOP_DECOY_PUSH_NOW"
+		remember(missionCommands.addCommandForGroup(groupId, T:Get(autoPushLabel), zoneMenu, bcRef.buyShopItem, bcRef, 2, itemInfo.id, {
+			zone = zoneObj,
+			pushMode = "auto",
+		}, groupId, groupObj))
+		remember(missionCommands.addCommandForGroup(groupId, T:Get("SYRIA_SHOP_DECOY_PUSH_ON_COMMAND"), zoneMenu, bcRef.buyShopItem, bcRef, 2, itemInfo.id, {
+			zone = zoneObj,
+			pushMode = "command",
+		}, groupId, groupObj))
+	end,
 	allow = function(zoneObj)
 		return zoneObj.side == 1
 	end,
@@ -2672,13 +2738,14 @@ function(sender, params)
         if seadActive then
             return LTFormat("SYRIA_SHOP_MISSION_STILL_PROGRESS", "SEAD")
         end
-        local minNM = 40
+        local groundMinNM, attackOffsetNM = getSeadDistancesForZone(params.zone.zone, 25)
+        local minNM = AIAttackTakeoffFromGround == true and groundMinNM or attackOffsetNM
         local closestBlue, dist = findClosestBlueZoneOutside(params.zone.zone, minNM)
         if not closestBlue then
             return LTFormat("SYRIA_SHOP_NO_FRIENDLY_SPAWN", "SEAD")
         end
         local offset = (dist and dist < minNM) and (minNM - dist) or 0
-        spawnSeadAt(closestBlue, params.zone.zone, offset)
+        spawnSeadAt(closestBlue, params.zone.zone, offset, nil, params.pushMode, attackOffsetNM)
         return
 	else
 		return LTGet("SYRIA_SHOP_CAN_ONLY_TARGET_ENEMY")
@@ -2688,6 +2755,31 @@ bc.shopItems['dynamicsead'].groupZoneSelector = {
 	targetzoneside = 1,
 	includeSuspended = false,
 	sortPolicy = 'enemy_frontline',
+	zoneMenuBuilder = function(bcRef, parentMenu, label, zoneObj, groupId, groupObj, itemInfo, track, rememberHandle)
+		local function remember(handle)
+			if rememberHandle then
+				return rememberHandle(handle)
+			end
+			if handle then
+				track[#track + 1] = handle
+			end
+			return handle
+		end
+
+		local zoneMenu = remember(missionCommands.addSubMenuForGroup(groupId, label, parentMenu))
+		local T = L10N:ForGroup(groupId)
+		local autoPushLabel = AIAttackTakeoffFromGround == true
+			and "SYRIA_SHOP_SEAD_PUSH_WHEN_READY"
+			or "SYRIA_SHOP_SEAD_PUSH_NOW"
+		remember(missionCommands.addCommandForGroup(groupId, T:Get(autoPushLabel), zoneMenu, bcRef.buyShopItem, bcRef, 2, itemInfo.id, {
+			zone = zoneObj,
+			pushMode = "auto",
+		}, groupId, groupObj))
+		remember(missionCommands.addCommandForGroup(groupId, T:Get("SYRIA_SHOP_SEAD_PUSH_ON_COMMAND"), zoneMenu, bcRef.buyShopItem, bcRef, 2, itemInfo.id, {
+			zone = zoneObj,
+			pushMode = "command",
+		}, groupId, groupObj))
+	end,
 	allow = function(zoneObj)
 		return zoneObj.side == 1
 	end,
@@ -2937,7 +3029,6 @@ bc.shopItems['strategicbomber'].groupZoneSelector = {
 }
 
 
-if UseStatics == true then
 bc:registerShopItem('dynamicstatic', LTGet("CA_SHOP_ITEM_STATIC_STRUCTURE"), ShopPrices.dynamicstatic,
 function(sender)
     if StructureActive then
@@ -2946,7 +3037,7 @@ function(sender)
 	return LTGet("SYRIA_SHOP_CHOOSE_TARGET_ZONE")
 end,
 function(sender, params)
-    if params.zone and params.zone.side == 1 and params.zone.newStatics and next(params.zone.newStatics) then
+    if params.zone and bc.shopItems['dynamicstatic'].groupZoneSelector.allow(params.zone) then
         if StructureActive then
             return LTFormat("SYRIA_SHOP_MISSION_STILL_PROGRESS", "building strike")
         end
@@ -2968,12 +3059,11 @@ bc.shopItems['dynamicstatic'].groupZoneSelector = {
 	sortPolicy = 'enemy_frontline',
 	allow = function(zoneObj)
 		return zoneObj.side == 1
-			and zoneObj.newStatics
-			and next(zoneObj.newStatics) ~= nil
+			and ((zoneObj.warehouseFacility and zoneObj:_getWarehouseTarget() ~= nil)
+				or (UseStatics == true and zoneObj.newStatics and next(zoneObj.newStatics) ~= nil))
 	end,
 	emptyLabel = LTGet("CA_SHOP_NO_VALID_BUILDING_TARGET_ZONES"),
 }
-end
 ---------------------------------------------END DYNAMIC SHOP ------------------------------------------
 bc:addMonitoredROE('cruise1')
 local cruiseMissileTargetMenu = nil
@@ -3420,6 +3510,75 @@ bc.shopItems['airdef'].groupZoneSelector = {
 	emptyLabel = LTGet("SYRIA_SHOP_NO_VALID_FRIENDLY_ZONES"),
 }
 
+Group.getByName('CA-CW-Hunter_Killer_LAV'):destroy()
+bc:registerShopItem('calav', LTGet("SYRIA_SHOP_ITEM_DEPLOY_LAV"), ShopPrices.calav, function(sender)
+	return LTGet("SYRIA_SHOP_CHOOSE_DEPLOY_ZONE")
+end,
+function(sender, params)
+	if params.zone and params.zone.side == 2 and not params.zone.suspended then
+		local zn = CustomZone:getByName(params.zone.zone)
+		zn:spawnGroup('CA-CW-Hunter_Killer_LAV')
+		trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_SHOP_FRIENDLY_LAV_DEPLOYED", params.zone.zone), 15)
+	else
+		return LTGet("SYRIA_SHOP_CAN_ONLY_DEPLOY_FRIENDLY")
+	end
+end)
+bc.shopItems['calav'].groupZoneSelector = {
+	targetzoneside = 2,
+	includeSuspended = false,
+	sortPolicy = 'friendly_frontline',
+	extraPredicate = function(zoneObj)
+		return not isCarrierZoneName(zoneObj.zone)
+	end,
+	emptyLabel = LTGet("SYRIA_SHOP_NO_VALID_FRIENDLY_ZONES"),
+}
+
+Group.getByName('CA-Modern-Hunter_Killer_MGS'):destroy()
+bc:registerShopItem('camgs', LTGet("SYRIA_SHOP_ITEM_DEPLOY_MGS"), ShopPrices.camgs, function(sender)
+	return LTGet("SYRIA_SHOP_CHOOSE_DEPLOY_ZONE")
+end,
+function(sender, params)
+	if params.zone and params.zone.side == 2 and not params.zone.suspended then
+		local zn = CustomZone:getByName(params.zone.zone)
+		zn:spawnGroup('CA-Modern-Hunter_Killer_MGS')
+		trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_SHOP_FRIENDLY_MGS_DEPLOYED", params.zone.zone), 15)
+	else
+		return LTGet("SYRIA_SHOP_CAN_ONLY_DEPLOY_FRIENDLY")
+	end
+end)
+bc.shopItems['camgs'].groupZoneSelector = {
+	targetzoneside = 2,
+	includeSuspended = false,
+	sortPolicy = 'friendly_frontline',
+	extraPredicate = function(zoneObj)
+		return not isCarrierZoneName(zoneObj.zone)
+	end,
+	emptyLabel = LTGet("SYRIA_SHOP_NO_VALID_FRIENDLY_ZONES"),
+}
+
+Group.getByName('CA-Modern-Hunter_Killer_Dragoon'):destroy()
+bc:registerShopItem('cadragoon', LTGet("SYRIA_SHOP_ITEM_DEPLOY_DRAGOON"), ShopPrices.cadragoon, function(sender)
+	return LTGet("SYRIA_SHOP_CHOOSE_DEPLOY_ZONE")
+end,
+function(sender, params)
+	if params.zone and params.zone.side == 2 and not params.zone.suspended then
+		local zn = CustomZone:getByName(params.zone.zone)
+		zn:spawnGroup('CA-Modern-Hunter_Killer_Dragoon')
+		trigger.action.outTextForCoalition(2, L10N:Format("SYRIA_SHOP_FRIENDLY_DRAGOON_DEPLOYED", params.zone.zone), 15)
+	else
+		return LTGet("SYRIA_SHOP_CAN_ONLY_DEPLOY_FRIENDLY")
+	end
+end)
+bc.shopItems['cadragoon'].groupZoneSelector = {
+	targetzoneside = 2,
+	includeSuspended = false,
+	sortPolicy = 'friendly_frontline',
+	extraPredicate = function(zoneObj)
+		return not isCarrierZoneName(zoneObj.zone)
+	end,
+	emptyLabel = LTGet("SYRIA_SHOP_NO_VALID_FRIENDLY_ZONES"),
+}
+
 -- new menu
 local supplyMenu=nil
 bc:registerShopItem('capture',LTGet("SYRIA_SHOP_ITEM_CAPTURE_NEUTRAL"),ShopPrices.capture,
@@ -3591,12 +3750,46 @@ end, nil, 50)
 -- end red shop
 
 local infMenu=nil
+local redWarehouseMenu = nil
+bc:registerShopItem('redwarehouse', LTGet("WAREHOUSE_SHOP_RED_CREATE"), 3000, function(sender)
+	if redWarehouseMenu then
+		missionCommands.removeItemForCoalition(1, redWarehouseMenu)
+		redWarehouseMenu = nil
+	end
+	local zoneChoices = {}
+	for _, zoneObj in ipairs(bc:getZones()) do
+		if zoneObj.side == 1 and zoneObj.active and not zoneObj.suspended and not zoneObj.isHidden
+			and zoneObj.airbaseName and zoneObj.airbaseName ~= '' and not zoneObj.warehouseFacility
+			and not isCarrierZoneName(zoneObj.zone) then
+			zoneChoices[zoneObj.zone] = zoneObj
+		end
+	end
+	if not next(zoneChoices) then return LTGet("SYRIA_SHOP_NO_ELIGIBLE_AIRBASE_ZONES") end
+	redWarehouseMenu = bc:showTargetZoneMenu(1, LTGet("WAREHOUSE_SHOP_RED_CREATE"), function(zoneName, menu)
+		local zoneObj = zoneChoices[zoneName]
+		bc:buyShopItem(1, 'redwarehouse', {zone = zoneObj})
+		if zoneObj.warehouseFacility then
+			missionCommands.removeItemForCoalition(1, menu)
+			redWarehouseMenu = nil
+		end
+		return true -- Keep the selector on failure; successful purchases close it above.
+	end, 1, false, zoneChoices)
+	return LTGet("SYRIA_SHOP_CHOOSE_ZONE")
+end, function(sender, params)
+	return bc:applyRedWarehouseUpgrade(params.zone, params.placement, params.now)
+end)
+bc:registerShopItem('redwhrepair', LTGet("WAREHOUSE_SHOP_REPAIR"), 2000, function(sender)
+	return LTGet("SYRIA_SHOP_CHOOSE_ZONE")
+end, function(sender, params)
+	return bc:applyWarehouseRepair(params.zone, 1, params.now)
+end)
+
 bc:registerShopItem('zinf',LTGet("SYRIA_SHOP_ITEM_UPGRADE_INFANTRY"),ShopPrices.zinf,function(sender)
 	return LTGet("SYRIA_SHOP_CHOOSE_ZONE")
 end,
 function(sender,params)
 	if params.zone and params.zone.side==2 then
-		local max = 1 + (bc.globalExtraUnlock and 1 or 0)
+		local max = 2 + (bc.globalExtraUnlock and 1 or 0)
 		if params.zone.upgradesUsed >= max then
 			if not bc.globalExtraUnlock then
 				return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED_EXTRA")
@@ -3605,7 +3798,7 @@ function(sender,params)
 		end
 		params.zone:addExtraSlot('blueInfantry')
 		bc:refreshZoneLabel(params.zone.zone)
-		if bc.globalExtraUnlock then
+		if bc.globalExtraUnlock or params.zone.upgradesUsed < max then
 		trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED", L10N:Get("SYRIA_SHOP_LABEL_INFANTRY"), params.zone.zone, tostring(ShopPrices.zinf)),10)
 		else
 		trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED_EXTRA", L10N:Get("SYRIA_SHOP_LABEL_INFANTRY"), params.zone.zone, tostring(ShopPrices.zinf)),30)
@@ -3621,28 +3814,27 @@ bc.shopItems['zinf'].groupZoneSelector = {
 	extraPredicate = function(zoneObj) return bc:isEligibleBlueZoneUpgradeTarget(zoneObj) end,
 	emptyLabel = LTGet("SYRIA_SHOP_NO_ELIGIBLE_ZONE"),
 }
-local samLabel = ColdWarTechEra and LTGet("SYRIA_SHOP_ITEM_UPGRADE_HAWK")
-                                   or  LTGet("SYRIA_SHOP_ITEM_UPGRADE_NASAMS")
+local samLabel = LTGet("SYRIA_SHOP_ITEM_UPGRADE_NASAMS")
 local samMenu=nil
 bc:registerShopItem('zsam',samLabel,ShopPrices.zsam,function(sender)
 	return LTGet("SYRIA_SHOP_CHOOSE_ZONE")
 end,
 function(sender,params)
-	if params.zone and params.zone.side==2 then
-		local max = 1 + (bc.globalExtraUnlock and 1 or 0)
+	if params.zone and params.zone.side==2 and not params.zone.suspended then
+		local max = 2 + (bc.globalExtraUnlock and 1 or 0)
 		if params.zone.upgradesUsed >= max then
 			if not bc.globalExtraUnlock then
 				return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED_EXTRA")
 			end
 			return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED")
 		end
-		params.zone:addExtraSlot(ColdWarTechEra and 'bluePD_CW' or 'bluePD1')
+		params.zone:addExtraSlot(sender.upgradeTemplate)
 		bc:refreshZoneLabel(params.zone.zone)
-		local sys = ColdWarTechEra and 'Hawk' or 'Nasams'
-        if bc.globalExtraUnlock then
-            trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED", sys, params.zone.zone, tostring(ShopPrices.zsam)),10)
+		local sys = sender.upgradeLabel
+        if bc.globalExtraUnlock or params.zone.upgradesUsed < max then
+            trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED", sys, params.zone.zone, tostring(sender.cost)),10)
         else
-            trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED_EXTRA", sys, params.zone.zone, tostring(ShopPrices.zsam)),30)
+            trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED_EXTRA", sys, params.zone.zone, tostring(sender.cost)),30)
         end
 	else
 		return LTGet("SYRIA_SHOP_MUST_PICK_FRIENDLY_ZONE")
@@ -3655,6 +3847,25 @@ bc.shopItems['zsam'].groupZoneSelector = {
 	extraPredicate = function(zoneObj) return bc:isEligibleBlueZoneUpgradeTarget(zoneObj) end,
 	emptyLabel = LTGet("SYRIA_SHOP_NO_ELIGIBLE_ZONE"),
 }
+local samItem = bc.shopItems['zsam']
+samItem.upgradeTemplate = 'Blue SAM NASAMS'
+samItem.upgradeLabel = 'NASAMS'
+
+-- Each defense choice reuses the same purchase action and zone selector.
+for _, defense in ipairs({
+	{ id = 'zhawk', labelKey = 'SYRIA_SHOP_ITEM_UPGRADE_HAWK', template = 'Blue SAM HAWK', label = 'HAWK' },
+	{ id = 'zavenger', labelKey = 'SYRIA_SHOP_ITEM_UPGRADE_AVENGER', template = 'Blue SAM SHORAD Avenger', label = 'Avenger' },
+	{ id = 'zroland', labelKey = 'SYRIA_SHOP_ITEM_UPGRADE_ROLAND', template = 'Blue SAM SHORAD Roland', label = 'Roland' },
+	{ id = 'zgepard', labelKey = 'SYRIA_SHOP_ITEM_UPGRADE_GEPARD', template = 'Blue SAM AAA Gepard', label = 'Gepard' },
+	{ id = 'zvulcan', labelKey = 'SYRIA_SHOP_ITEM_UPGRADE_VULCAN', template = 'Blue SAM AAA Vulcan', label = 'Vulcan' },
+	{ id = 'zcram', labelKey = 'SYRIA_SHOP_ITEM_UPGRADE_CRAM', template = 'Blue SAM AAA C-RAM', label = 'C-RAM' },
+}) do
+	bc:registerShopItem(defense.id, LTGet(defense.labelKey), ShopPrices[defense.id], samItem.action, samItem.altAction)
+	local item = bc.shopItems[defense.id]
+	item.upgradeTemplate = defense.template
+	item.upgradeLabel = defense.label
+	item.groupZoneSelector = samItem.groupZoneSelector
+end
 
 local himarsMenu=nil
 bc:registerShopItem('zhimars',LTGet("SYRIA_SHOP_ITEM_UPGRADE_HIMARS"),ShopPrices.zhimars,function(sender)
@@ -3662,7 +3873,7 @@ bc:registerShopItem('zhimars',LTGet("SYRIA_SHOP_ITEM_UPGRADE_HIMARS"),ShopPrices
 end,
 function(sender,params)
 	if params.zone and params.zone.side==2 and not params.zone.suspended then
-		local max = 1 + (bc.globalExtraUnlock and 1 or 0)
+		local max = 2 + (bc.globalExtraUnlock and 1 or 0)
 		if params.zone.upgradesUsed >= max then
 			if not bc.globalExtraUnlock then
 				return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED_EXTRA")
@@ -3671,7 +3882,7 @@ function(sender,params)
 		end
 		params.zone:addExtraSlot('HiMars')
 		bc:refreshZoneLabel(params.zone.zone)
-		if bc.globalExtraUnlock then
+		if bc.globalExtraUnlock or params.zone.upgradesUsed < max then
 			trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED", "HIMARS", params.zone.zone, tostring(ShopPrices.zhimars)),10)
 		else
 			trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED_EXTRA", "HIMARS", params.zone.zone, tostring(ShopPrices.zhimars)),30)
@@ -3702,7 +3913,24 @@ bc.shopItems['zlogc'].groupZoneSelector = {
 	includeSuspended = false,
 	sortPolicy = 'friendly_frontline',
 	extraPredicate = function(zoneObj)
-		return not zoneObj.LogisticCenter
+		return not zoneObj.LogisticCenter and not zoneObj.warehouseFacility and not isCarrierZoneName(zoneObj.zone)
+	end,
+	emptyLabel = LTGet("SYRIA_SHOP_NO_ELIGIBLE_AIRBASE_ZONES"),
+}
+
+bc:registerShopItem('zwhrepair', LTGet("WAREHOUSE_SHOP_REPAIR"), ShopPrices.zwhrepair, function(sender)
+	return LTGet("SYRIA_SHOP_CHOOSE_ZONE")
+end, function(sender, params)
+	return bc:applyWarehouseRepair(params.zone, 2, timer.getAbsTime())
+end)
+bc.shopItems['zwhrepair'].groupZoneSelector = {
+	targetzoneside = 2,
+	includeSuspended = true,
+	sortPolicy = 'friendly_frontline',
+	candidateBucket = 'blue_visible',
+	refreshTags = { 'warehouse_targets' },
+	extraPredicate = function(zoneObj)
+		return zoneObj.warehouseFacility ~= nil and zoneObj.warehouseFacility.state == 'destroyed'
 	end,
 	emptyLabel = LTGet("SYRIA_SHOP_NO_ELIGIBLE_AIRBASE_ZONES"),
 }
@@ -3802,6 +4030,12 @@ bc.shopItems['recon'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
 bc.shopItems['recon'].groupZoneSelector.refreshTags = { 'friendly_targets' }
 bc.shopItems['airdef'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
 bc.shopItems['airdef'].groupZoneSelector.refreshTags = { 'friendly_targets' }
+bc.shopItems['calav'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
+bc.shopItems['calav'].groupZoneSelector.refreshTags = { 'friendly_targets' }
+bc.shopItems['camgs'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
+bc.shopItems['camgs'].groupZoneSelector.refreshTags = { 'friendly_targets' }
+bc.shopItems['cadragoon'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
+bc.shopItems['cadragoon'].groupZoneSelector.refreshTags = { 'friendly_targets' }
 bc.shopItems['zinf'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
 bc.shopItems['zinf'].groupZoneSelector.refreshTags = { 'friendly_targets' }
 bc.shopItems['zsam'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
@@ -3829,18 +4063,18 @@ bc:registerShopItem('zarm',LTGet("SYRIA_SHOP_ITEM_UPGRADE_ARMOR"),ShopPrices.zar
 end,
 function(sender,params)
 	if params.zone and params.zone.side==2 and not params.zone.suspended then
-		local max = 1 + (bc.globalExtraUnlock and 1 or 0)
+		local max = 2 + (bc.globalExtraUnlock and 1 or 0)
 		if params.zone.upgradesUsed >= max then
 			if not bc.globalExtraUnlock then
 				return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED_EXTRA")
 			end
 			return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED")
 		end
-		local slotID = Era == 'Vietnam' and 'blueArmor-VT'
-			or (Era == 'Coldwar' and 'blueArmor_cw' or 'blueArmor')
+		local slotID = Era == 'Vietnam' and 'Blue Armor Vietnam'
+			or (Era == 'Coldwar' and 'Blue Armor Coldwar' or 'Blue Armor Modern')
 		params.zone:addExtraSlot(slotID)
 		bc:refreshZoneLabel(params.zone.zone)
-		if bc.globalExtraUnlock then
+		if bc.globalExtraUnlock or params.zone.upgradesUsed < max then
 			trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED", L10N:Get("SYRIA_SHOP_LABEL_ARMOR"), params.zone.zone, tostring(ShopPrices.zarm)),10)
 		else
 			trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED_EXTRA_LINE", L10N:Get("SYRIA_SHOP_LABEL_ARMOR"), params.zone.zone, tostring(ShopPrices.zarm)),30)
@@ -3860,36 +4094,11 @@ bc.shopItems['zarm'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
 bc.shopItems['zarm'].groupZoneSelector.refreshTags = { 'friendly_targets' }
 
 local patMenu=nil
-bc:registerShopItem('zpat',LTGet("SYRIA_SHOP_ITEM_UPGRADE_PATRIOT"),ShopPrices.zpat,function(sender)
-	return LTGet("SYRIA_SHOP_CHOOSE_ZONE")
-end,
-function(sender,params)
-	if params.zone and params.zone.side==2 and not params.zone.suspended then
-		local max = 1 + (bc.globalExtraUnlock and 1 or 0)
-		if params.zone.upgradesUsed >= max then
-			if not bc.globalExtraUnlock then
-				return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED_EXTRA")
-			end
-			return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED")
-		end
-		params.zone:addExtraSlot('bluePATRIOT')
-		bc:refreshZoneLabel(params.zone.zone)
-		if bc.globalExtraUnlock then
-		trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED", "Patriot", params.zone.zone, tostring(ShopPrices.zpat)),10)
-		else
-		trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED_EXTRA", "Patriot", params.zone.zone, tostring(ShopPrices.zpat)),30)
-		end
-	else
-		return LTGet("SYRIA_SHOP_MUST_PICK_FRIENDLY_ZONE")
-	end
-end)
-bc.shopItems['zpat'].groupZoneSelector = {
-	targetzoneside = 2,
-	includeSuspended = false,
-	sortPolicy = 'friendly_frontline',
-	extraPredicate = function(zoneObj) return bc:isEligibleBlueZoneUpgradeTarget(zoneObj) end,
-	emptyLabel = LTGet("SYRIA_SHOP_NO_ELIGIBLE_ZONE"),
-}
+bc:registerShopItem('zpat', LTGet("SYRIA_SHOP_ITEM_UPGRADE_PATRIOT"), ShopPrices.zpat, samItem.action, samItem.altAction)
+local patItem = bc.shopItems['zpat']
+patItem.upgradeTemplate = 'Blue SAM PATRIOT'
+patItem.upgradeLabel = 'PATRIOT'
+patItem.groupZoneSelector = samItem.groupZoneSelector
 bc.shopItems['zpat'].groupZoneSelector.candidateBucket = 'blue_unsuspended'
 bc.shopItems['zpat'].groupZoneSelector.refreshTags = { 'friendly_targets' }
 
@@ -3899,7 +4108,7 @@ bc:registerShopItem('zgci',LTGet("SYRIA_SHOP_ITEM_UPGRADE_GCI"),ShopPrices.zgci,
 end,
 function(sender,params)
 	if params.zone and params.zone.side==2 and not params.zone.suspended then
-		local max = 1 + (bc.globalExtraUnlock and 1 or 0)
+		local max = 2 + (bc.globalExtraUnlock and 1 or 0)
 		if params.zone.upgradesUsed >= max then
 			if not bc.globalExtraUnlock then
 				return LTGet("SYRIA_SHOP_ZONE_ALREADY_UPGRADED_EXTRA")
@@ -3909,7 +4118,7 @@ function(sender,params)
 		params.zone:addExtraSlot('BlueGCI')
 		bc:refreshZoneLabel(params.zone.zone)
 		bc:requestShopSelectorRefreshForCoalition(2, { 'zgci' })
-		if bc.globalExtraUnlock then
+		if bc.globalExtraUnlock or params.zone.upgradesUsed < max then
 			trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED", L10N:Get("SYRIA_SHOP_LABEL_GCI"), params.zone.zone, tostring(ShopPrices.zgci)),10)
 		else
 			trigger.action.outTextForCoalition(2,L10N:Format("SYRIA_SHOP_UPGRADE_ADDED_EXTRA", L10N:Get("SYRIA_SHOP_LABEL_GCI"), params.zone.zone, tostring(ShopPrices.zgci)),30)
@@ -3977,9 +4186,16 @@ ShopPrices = ShopPrices or {
 	intel         = 150,  -- Intel on enemy zone
 	groundattack  = 1000, -- Ground attack convoy
 	zinf          = 500,  -- Upgrade zone with infantry
-	zsam          = 2000, -- Upgrade zone with Hawk/Nasams
+	zhawk         = 2000, -- HAWK zone upgrade
+	zavenger      = 1000, -- Avenger zone upgrade
+	zroland       = 1000, -- Roland zone upgrade
+	zgepard       = 750, -- Gepard zone upgrade
+	zvulcan       = 500, -- Vulcan zone upgrade
+	zcram         = 1500, -- C-RAM zone upgrade
+	zsam          = 2000, -- Upgrade zone with NASAMS
 	zhimars       = 2500, -- Upgrade zone with HIMARS
 	zlogc         = 2000, -- Upgrade zone to logistic center
+	zwhrepair     = 2000, -- Repair the destroyed warehouse building
 	zsup3         = 750,  -- Add 3 supplies to a zone
 	zwh50         = 500,  -- Resupply warehouse with 50
 	zarm          = 1000, -- Upgrade zone with armor
@@ -4011,7 +4227,13 @@ ShopRankRequirements = ShopRankRequirements or {
 	supplies       = 6,  -- Fully Upgrade Friendly Zone
 	zinf           = 5,  -- Upgrade zone with infantry
 	zarm           = 7,  -- Upgrade zone with armor
-	zsam           = 6,  -- Upgrade zone with Hawk/Nasams
+	zhawk         = 6, -- HAWK zone upgrade
+	zavenger      = 5, -- Avenger zone upgrade
+	zroland       = 5, -- Roland zone upgrade
+	zgepard       = 4, -- Gepard zone upgrade
+	zvulcan       = 3, -- Vulcan zone upgrade
+	zcram         = 6, -- C-RAM zone upgrade
+	zsam          = 6,  -- Upgrade zone with NASAMS
 	zhimars        = 8,  -- Upgrade zone with HIMARS
 	zlogc          = 1,  -- Upgrade zone to logistic center
 	zsup3          = 2,  -- Add 3 supplies to a zone
@@ -4032,6 +4254,8 @@ ShopRankRequirements = ShopRankRequirements or {
 
 bc:addShopItem(1, 'redzoneupgrade', -1, 1) -- red AI zone upgrade
 bc:addShopItem(1, 'redmassattack', -1, 1) -- red AI mass airbase attack
+bc:addShopItem(1, 'redwarehouse', -1, 3) -- red AI rear supply depot
+bc:addShopItem(1, 'redwhrepair', -1, 4) -- red AI warehouse repair
 if Era ~= "Vietnam" then
 	bc:addShopItem(1, 'strategicbomberRed', -1, 2) -- red AI strategic bomber
 end
@@ -4065,9 +4289,7 @@ bc:addShopItem(2, 'dynamicsead', -1, 4, ShopRankRequirements.dynamicsead, ShopCa
 if Era ~= 'Vietnam' then
 bc:addShopItem(2, 'dynamicdecoy', -1, 5, ShopRankRequirements.dynamicdecoy, ShopCats.AIAttack) -- TALD DECOY Flight
 end
-if UseStatics == true then
-    bc:addShopItem(2, 'dynamicstatic', -1, 6, ShopRankRequirements.dynamicstatic, ShopCats.AIAttack) -- Static structure Flight
-end
+bc:addShopItem(2, 'dynamicstatic', -1, 6, ShopRankRequirements.dynamicstatic, ShopCats.AIAttack) -- Static structure Flight
 bc:addShopItem(2, 'groundattack', -1, 7, ShopRankRequirements.groundattack, ShopCats.AIAttack) -- Ground attack convoy
 bc:addShopItem(2, 'strategicbomber', -1, 8, ShopRankRequirements.strategicbomber, ShopCats.AIAttack) -- Strategic Bomber
 bc:addShopItem(2, 'cruisemsl', 12, 7, ShopRankRequirements.cruisemsl, ShopCats.AIAttack) -- Cruise missiles
@@ -4075,16 +4297,26 @@ bc:addShopItem(2, 'cruisemsl', 12, 7, ShopRankRequirements.cruisemsl, ShopCats.A
 -- Zone Upgrades
 bc:addShopItem(2, 'zinf', -1, 1, ShopRankRequirements.zinf, ShopCats.ZoneUpgrades) -- add infantry to a zone
 bc:addShopItem(2, 'zarm', -1, 2, ShopRankRequirements.zarm, ShopCats.ZoneUpgrades) -- add armour group to a zone
-bc:addShopItem(2, 'zsam', -1, 3, ShopRankRequirements.zsam, ShopCats.ZoneUpgrades) -- add Nasams to a zone
-bc:addShopItem(2, 'gslot', 1, 5, ShopRankRequirements.gslot, ShopCats.ZoneUpgrades) -- add another slot for upgrade
+bc:addShopItem(2, 'zhawk', -1, 3, ShopRankRequirements.zhawk, ShopCats.ZoneUpgrades) -- HAWK system
 if Era == 'Modern' then
-    bc:addShopItem(2, 'zhimars', -1, 4, ShopRankRequirements.zhimars, ShopCats.ZoneUpgrades) -- add HIMARS to a zone
-    bc:addShopItem(2, 'zpat', -1, 6, ShopRankRequirements.zpat, ShopCats.ZoneUpgrades) -- Patriot system.
+	bc:addShopItem(2, 'zsam', -1, 4, ShopRankRequirements.zsam, ShopCats.ZoneUpgrades) -- NASAMS system
+	bc:addShopItem(2, 'zcram', -1, 10, ShopRankRequirements.zcram, ShopCats.ZoneUpgrades) -- C-RAM
+end
+bc:addShopItem(2, 'zavenger', -1, 6, ShopRankRequirements.zavenger, ShopCats.ZoneUpgrades) -- Avenger
+bc:addShopItem(2, 'zroland', -1, 7, ShopRankRequirements.zroland, ShopCats.ZoneUpgrades) -- Roland
+bc:addShopItem(2, 'zgepard', -1, 8, ShopRankRequirements.zgepard, ShopCats.ZoneUpgrades) -- Gepard
+bc:addShopItem(2, 'zvulcan', -1, 9, ShopRankRequirements.zvulcan, ShopCats.ZoneUpgrades) -- Vulcan
+bc:addShopItem(2, 'gslot', 1, 14, ShopRankRequirements.gslot, ShopCats.ZoneUpgrades) -- add another slot for upgrade
+if Era == 'Modern' then
+    bc:addShopItem(2, 'zhimars', -1, 11, ShopRankRequirements.zhimars, ShopCats.ZoneUpgrades) -- add HIMARS to a zone
+end
+if Era ~= 'Vietnam' then
+    bc:addShopItem(2, 'zpat', -1, 5, ShopRankRequirements.zpat, ShopCats.ZoneUpgrades) -- Patriot system.
 end
 
 -- JTAC & Intel
 if Era ~= 'Vietnam' then
-bc:addShopItem(2, 'zgci', -1, 7, ShopRankRequirements.zgci, ShopCats.ZoneUpgrades) -- GCI station.
+bc:addShopItem(2, 'zgci', -1, 12, ShopRankRequirements.zgci, ShopCats.ZoneUpgrades) -- GCI station.
 
 bc:addShopItem(2, 'jtac', -1, 1, ShopRankRequirements.jtac, ShopCats.JTACIntel) -- MQ-9 Reaper JTAC mission
 end
@@ -4102,6 +4334,13 @@ bc:addShopItem(2, 'armor', -1, 1, ShopRankRequirements.armor, ShopCats.CombinedA
 bc:addShopItem(2, 'artillery', -1, 2, ShopRankRequirements.artillery, ShopCats.CombinedArms) -- combined arms
 bc:addShopItem(2, 'recon', -1, 3, ShopRankRequirements.recon, ShopCats.CombinedArms) -- combined arms
 bc:addShopItem(2, 'airdef', -1, 4, ShopRankRequirements.airdef, ShopCats.CombinedArms) -- combined arms
+if Era ~= 'Vietnam' then
+	bc:addShopItem(2, 'calav', -1, 5, ShopRankRequirements.calav, ShopCats.CombinedArms)
+end
+if Era == 'Modern' then
+	bc:addShopItem(2, 'camgs', -1, 6, ShopRankRequirements.camgs, ShopCats.CombinedArms)
+	bc:addShopItem(2, 'cadragoon', -1, 7, ShopRankRequirements.cadragoon, ShopCats.CombinedArms)
+end
 
 -- Logistics & Strategic
 bc:addShopItem(2, 'capture', -1, 1, ShopRankRequirements.capture, ShopCats.LogisticsStrategic) -- emergency capture
@@ -4111,6 +4350,7 @@ if AllowScriptedSupplies then
     bc:addShopItem(2, 'supplies', -1, 4, ShopRankRequirements.supplies, ShopCats.LogisticsStrategic) -- fully upgrade friendly zone
 end
 bc:addShopItem(2, 'zlogc', -1, 5, ShopRankRequirements.zlogc, ShopCats.LogisticsStrategic) -- upgrade zone to logistic center
+bc:addShopItem(2, 'zwhrepair', -1, 5.5, ShopRankRequirements.zlogc, ShopCats.LogisticsStrategic) -- repair warehouse
 bc:addShopItem(2, 'zsup3', -1, 6, ShopRankRequirements.zsup3, ShopCats.LogisticsStrategic) -- add 3 supplies to a zone
 if WarehouseLogistics then
     bc:addShopItem(2, 'zwh50', -1, 7, ShopRankRequirements.zwh50, ShopCats.LogisticsStrategic) -- resupply warehouse with 50
@@ -4164,7 +4404,9 @@ supplyZones = {
 TerritoryOverlayOuterDrawPushMeters = 500000
 
 lc = LogisticCommander:new({battleCommander = bc, supplyZones = supplyZones})
+bc:initRunwayMissions()
 bc:initCasMissions()
+bc:initDeadMissions()
 bc:initSeadMissions()
 bc:initReconMissions()
 bc.seadMissionRegularSlots = bc.seadMissionMaxSlots
@@ -4174,6 +4416,15 @@ bc:resetSeadMissionSlot(bc.seadMissionDefenceReserveSlot)
 lc:init()
 
 bc:loadFromDisk()
+-- Defense shop era availability also applies to restored shop entries.
+if Era ~= 'Modern' then
+	bc:removeShopItem(2, 'zsam')
+	bc:removeShopItem(2, 'zcram')
+end
+if Era == 'Vietnam' then
+	bc:removeShopItem(2, 'zpat')
+end
+
 if zonePersistance and zonePersistance.zones and next(zonePersistance.zones) == nil then
     bc.saveLoaded = false
 end
@@ -4268,7 +4519,10 @@ elseif Era == 'Vietnam' then
 end
 
 
-RewardContribution = RewardContribution or {infantry = 10, ground = 10, sam = 30, airplane = 50, ship = 200, helicopter=50, crate=100, rescue = 300, ['Zone upgrade'] = 100, ['Zone capture'] = 200, ['Warehouse delivery'] = 150, structure = 100}
+RewardContribution = RewardContribution or {infantry = 10, ground = 10, sam = 30, airplane = 50, ship = 200, helicopter=50, crate=100, rescue = 300, enemyPilotCapture = 200, ['Zone upgrade'] = 100, ['Zone capture'] = 200, ['Warehouse delivery'] = 150, structure = 100}
+RewardContribution.ctldGround = RewardContribution.ctldGround or 10
+RewardContribution.ctldAir = RewardContribution.ctldAir or 20
+RewardContribution.enemyPilotCapture = RewardContribution.enemyPilotCapture or 200
 bc:startRewardPlayerContribution(15,RewardContribution)
 HercCargoDropSupply.init(bc)
 buildTemplateCache()
@@ -4348,6 +4602,7 @@ DynamicHybridConfig = DynamicHybridConfig or {
 	minLongRangeSeadAttackNm = 60,
 	minPlaneAttackNm = 25,
 	minHeloAttackNm = 15,
+	enablePatrol = false,
 	log = true,
 }
 bc:startDynamicHybridFiller(DynamicHybridConfig)
@@ -4379,40 +4634,67 @@ bandarforce = {
 		Group.getByName(v2):destroy()
 	end
 end
-evc:addEvent({
+local bandarAttackEvent = {
 	id='bandarattack',
-	action = function()
-		for i,v in pairs(bandarforce) do
-			if bc:getZoneByName(i).side == 1 then
-				for _,v2 in ipairs(v) do
-					RespawnGroup(v2)
+	idleAttackIsActive = function()
+		return IsGroupActive('Bandar-gforce-1') or IsGroupActive('Bandar-gforce-2') or IsGroupActive('Bandar-gforce-3')
+	end,
+	action = function(event)
+		local sources, target = event._launchSources, event._launchTarget
+		event._launchSources, event._launchTarget = nil, nil
+		local firstOwner
+		for _, source in ipairs(sources) do
+			source.liveGroups = {}
+			local owner = {side=1, zoneCommander=source.zone, idleAttackIsActive=function()
+				for _, group in ipairs(source.liveGroups) do if group:isExist() and group:getSize() > 0 then return true end end
+				return source.zone.zone == 'Echo' and event:idleAttackIsActive() or false
+			end}
+			if not firstOwner then firstOwner = owner else mc:holdIdleAttack(event, owner, target) end
+		end
+		return mc:launchIdleAttack(event, firstOwner, target, function()
+			local spawned = false
+			for _, source in ipairs(sources) do
+				if source.zone.side == 1 then
+					for _, name in ipairs(source.groups) do
+						local group = RespawnGroup(name)
+						if group then source.liveGroups[#source.liveGroups+1] = group:GetDCSObject(); spawned = true end
+					end
 				end
 			end
-		end
+			return spawned
+		end)
 	end,
-	canExecute = function()
+	canExecute = function(event)
+		event._launchSources, event._launchTarget = nil, nil
+		if event._idleAttackPendingLaunch then return false end
 		if math.random(1,100) < 70 then return false end
 		
-		if bc:getZoneByName('BandarAbbas').side ~= 2 then return false end
+		local target = bc:getZoneByName('BandarAbbas')
+		if target.side ~= 2 or (target.suspended and not target._idleSuspended) then return false end
 		
 		local canAttack = false
+		local sources = {}
 		for i,v in pairs(bandarforce) do
-			if bc:getZoneByName(i).side == 1 then canAttack = true end
+			local source = bc:getZoneByName(i)
+			if source.side == 1 then canAttack = true; sources[#sources+1] = {zone=source, groups=v} end
 			
 			for _,v2 in ipairs(v) do
 				if Group.getByName(v2) then return false end
 			end
 		end
 		
-		return canAttack
+		if not canAttack then return false end
+		event._launchSources, event._launchTarget = sources, target
+		return true
 	end
-})
+}
+evc:addEvent(bandarAttackEvent)
 
 --------------------------------------- Oscar Scuds ---------------------------------------
 Group.getByName('oscar-scud-1'):destroy()
-evc:addEvent({
+local pgScudEvent = {
 	id='scuds',
-	action = function()
+	action = function(event)
 		RespawnGroup('oscar-scud-1')
 		RegisterGroupTarget('oscar-scud-1',100,L10N:Get("SYRIA_MISSION_TARGET_DESTROY_SCUDS"),'scuds')
 		timer.scheduleFunction(function(param, time)
@@ -4432,8 +4714,9 @@ evc:addEvent({
 				}
 				local validtgts = {}
 				for _,v in ipairs(tgts) do
-					if bc:getZoneByName(v).side == 2 and not bc:getZoneByName(v).suspended then
-						table.insert(validtgts, v)
+					local zone = bc:getZoneByName(v)
+					if zone.side == 2 and (not zone.suspended or zone._idleSuspended) then
+						table.insert(validtgts, zone)
 					end
 				end
 				
@@ -4441,29 +4724,43 @@ evc:addEvent({
 				
 				local die = math.random(1,#validtgts)
 				local choice = validtgts[die]
-				bc:fireAtZone(choice, 'oscar-scud-1', true, 16)
-				trigger.action.outTextForCoalition(2, L10N:Format("PG_EVENT_SCUDS_FOXTROT_LAUNCHING", choice), 15)
+				local nativeLauncher = scudGrp:GetDCSObject()
+				local owner = {side=1, idleAttackIsActive=function()
+					return nativeLauncher:isExist() and nativeLauncher:getSize() > 0
+				end}
+				mc:launchIdleAttack(event, owner, choice, function()
+					if not nativeLauncher:isExist() or nativeLauncher:getSize() == 0 then return false end
+					if bc:_fireAtResolvedZone(choice, nativeLauncher, true, 16) then return false end
+					choice._idleAttackHold = true
+				trigger.action.outTextForCoalition(2, L10N:Format("PG_EVENT_SCUDS_FOXTROT_LAUNCHING", choice.zone), 15)
+					return true
+				end, {nativeLauncher:getUnit(1):getPoint(), choice._cz.point})
 			end
 		end, {}, timer.getTime()+(20*60))
 	end,
-	canExecute = function()
+	canExecute = function(event)
+		if event._idleAttackPendingLaunch then return false end
 		if ActiveMission['scuds'] then return false end
 		if math.random(1, 100) < 60 then return false end
 		local gr = Group.getByName('oscar-scud-1')
 		if gr then return false end
 
-		if bc:getZoneByName('Foxtrot').side ~= 1 or bc:getZoneByName('Foxtrot').suspended then return false end
+		local foxtrot = bc:getZoneByName('Foxtrot')
+		if foxtrot.side ~= 1 or (foxtrot.suspended and not foxtrot._idleSuspended) then return false end
 
 		local triggers = {'BandarAbbas', 'Qeshm Island', 'Ramp-Kongo', 'Lar'}
 		for _,v in ipairs(triggers) do
-			if bc:getZoneByName(v).side == 2 and not bc:getZoneByName(v).suspended then
+			local zone = bc:getZoneByName(v)
+			if zone.side == 2 and (not zone.suspended or zone._idleSuspended) then
 				return true
 			end
 		end
 		return false
 	end
-})
+}
+evc:addEvent(pgScudEvent)
 mc:trackMission({
+	idleAttackEvent = pgScudEvent,
 	title = LTGet("PG_MISSION_SCUDS_30_TITLE"),
 	description = LTGet("PG_MISSION_SCUDS_30_DESC"),
 	messageStart = LTGet("PG_MISSION_SCUDS_START"),
@@ -4474,7 +4771,7 @@ mc:trackMission({
         end
     end,
     endAction = function()
-		bc:cancelGroupTargetMission('scuds')
+		bc:cancelGroupTargetMission('scuds', 2)
     end,
 	isActive = function()
 		if not ActiveMission['scuds']  then return false end
@@ -4497,39 +4794,72 @@ Group.getByName('lar-attack-sunny-event-cw'):destroy()
 Group.getByName('lar-attack-echo-event-cw'):destroy()
 Group.getByName('lar-attack-golf-event-cw'):destroy()
 Group.getByName('lar-attack-foxtrot-event-cw'):destroy()
-evc:addEvent({
+local heloHuntEvent = {
     id='helohunt',
-    action=function()
+    action=function(event)
         local function cw(n)return ColdWarTechEra and (n..'-cw') or n end
         local groupsAndTargets={
             {group=cw('lar-attack-ramp-kongo-event'), target='Ramp-Kongo'},
-            {group=cw('lar-attack-sunny-event'),      target='Sunny'},
+            {group=cw('lar-attack-sunny-event'),      target='Golf', gate='Sunny'},
             {group=cw('lar-attack-echo-event'),       target='Echo'},
             {group=cw('lar-attack-golf-event'),       target='Golf'},
             {group=cw('lar-attack-foxtrot-event'),    target='Foxtrot'}
         }
-        for _,e in ipairs(groupsAndTargets) do
-            local z = bc:getZoneByName(e.target)
-            if z and z.side == 2 and not z.suspended then
-                RespawnGroup(e.group)
-                timer.scheduleFunction(function()
-                    RegisterGroupTarget(e.group,500,L10N:Get("PG_MISSION_HELO_HUNT_TARGET"))
-                end,{},timer.getTime()+1)
+		local source = event._launchSource
+		event._launchSource = nil
+		local selected, firstOwner, firstTarget = {}
+        for _,entry in ipairs(groupsAndTargets) do
+			local target = bc.indexedZones[entry.target]
+			local gate = entry.gate and bc.indexedZones[entry.gate] or target
+            if gate.side == 2 and (not gate.suspended or gate._idleSuspended)
+				and target.active and (not target.suspended or target._idleSuspended) then
+				selected[#selected+1] = entry
+				if target.side ~= 0 then
+					local owner = {side=1, zoneCommander=source, idleAttackIsActive=function()
+						return entry.liveNative and entry.liveNative:isExist() and entry.liveNative:getSize() > 0 or false
+					end}
+					if not firstOwner then firstOwner, firstTarget = owner, target else mc:holdIdleAttack(event, owner, target) end
+				end
             end
         end
+		local function launch()
+			if source.side ~= 1 or (source.suspended and not source._idleSuspended) then return false end
+			local spawned = false
+			for _,entry in ipairs(selected) do
+				entry.liveGroup = RespawnGroup(entry.group)
+				if entry.liveGroup then
+					entry.liveNative = entry.liveGroup:GetDCSObject()
+					spawned = true
+					timer.scheduleFunction(function()
+						RegisterGroupTarget(entry.group,500,L10N:Get("PG_MISSION_HELO_HUNT_TARGET"))
+					end,{},timer.getTime()+1)
+				end
+			end
+			return spawned
+		end
+		if not firstOwner then return launch() end
+		return mc:launchIdleAttack(event, firstOwner, firstTarget, launch)
     end,
-    canExecute=function()
+    canExecute=function(event)
+		event._launchSource = nil
+		if event._idleAttackPendingLaunch then return false end
 		if timer.getAbsTime() - lastHeloHunt_COOLDOWN < HeloHunt_COOLDOWN then return false end
         if math.random(1,100)<30 then return false end
-        if bc:getZoneByName('Lar').side~=1 or bc:getZoneByName('Lar').suspended then return false end
+		local source = bc:getZoneByName('Lar')
+        if source.side~=1 or (source.suspended and not source._idleSuspended) then return false end
         local trg={'Foxtrot','Golf','Ramp-Kongo','Sunny','Echo'}
-        for _,v in ipairs(trg) do if bc:getZoneByName(v).side==2 and not bc:getZoneByName(v).suspended then return true end end
+        for _,v in ipairs(trg) do
+			local target = bc:getZoneByName(v)
+			if target.side==2 and (not target.suspended or target._idleSuspended) then event._launchSource=source;return true end
+		end
         return false
     end
-})
+}
+evc:addEvent(heloHuntEvent)
 
 mc:trackMission({
     title = LTGet("PG_MISSION_HELO_HUNT_TITLE"),
+    idleAttackEvent = heloHuntEvent,
     description = LTGet("PG_MISSION_HELO_HUNT_DESC"),
     messageStart = LTGet("PG_MISSION_HELO_HUNT_START"),
     messageEnd = function(T) lastHeloHunt_COOLDOWN=timer.getTime() return LT(T):Get("PG_MISSION_HELO_HUNT_END") end,
@@ -4548,7 +4878,7 @@ mc:trackMission({
             cw('lar-attack-foxtrot-event'),
         }
         for _, groupName in ipairs(groups) do
-            bc:cancelGroupTargetMission(groupName)
+            bc:cancelGroupTargetMission(groupName, 2)
         end
     end,
     isActive = function()
@@ -4571,7 +4901,11 @@ mc:trackMission({
 -------------------------------------End of Helo Hunt ----------------------------------
 ---------------------------------------- Airstrike ---------------------------------------
 local airstrike_COOLDOWN = 3600
-local attackGrp = ColdWarTechEra and 'evt-attackcw' or 'evt-attack'
+local enemyStrikeGroups = BuildEnabledTemplateList(
+	ColdWarTechEra and {'evt-attackcw'} or {'evt-attack', 'evt-attackcw'},
+	RedEnemyStrikePlaneEnabled
+)
+local attackGrp = enemyStrikeGroups[1] or 'evt-attack'
 local airstrikeAltitudeFt = 20000
 local airstrikePickOptions = {
 	minTargetSpawnNm = 80,
@@ -4586,44 +4920,66 @@ local airstrikePickOptions = {
 
 Group.getByName('evt-attack'):destroy()
 Group.getByName('evt-attackcw'):destroy()
-evc:addEvent({
+local tacticalAirstrikeEvent = {
 	id='cas',
 	StrikeMission = true,
-	action=function()
+	action=function(event)
+		if #enemyStrikeGroups == 0 then return end
 		local director = Director:getForSide(coalition.side.RED)
 		local selection = director:consumeTacticalAirstrikePlan(airstrikePickOptions)
 		if not selection then return end
-		attackGrp = ColdWarTechEra and 'evt-attackcw' or (math.random(1, 2) == 1 and 'evt-attack' or 'evt-attackcw')
+		local spawnPoint = selection.spawnCoord:GetVec3()
+		local owner = {side=1, zoneCommander=selection.spawnZone}
+		local acceptedAt = timer.getTime()
+		return mc:launchIdleAttack(event, owner, selection.targetZone, function()
+			if timer.getTime() ~= acceptedAt then
+				local source = selection.spawnZone
+				if not director.ready or not director.config.enabled
+					or director:_tacticalAirstrikeOperationSignature() ~= selection.operationSignature
+					or source.side ~= 1 or not source.active or source.isHidden
+					or (source.suspended and airstrikePickOptions.allowSuspendedSpawn ~= true)
+					or selection.airbase:GetCoalition() ~= 1 then return false end
+				local nearestPlayer = DynamicBomber.NearestPlayerDistanceNm(selection.spawnCoord, airstrikePickOptions.avoidPlayerCoalition)
+				if nearestPlayer and nearestPlayer < (airstrikePickOptions.minPlayerSpawnNm or 80) then return false end
+			end
+		attackGrp = enemyStrikeGroups[math.random(1, #enemyStrikeGroups)]
 		local spawned = Respawn.SpawnAtPoint(
 			attackGrp,
-			selection.spawnCoord,
+			spawnPoint,
 			selection.heading,
 			5,
 			airstrikeAltitudeFt,
 			nil,
 			true
 		)
-		if not spawned then return end
+		if not spawned then return false end
 		director:commitTacticalAirstrikeLaunch(selection, airstrike_COOLDOWN)
 		RegisterGroupTarget(attackGrp,500,L10N:Get("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_TITLE"),'cas')
 		timer.scheduleFunction(function(param)
-			if Group.getByName(attackGrp) then
-				bc:engageZone(param.targetZone, attackGrp)
+			local group = Group.getByName(param.groupName)
+			if group and group:getID() == param.groupId then
+				bc:_engageResolvedZone(param.targetZone, group)
 			end
-		end, { targetZone = selection.targetZone.zone }, timer.getTime()+3)
+		end, {targetZone=selection.targetZone, groupName=attackGrp, groupId=spawned:getID()}, timer.getTime()+3)
+		return true
+		end, {spawnPoint, selection.targetZone._cz.point})
 	end,
-	canExecute = function()
+	canExecute = function(event)
+		if event._idleAttackPendingLaunch then return false end
 		if Era == 'Vietnam' then return false end
+		if #enemyStrikeGroups == 0 then return false end
 		if ActiveMission['cas'] then return false end
 		local gr = Group.getByName(attackGrp)
 		if gr then return false end
 		return Director:getForSide(coalition.side.RED)
 			:getTacticalAirstrikePlan(airstrikePickOptions) ~= nil
 	end
-})
+}
+evc:addEvent(tacticalAirstrikeEvent)
 
 mc:trackMission({
 	title = LTGet("SYRIA_MISSION_INTERCEPT_AIRSTRIKE_TITLE"),
+	idleAttackEvent = tacticalAirstrikeEvent,
 	description = function(T)
 		local desc = LT(T):Get("PG_MISSION_INTERCEPT_AIRSTRIKE_WEST_SE_DESC")
 		local director = Director:getForSide(coalition.side.RED)
@@ -4660,14 +5016,15 @@ mc:trackMission({
 	end,
 	startAction = function()
          if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
-            trigger.action.outSoundForCoalition(2, "ding.ogg")
+            -- trigger.action.outSoundForCoalition(2, "ding.ogg")
+            trigger.action.outSoundForCoalition(2, "Enemy airstrike detected intercept them before they reach their target..ogg")
         end
     end,
     endAction = function()
          if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
             trigger.action.outSoundForCoalition(2, "cancel.ogg")
         end
-		bc:cancelGroupTargetMission('cas')
+		bc:cancelGroupTargetMission('cas', 2)
     end,
     isActive = function()
 		if not ActiveMission['cas'] then return false end
@@ -4739,7 +5096,8 @@ evc:addEvent({
 		if ActiveMission['cargointercept'] then return false end
 		if timer.getTime() - lastCargoIntercept_COOLDOWN < CargoIntercept_COOLDOWN then return false end
 		if math.random(1,100) < 70 then return false end
-		if bc:getZoneByName('Lar').side ~= 1 or bc:getZoneByName('Lar').suspended then return false end	
+		local lar = bc:getZoneByName('Lar')
+		if lar.side ~= 1 or (lar.suspended and not lar._idleSuspended) then return false end
 		return true
 	end
 })
@@ -4811,7 +5169,7 @@ mc:trackMission({
          if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
             trigger.action.outSoundForCoalition(2, "cancel.ogg")
         end
-		bc:cancelGroupTargetMission('bomb')
+		bc:cancelGroupTargetMission('bomb', 2)
 	end,
 	isActive = function()
 		return StrategicBomber.IsMissionActive(1)
@@ -5042,8 +5400,10 @@ evc:addEvent({
 	canExecute = function()
 	if ActiveMission['KhasabDefenceWarehouse'] then return false end
 	if CustomFlags["KhasabDefenceWarehouse"] then return false end
-	if bc:getZoneByName('Khasab').side ~= 1 or bc:getZoneByName('Khasab').suspended then return false end
-	if bc:getZoneByName('Khasab-Defence').side ~= 1 or bc:getZoneByName('Khasab-Defence').suspended then return false end
+	local khasab = bc:getZoneByName('Khasab')
+	if khasab.side ~= 1 or (khasab.suspended and not khasab._idleSuspended) then return false end
+	local defence = bc:getZoneByName('Khasab-Defence')
+	if defence.side ~= 1 or (defence.suspended and not defence._idleSuspended) then return false end
 	if bc:getZoneByName('Tunb Island AFB').side ~= 2 and bc:getZoneByName('Qeshm Island').side ~= 2 and bc:getZoneByName('Ras Al Khaimah').side ~= 2 then return false end
 	return true
 	end,
@@ -5094,8 +5454,10 @@ evc:addEvent({
 	canExecute = function()
 	if ActiveMission['SharjaDefenceWarehouse'] then return false end
 	if CustomFlags["SharjaDefenceWarehouse"] then return false end
-	if bc:getZoneByName('Sharjah').side ~= 1 or bc:getZoneByName('Sharjah').suspended then return false end
-	if bc:getZoneByName('Sharjah-Defence').side ~= 1 or bc:getZoneByName('Sharjah-Defence').suspended then return false end
+	local sharjah = bc:getZoneByName('Sharjah')
+	if sharjah.side ~= 1 or (sharjah.suspended and not sharjah._idleSuspended) then return false end
+	local defence = bc:getZoneByName('Sharjah-Defence')
+	if defence.side ~= 1 or (defence.suspended and not defence._idleSuspended) then return false end
 	if bc:getZoneByName('Abu Musa Island').side ~= 2 and bc:getZoneByName('Ras Al Khaimah').side ~= 2 and bc:getZoneByName('Al Minhad AFB').side ~= 2 then return false end
 	return true
 	end,
@@ -5146,8 +5508,10 @@ evc:addEvent({
 	canExecute = function()
 	if ActiveMission['QeshmDefenceWarehouse'] then return false end
 	if CustomFlags["QeshmDefenceWarehouse"] then return false end
-	if bc:getZoneByName('Qeshm Island').side ~= 1 or bc:getZoneByName('Qeshm Island').suspended then return false end
-	if bc:getZoneByName('Qeshm-Island-Defence').side ~= 1 or bc:getZoneByName('Qeshm-Island-Defence').suspended then return false end
+	local qeshm = bc:getZoneByName('Qeshm Island')
+	if qeshm.side ~= 1 or (qeshm.suspended and not qeshm._idleSuspended) then return false end
+	local defence = bc:getZoneByName('Qeshm-Island-Defence')
+	if defence.side ~= 1 or (defence.suspended and not defence._idleSuspended) then return false end
 	if bc:getZoneByName('Moradi').side ~= 2 and bc:getZoneByName('Khasab').side ~= 2 and bc:getZoneByName('Tunb Island AFB').side ~= 2 and bc:getZoneByName('BandarAbbas').side ~= 2 then return false end
 	return true
 	end,
@@ -5199,8 +5563,10 @@ evc:addEvent({
 	if CustomFlags['StartNormalFalse'] then return false end
 	if ActiveMission['LarDefenceWarehouse'] then return false end
 	if CustomFlags["LarDefenceWarehouse"] then return false end
-	if bc:getZoneByName('Lar').side ~= 1 or bc:getZoneByName('Lar').suspended then return false end
-	if bc:getZoneByName('Lar-Defence').side ~= 1 or bc:getZoneByName('Lar-Defence').suspended then return false end
+	local lar = bc:getZoneByName('Lar')
+	if lar.side ~= 1 or (lar.suspended and not lar._idleSuspended) then return false end
+	local defence = bc:getZoneByName('Lar-Defence')
+	if defence.side ~= 1 or (defence.suspended and not defence._idleSuspended) then return false end
 	if bc:getZoneByName('Foxtrot').side ~= 2 and bc:getZoneByName('Sunny').side ~= 2 and bc:getZoneByName('Ramp-Kongo').side ~= 2 and bc:getZoneByName('Golf').side ~= 2 then return false end
 	return true
 	end,
@@ -5253,8 +5619,10 @@ evc:addEvent({
 	if CustomFlags['StartNormalFalse'] ~= true then return false end
 	if ActiveMission['DhafraDefenceWarehouse'] then return false end
 	if CustomFlags["DhafraDefenceWarehouse"] then return false end
-	if bc:getZoneByName('Al Dhafra').side ~= 1 or bc:getZoneByName('Al Dhafra').suspended then return false end
-	if bc:getZoneByName('Al Dhafra-Defence').side ~= 1 or bc:getZoneByName('Al Dhafra-Defence').suspended then return false end
+	local alDhafra = bc:getZoneByName('Al Dhafra')
+	if alDhafra.side ~= 1 or (alDhafra.suspended and not alDhafra._idleSuspended) then return false end
+	local defence = bc:getZoneByName('Al Dhafra-Defence')
+	if defence.side ~= 1 or (defence.suspended and not defence._idleSuspended) then return false end
 	if bc:getZoneByName('Al Minhad AFB').side ~= 2 then return false end
 	return true
 	end,
@@ -5361,12 +5729,15 @@ evc:addEvent({
 		if CustomFlags['StartNormalFalse'] then return false end
 		if ActiveMission['StrikePort'] then return false end
 		if CustomFlags["StrikePort"] then return false end
-		if bc:getZoneByName('Bandar Lengeh').side ~= 1 or bc:getZoneByName('Bandar Lengeh').suspended then return false end
-		if bc:getZoneByName('Abu Musa Island').side == 2 and bc:getZoneByName('Abu Musa Island').suspended and bc:getZoneByName('Tunb Island AFB').side == 2 and 
-		   bc:getZoneByName('Tunb Island AFB').suspended and bc:getZoneByName('Sirri Island').side == 2 and bc:getZoneByName('Sirri Island').suspended then return false end
-		if (bc:getZoneByName('Khasab').side == 2 and not bc:getZoneByName('Khasab').suspended)
-		or (bc:getZoneByName('Abu Musa Island').side == 2 and not bc:getZoneByName('Abu Musa Island').suspended)
-		or (bc:getZoneByName('Lar').side == 2 and not bc:getZoneByName('Lar').suspended) then
+		local bandarLengeh = bc:getZoneByName('Bandar Lengeh')
+		if bandarLengeh.side ~= 1 or (bandarLengeh.suspended and not bandarLengeh._idleSuspended) then return false end
+		local abuMusa, tunb, sirri = bc.indexedZones['Abu Musa Island'], bc.indexedZones['Tunb Island AFB'], bc.indexedZones['Sirri Island']
+		if abuMusa.side == 2 and abuMusa.suspended and not abuMusa._idleSuspended and tunb.side == 2 and
+		   tunb.suspended and not tunb._idleSuspended and sirri.side == 2 and sirri.suspended and not sirri._idleSuspended then return false end
+		local khasab, lar = bc.indexedZones['Khasab'], bc.indexedZones['Lar']
+		if (khasab.side == 2 and (not khasab.suspended or khasab._idleSuspended))
+		or (abuMusa.side == 2 and (not abuMusa.suspended or abuMusa._idleSuspended))
+		or (lar.side == 2 and (not lar.suspended or lar._idleSuspended)) then
 			return true
 		else
 			return false
@@ -5453,7 +5824,8 @@ mc:trackMission({
         end
 	end,
 	missionFail = function()
-		if bc:getZoneByName('Lavan Island').side ~= 1 or bc:getZoneByName('Lavan Island').suspended and not CustomFlags["GeneralsHouse"] then
+		local lavan = bc:getZoneByName('Lavan Island')
+		if lavan.side ~= 1 or lavan.suspended and not lavan._idleSuspended and not CustomFlags["GeneralsHouse"] then
 			trigger.action.outTextForCoalition(2, L10N:Get("PG_MISSION_GENERAL_FLED"), 10)
 			trigger.action.outSoundForCoalition(2, "cancel.ogg")
 			bc:cancelScoreTargetMission('GeneralsHouse')
@@ -5702,73 +6074,89 @@ end
 ---------------------------------------------------------------------
 --                      RUN WAY STRIKE MISSION                     --
 
-mc:trackMission({
-    title=LTGet("MISSION_BOMB_RUNWAY_TITLE"),
-    description=function(T)
-	  T = LT(T)
-      local wp=WaypointList[runwayTargetZone] or ""
-      if #runwayNames>1 then
-        return T:Format("MISSION_BOMB_RUNWAY_DESC_ALL", runwayTargetZone, wp)
-      else
-        return T:Format("MISSION_BOMB_RUNWAY_DESC_ONE", runwayTargetZone, wp)
-      end
-    end,
-    messageStart=function(T)
-	T = LT(T)
-    local wp=WaypointList[runwayTargetZone] or ""
-      if #runwayNames>1 then
-        return T:Format("MISSION_BOMB_RUNWAY_START_ALL", runwayTargetZone, wp)
-      else
-        return T:Format("MISSION_BOMB_RUNWAY_START_ONE", runwayTargetZone, wp)
-      end
-    end,
-	messageEnd = function(T)
-		T = LT(T)
-		trigger.action.outSoundForCoalition(2,'cancel.ogg')
-		if runwayTargetZone then
-			if runwayCompleted then
-				local cred = (need and need>1) and 200 or 100
-				if bomberName and runwayPartnerName then
-					return T:Format("SYRIA_BOMB_RUNWAY_END_JOINT", runwayTargetZone, bomberName, runwayPartnerName, cred)
-				elseif bomberName then
-					return T:Format("SYRIA_BOMB_RUNWAY_END_SOLO", runwayTargetZone, bomberName, cred)
+function RegisterDirectorRunwayMission(slotIndex)
+	mc:trackMission({
+		title = function(T)
+			local slot = bc.runwayMissions.slots[slotIndex]
+			local title = LT(T):Get("MISSION_BOMB_RUNWAY_TITLE")
+			return slot.targetZone and title .. ': ' .. slot.targetZone or title
+		end,
+		description = function(T)
+			T = LT(T)
+			local slot = bc.runwayMissions.slots[slotIndex]
+			local wp = WaypointList[slot.targetZone] or ""
+			if #slot.runwayNames > 1 then
+				return T:Format("MISSION_BOMB_RUNWAY_DESC_ALL", slot.targetZone, wp)
+			else
+				return T:Format("MISSION_BOMB_RUNWAY_DESC_ONE", slot.targetZone, wp)
+			end
+		end,
+		messageStart = function(T)
+			T = LT(T)
+			local slot = bc.runwayMissions.slots[slotIndex]
+			local wp = WaypointList[slot.targetZone] or ""
+			if #slot.runwayNames > 1 then
+				return T:Format("MISSION_BOMB_RUNWAY_START_ALL", slot.targetZone, wp)
+			else
+				return T:Format("MISSION_BOMB_RUNWAY_START_ONE", slot.targetZone, wp)
+			end
+		end,
+		messageEnd = function(T)
+			T = LT(T)
+			local slot = bc.runwayMissions.slots[slotIndex]
+			trigger.action.outSoundForCoalition(2, 'cancel.ogg')
+			if slot.targetZone then
+				if slot.completed then
+					local cred = slot.need > 1 and 200 or 100
+					if slot.bomberName and slot.partnerName then
+						return T:Format("SYRIA_BOMB_RUNWAY_END_JOINT", slot.targetZone, slot.bomberName, slot.partnerName, cred)
+					elseif slot.bomberName then
+						return T:Format("SYRIA_BOMB_RUNWAY_END_SOLO", slot.targetZone, slot.bomberName, cred)
+					else
+						return T:Format("SYRIA_BOMB_RUNWAY_END_COMPLETED", slot.targetZone)
+					end
 				else
-					return T:Format("SYRIA_BOMB_RUNWAY_END_COMPLETED", runwayTargetZone)
+					return T:Format("SYRIA_BOMB_RUNWAY_END_CANCELED_ZONE", slot.targetZone)
 				end
 			else
-				return T:Format("SYRIA_BOMB_RUNWAY_END_CANCELED_ZONE", runwayTargetZone)
+				return T:Get("SYRIA_BOMB_RUNWAY_CANCELED")
 			end
-		else
-			return T:Get("SYRIA_BOMB_RUNWAY_CANCELED")
-		end
-	end,
-	startAction = function()
-    bc:addMissionTag(runwayTargetZone, "Bomb runway")
+		end,
+		startAction = function()
+			local slot = bc.runwayMissions.slots[slotIndex]
+			slot.started = true
+			bc:addMissionTag(slot.targetZone, "Bomb runway")
+			bc:refreshZoneLabel(slot.targetZone)
+			if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
+				trigger.action.outSoundForCoalition(2, "ding.ogg")
+			end
+		end,
+		endAction = function()
+			local slot = bc.runwayMissions.slots[slotIndex]
+			if slot.targetZone then
+				RUNWAY_ZONE_COOLDOWN[slot.targetZone] = timer.getTime() + 3000
+				bc:removeMissionTag(slot.targetZone, "Bomb runway")
+				bc:refreshZoneLabel(slot.targetZone)
+			end
+			bc:resetRunwayMissionSlot(slotIndex)
+		end,
+		isActive = function()
+			local slot = bc.runwayMissions.slots[slotIndex]
+			if slot.completed and not slot.started then return true end
+			if not slot.active then return false end
+			local targetZone = bc:getZoneByName(slot.targetZone)
+			if not slot.started and (not targetZone or targetZone.side ~= 1 or not targetZone.active or targetZone.suspended) then
+				bc:resetRunwayMissionSlot(slotIndex)
+				return false
+			end
+			return targetZone and targetZone.side == 1
+		end,
+	})
+end
 
-	bc:refreshZoneLabel(runwayTargetZone)
-	if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
-		trigger.action.outSoundForCoalition(2, "ding.ogg")
-	end
-	end,
-endAction = function()
-    if RunwayHandler then
-        RunwayHandler:UnHandleEvent(EVENTS.Shot)
-        RunwayHandler = nil
-        runwayMission = nil
-    end
-    if runwayTargetZone then
-        RUNWAY_ZONE_COOLDOWN[runwayTargetZone] = timer.getTime() + 3000
-        bc:removeMissionTag(runwayTargetZone, "Bomb runway")
-        bc:refreshZoneLabel(runwayTargetZone)
-    end
-    runwayTargetZone, bomberName, runwayTarget = nil, nil, nil
-end,
-	isActive = function()
-        if not runwayMission then return false end
-        local targetzn = bc:getZoneByName(runwayTargetZone)
-        return targetzn and targetzn.side == 1
-    end
-})
+for slotIndex = 1, bc.runwayMissionMaxSlots do
+	RegisterDirectorRunwayMission(slotIndex)
+end
 ---------------------------------------------------------------------
 --                      END OF RUN WAY STRIKE MISSION              --
 
@@ -5787,7 +6175,7 @@ mc:trackMission({
          if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
             trigger.action.outSoundForCoalition(2, "cancel.ogg")
         end
-		bc:cancelGroupTargetMission('Echo-attack-delta-art')
+		bc:cancelGroupTargetMission('Echo-attack-delta-art', 2)
     end,
 	isActive = function()
 		if not ActiveMission['Echo-attack-delta-art'] then return false end
@@ -5812,7 +6200,7 @@ mc:trackMission({
          if not missionCompleted and trigger.misc.getUserFlag(180) == 0 then
             trigger.action.outSoundForCoalition(2, "cancel.ogg")
         end
-		bc:cancelGroupTargetMission('foxtrot-artillery-fire-at-golf')
+		bc:cancelGroupTargetMission('foxtrot-artillery-fire-at-golf', 2)
     end,
 	isActive = function()
 		if not ActiveMission['foxtrot-artillery-fire-at-golf'] then return false end
@@ -5825,6 +6213,7 @@ mc:trackMission({
 
 mc:trackMission({
 	title = LTGet("PG_MISSION_DEFEND_BANDAR_ABBAS_TITLE"),
+	idleAttackEvent = bandarAttackEvent,
 	description = LTGet("PG_MISSION_DEFEND_BANDAR_ABBAS_DESC"),
 	messageStart = LTGet("PG_MISSION_DEFEND_BANDAR_ABBAS_START"),
 	messageEnd = LTGet("PG_MISSION_DEFEND_BANDAR_ABBAS_END"),
@@ -5862,44 +6251,12 @@ resupplyCombinedStart1 = nil
 resupplyCombinedStart2 = nil
 resupplySuppressStart2 = nil
 
-local function _isFrontlineConnectionEligible(from, to)
-	return from and to and from.side ~= to.side and from.side ~= 0 and to.side ~= 0 and
-		((not to.suspended) or from.suspended)
-end
 
-local function _isValidAttackMissionZone(zone)
-	if not zone or not zone.zone then return false end
-	local lname = zone.zone:lower()
-	return zone.side == 1 and zone.active and not zone.suspended and not zone.isHidden and
-		not lname:find('hidden') and not lname:find('sam') and not lname:find('defence') and
-		not lname:find('papa') and not lname:find('juliett') and not lname:find('india') and
-		not lname:find('bravo') and not lname:find('hotel')
-end
 
-local function _getAttackAnchorZones()
-	local anchors = {}
-	local seen = {}
-	for _, zoneName in ipairs({ attackTarget1, attackTarget2, attackTarget3 }) do
-		if zoneName and not seen[zoneName] then
-			local targetzn = bc:getZoneByName(zoneName)
-			if targetzn and targetzn.zone and targetzn.side == 1 then
-				seen[zoneName] = true
-				anchors[#anchors + 1] = targetzn.zone
-			end
-		end
-	end
-	return anchors
-end
-local function _minDistanceToAttackAnchors(anchors, zoneName)
-	local minDist = nil
-	for _, anchorZone in ipairs(anchors or {}) do
-		local dist = ZONE_DISTANCES[anchorZone] and ZONE_DISTANCES[anchorZone][zoneName]
-		if dist and (not minDist or dist < minDist) then
-			minDist = dist
-		end
-	end
-	return minDist
-end
+
+
+
+
 
 mc:trackMission({
 	title = function(T)
@@ -5941,11 +6298,15 @@ mc:trackMission({
 			trigger.action.outSoundForCoalition(2, "cancel.ogg")
 		end
 	end,
-	isActive = function()
+	isActive = function(mission)
 		if not resupplyTarget1 then return false end
 		local targetzn = bc:getZoneByName(resupplyTarget1)
-		return targetzn and targetzn.side == 2
-			and bc:_regularSupplyTargetNeedsExternalSupply(2, targetzn.zone, {})
+		local active = targetzn and bc:_playerSupplyTargetNeedsSupply(targetzn, {})
+		if not active and not mission.isRunning then
+			resupplyTarget1 = nil
+			resupplyCombinedStart1 = nil
+		end
+		return active
 	end
 })
 
@@ -5987,11 +6348,16 @@ mc:trackMission({
 			trigger.action.outSoundForCoalition(2, "cancel.ogg")
 		end
 	end,
-	isActive = function()
+	isActive = function(mission)
 		if not resupplyTarget2 then return false end
 		local targetzn = bc:getZoneByName(resupplyTarget2)
-		return targetzn and targetzn.side == 2
-			and bc:_regularSupplyTargetNeedsExternalSupply(2, targetzn.zone, {})
+		local active = targetzn and bc:_playerSupplyTargetNeedsSupply(targetzn, {})
+		if not active and not mission.isRunning then
+			if resupplySuppressStart2 == resupplyTarget2 then resupplySuppressStart2 = nil end
+			resupplyTarget2 = nil
+			resupplyCombinedStart2 = nil
+		end
+		return active
 	end
 })
 
@@ -6033,13 +6399,18 @@ mc:trackMission({
 			trigger.action.outSoundForCoalition(2, "cancel.ogg")
 		end
 	end,
-	isActive = function()
+	isActive = function(mission)
 		if not attackTarget1 then return false end
 		local targetzn = bc:getZoneByName(attackTarget1)
-		if targetzn and targetzn.zone and targetzn.side == 1 then
-			return not targetzn.suspended
+		local active = targetzn and targetzn.zone and targetzn.side == 1 and not targetzn.suspended or false
+		if not active and not mission.isRunning then
+			if attackCombinedStart1 == attackTarget1 then
+				attackCombinedStart1 = nil
+				attackCombinedStart2 = nil
+			end
+			attackTarget1 = nil
 		end
-		return false
+		return active
 	end
 })
 
@@ -6079,13 +6450,19 @@ mc:trackMission({
 			trigger.action.outSoundForCoalition(2, "cancel.ogg")
 		end
 	end,
-	isActive = function()
+	isActive = function(mission)
 		if not attackTarget2 then return false end
 		local targetzn = bc:getZoneByName(attackTarget2)
-		if targetzn and targetzn.zone and targetzn.side == 1 then
-			return not targetzn.suspended
+		local active = targetzn and targetzn.zone and targetzn.side == 1 and not targetzn.suspended or false
+		if not active and not mission.isRunning then
+			if attackCombinedStart2 == attackTarget2 then
+				attackCombinedStart1 = nil
+				attackCombinedStart2 = nil
+			end
+			if attackSuppressStart2 == attackTarget2 then attackSuppressStart2 = nil end
+			attackTarget2 = nil
 		end
-		return false
+		return active
 	end
 })
 mc:trackMission({
@@ -6118,13 +6495,15 @@ mc:trackMission({
 			trigger.action.outSoundForCoalition(2, "cancel.ogg")
 		end
 	end,
-	isActive = function()
+	isActive = function(mission)
 		if not attackTarget3 then return false end
 		local targetzn = bc:getZoneByName(attackTarget3)
-		if targetzn and targetzn.zone and targetzn.side == 1 then
-			return not targetzn.suspended
+		local active = targetzn and targetzn.zone and targetzn.side == 1 and not targetzn.suspended or false
+		if not active and not mission.isRunning then
+			attackTarget3Started = nil
+			attackTarget3 = nil
 		end
-		return false
+		return active
 	end
 })
 
@@ -6165,11 +6544,13 @@ mc:trackMission({
             trigger.action.outSoundForCoalition(2, "cancel.ogg")
         end
     end,
-    isActive = function()
+    isActive = function(mission)
         if not captureTarget then return false end
         local targetzn = bc:getZoneByName(captureTarget)
-        return targetzn.side == 0 and targetzn.active
+        local active = targetzn.side == 0 and targetzn.active
             and not targetzn.pendingCapture and not targetzn._pendingCaptureRestore
+        if not active and not mission.isRunning then captureTarget = nil end
+        return active
     end
 })
 
@@ -6269,26 +6650,7 @@ end
 --                    End of RECON MISSION                         --
 ---------------------------------------------------------------------
 
-function generateCaptureMission()
-    if captureTarget ~= nil then return true end
-    
-    local validzones = {}
-    for _, v in ipairs(bc.zones) do
-        if v.active and v.side == 0 and not v.pendingCapture and not v._pendingCaptureRestore
-            and (not v.NeutralAtStart or v.firstCaptureByRed) and
-           not v.zone:lower():find("hidden", 1, true) and  not v.zone:lower():find("carrier", 1, true) then
-            table.insert(validzones, v.zone)
-        end
-    end
 
-    if #validzones == 0 then return false end
-
-    local choice = blueDirector:selectMissionTarget('CAPTURE', validzones, nil)
-    if choice then
-        captureTarget = choice
-        return true
-    end
-end
 
 ---------------------------------------------------------------------
 --                          CAP MISSION                            --
@@ -6434,246 +6796,6 @@ end
 ---------------------------------------------------------------------
 seadTargets = {}
 
-local function _seadMissionAnchorZones()
-    local anchors = {}
-    local seen = {}
-    local function addAnchor(zoneName)
-        if not zoneName or seen[zoneName] then return end
-        local zone = bc:getZoneByName(zoneName)
-        if zone and zone.side == coalition.side.RED and zone.active and not zone.suspended and not zone.isHidden then
-            seen[zoneName] = true
-            anchors[#anchors + 1] = zoneName
-        end
-    end
-
-    local packageRecommendation = blueDirector:getBluePackageRecommendation()
-    addAnchor(attackTarget1)
-    addAnchor(attackTarget2)
-    addAnchor(attackTarget3)
-    addAnchor(packageRecommendation and packageRecommendation.runwayZone or nil)
-    addAnchor(runwayTargetZone)
-    return anchors
-end
-
-local function _seadThreatCoversAnchor(threat, anchorZoneName)
-    local distance = ZONE_DISTANCES[anchorZoneName] and ZONE_DISTANCES[anchorZoneName][threat.zone] or math.huge
-    return distance <= (threat.rangeNm or 0) * 1852
-end
-
-local function _seadThreatStartsMission(threat)
-    local families = threat.families or {}
-    return (threat.rangeNm or 0) >= 20 or families["Tor M2"] or families["Pantsir S1"]
-end
-
-function generateSEADMission()
-    local availableSlots = {}
-    local selectedTargets = {}
-    for slotIndex = 1, bc.seadMissionMaxSlots do
-        local slot = bc.seadMissions.slots[slotIndex]
-        if slot.active or slot.completed then
-            selectedTargets[slot.targetZone] = true
-        elseif slotIndex <= bc.seadMissionRegularSlots then
-            availableSlots[#availableSlots + 1] = slotIndex
-        end
-    end
-
-    local catalog = bc:GetSeadThreatCatalog(coalition.side.RED)
-    local catalogByZone = {}
-    for _, threat in ipairs(catalog.rows) do
-        catalogByZone[threat.zone] = threat
-    end
-
-    local anchorZones = _seadMissionAnchorZones()
-    local packageDefenceCandidates = {}
-    local packageDefenceSeen = {}
-    for _, anchorZoneName in ipairs(anchorZones) do
-        for _, defenceZoneName in ipairs(blueDirector.defenceZonesByParent[anchorZoneName] or {}) do
-            local defenceArea = blueDirector.areaByZone[defenceZoneName]
-            local member = defenceArea and defenceArea.zoneByName[defenceZoneName] or nil
-            local threat = catalogByZone[defenceZoneName]
-            local zone = bc:getZoneByName(defenceZoneName)
-            if member and member.operationalRoles.defence and threat and zone
-                and zone.side == coalition.side.RED and zone.active and not zone.suspended
-                and not zone.isHidden and defenceZoneName ~= deadTarget
-                and not selectedTargets[defenceZoneName] and not packageDefenceSeen[defenceZoneName]
-            then
-                packageDefenceSeen[defenceZoneName] = true
-                packageDefenceCandidates[#packageDefenceCandidates + 1] = defenceZoneName
-            end
-        end
-    end
-    while #availableSlots > 0 and #packageDefenceCandidates > 0 do
-        local pick = blueDirector:selectMissionTarget('SEAD', packageDefenceCandidates, {
-            primaryZone = attackTarget3 or attackTarget2 or attackTarget1 or anchorZones[1],
-        })
-        if not pick then break end
-        local slotIndex = availableSlots[1]
-        if bc:startSeadMissionSlot(slotIndex, pick) then
-            seadTargets[slotIndex] = pick
-            selectedTargets[pick] = true
-            table.remove(availableSlots, 1)
-        end
-        for candidateIndex, zoneName in ipairs(packageDefenceCandidates) do
-            if zoneName == pick then
-                table.remove(packageDefenceCandidates, candidateIndex)
-                break
-            end
-        end
-    end
-
-    local function anchorAlreadyCovered(anchorZoneName)
-        for targetZoneName, _ in pairs(selectedTargets) do
-            local threat = catalogByZone[targetZoneName]
-            if threat and _seadThreatCoversAnchor(threat, anchorZoneName) then
-                return true
-            end
-        end
-        return false
-    end
-
-    for _, anchorZoneName in ipairs(anchorZones) do
-        if #availableSlots == 0 then break end
-        local directThreat = catalogByZone[anchorZoneName]
-        local directCandidate = directThreat and directThreat.zone ~= deadTarget
-            and not selectedTargets[directThreat.zone] and _seadThreatStartsMission(directThreat)
-        if directCandidate or not anchorAlreadyCovered(anchorZoneName) then
-            local candidates = {}
-            if directCandidate then
-                candidates[1] = directThreat.zone
-            else
-                for _, threat in ipairs(catalog.rows) do
-                    local zone = bc:getZoneByName(threat.zone)
-                    if zone and zone.side == coalition.side.RED and zone.active and not zone.suspended
-                        and not zone.isHidden and threat.zone ~= deadTarget and not selectedTargets[threat.zone]
-                        and _seadThreatStartsMission(threat)
-                        and _seadThreatCoversAnchor(threat, anchorZoneName)
-                    then
-                        candidates[#candidates + 1] = threat.zone
-                    end
-                end
-            end
-
-            if #candidates > 0 then
-                local pick = blueDirector:selectMissionTarget('SEAD', candidates, { primaryZone = anchorZoneName })
-                local slotIndex = availableSlots[1]
-                if pick and bc:startSeadMissionSlot(slotIndex, pick) then
-                    seadTargets[slotIndex] = pick
-                    selectedTargets[pick] = true
-                    table.remove(availableSlots, 1)
-                end
-            end
-        end
-    end
-
-    if #availableSlots > 0 then
-        local frontlineCandidates = {}
-        for _, threat in ipairs(catalog.rows) do
-            local zone = bc:getZoneByName(threat.zone)
-            local area = blueDirector.areaByZone[threat.zone]
-            if zone and area and zone.side == coalition.side.RED and zone.active and not zone.suspended
-                and not zone.isHidden and threat.zone ~= deadTarget and not selectedTargets[threat.zone]
-                and _seadThreatStartsMission(threat) and not anchorAlreadyCovered(threat.zone)
-            then
-                for neighborName, _ in pairs(blueDirector:_operationalNeighbors(threat.zone)) do
-                    local neighbor = bc:getZoneByName(neighborName)
-                    if neighbor and neighbor.side == coalition.side.BLUE and neighbor.active
-                        and not neighbor.suspended and not neighbor.isHidden
-                        and blueDirector.areaByZone[neighborName] == area
-                    then
-                        frontlineCandidates[#frontlineCandidates + 1] = threat.zone
-                        break
-                    end
-                end
-            end
-        end
-
-        while #availableSlots > 0 and #frontlineCandidates > 0 do
-            local pick = blueDirector:selectMissionTarget('SEAD', frontlineCandidates, {
-                primaryZone = attackTarget3 or attackTarget2 or attackTarget1,
-            })
-            if not pick then break end
-            local slotIndex = availableSlots[1]
-            if bc:startSeadMissionSlot(slotIndex, pick) then
-                seadTargets[slotIndex] = pick
-                selectedTargets[pick] = true
-                table.remove(availableSlots, 1)
-            end
-            for candidateIndex, zoneName in ipairs(frontlineCandidates) do
-                if zoneName == pick then
-                    table.remove(frontlineCandidates, candidateIndex)
-                    break
-                end
-            end
-        end
-    end
-
-    local reserveSlotIndex = bc.seadMissionDefenceReserveSlot
-    local reserveSlot = bc.seadMissions.slots[reserveSlotIndex]
-    if not reserveSlot.active and not reserveSlot.completed then
-        local reserveSeeds = {}
-        local reserveSeedSeen = {}
-        local function addReserveSeed(zoneName)
-            if zoneName and not reserveSeedSeen[zoneName] then
-                reserveSeedSeen[zoneName] = true
-                reserveSeeds[#reserveSeeds + 1] = zoneName
-            end
-        end
-
-        addReserveSeed(attackTarget1)
-        addReserveSeed(attackTarget2)
-        addReserveSeed(attackTarget3)
-        for slotIndex = 1, bc.seadMissionRegularSlots do
-            local slot = bc.seadMissions.slots[slotIndex]
-            if slot.active then addReserveSeed(slot.targetZone) end
-        end
-
-        local reserveCandidates = {}
-        local reserveCandidateSeen = {}
-        for _, seedZoneName in ipairs(reserveSeeds) do
-            local seedArea = blueDirector.areaByZone[seedZoneName]
-            if seedArea then
-                local neighbors = blueDirector:_operationalNeighbors(seedZoneName)
-                local defenceTargets = {}
-                local mappedDefences = blueDirector.defenceZonesByParent[seedZoneName]
-                local hasMappedDefence = mappedDefences ~= nil
-                for _, targetZoneName in ipairs(mappedDefences or {}) do
-                    defenceTargets[targetZoneName] = true
-                end
-                if not hasMappedDefence then defenceTargets = neighbors end
-
-                for neighborName in pairs(defenceTargets) do
-                    local defenceArea = blueDirector.areaByZone[neighborName]
-                    local member = defenceArea and defenceArea.zoneByName[neighborName] or nil
-                    local threat = catalogByZone[neighborName]
-                    local zone = bc:getZoneByName(neighborName)
-                    local relationshipEligible = hasMappedDefence
-                        or (neighbors[neighborName] and defenceArea == seedArea)
-                    if relationshipEligible and member and member.operationalRoles.defence and threat and zone
-                        and zone.side == coalition.side.RED and zone.active and not zone.suspended
-                        and not zone.isHidden and neighborName ~= deadTarget and not selectedTargets[neighborName]
-                        and not reserveCandidateSeen[neighborName]
-                    then
-                        reserveCandidateSeen[neighborName] = true
-                        reserveCandidates[#reserveCandidates + 1] = neighborName
-                    end
-                end
-            end
-        end
-
-        if #reserveCandidates > 0 then
-            local pick = blueDirector:selectMissionTarget('SEAD', reserveCandidates, {
-                primaryZone = attackTarget3 or attackTarget2 or attackTarget1 or reserveSeeds[1],
-            })
-            if pick and bc:startSeadMissionSlot(reserveSlotIndex, pick) then
-                seadTargets[reserveSlotIndex] = pick
-                selectedTargets[pick] = true
-            end
-        end
-    end
-
-    return next(selectedTargets) ~= nil
-end
-
 function RegisterDirectorSeadMission(slotIndex)
     local mission
     mission = {
@@ -6753,293 +6875,11 @@ for slotIndex = 1, bc.seadMissionMaxSlots do
     RegisterDirectorSeadMission(slotIndex)
 end
 
-deadTarget = nil
-function generateDEADMission()
-    if deadTarget then return true end
-    local attackAnchors = _getAttackAnchorZones()
-    if #attackAnchors == 0 then return false end
+mc:registerDeadMissions()
 
-    local function isDEADZone(zone)
-        local lname = zone.zone:lower()
-        return zone.side == 1 and zone.active and not bc:isSeadMissionZoneActive(zone.zone)
-            and (lname:find('sam') or lname:find('defence'))
-    end
 
-    local validDEADZones = {}
-    for _, zone in ipairs(bc.zones) do
-        local znB = zone.zone
-        local minDist = znB and _minDistanceToAttackAnchors(attackAnchors, znB) or nil
-        if isDEADZone(zone) and not bc:HasSeadTargets(zone.zone) and minDist and minDist <= 24000 then
-            table.insert(validDEADZones, zone.zone)
-        end
-    end
 
-    if #validDEADZones == 0 then
-        for _, connection in ipairs(bc.connections) do
-            local from, to = bc:getConnectionZones(connection)
-            if from and to and from.side ~= to.side and from.side ~= 0 and to.side ~= 0 and
-               ((not to.suspended) or from.suspended) then
-                if isDEADZone(from) and not bc:HasSeadTargets(from.zone) then
-                    table.insert(validDEADZones, from.zone)
-                end
-                if isDEADZone(to) and not bc:HasSeadTargets(to.zone) then
-                    table.insert(validDEADZones, to.zone)
-                end
-            end
-        end
-    end
 
-    if #validDEADZones == 0 then return false end
-
-    deadTarget = blueDirector:selectMissionTarget('DEAD', validDEADZones, { primaryZone = attackTarget3 or attackTarget2 or attackTarget1 })
-    return true
-end
-
-mc:trackMission({
-    title = function(T) return LT(T):Format("MISSION_DEAD_TITLE", deadTarget) end,
-    description = function(T) return LT(T):Format("MISSION_DEAD_DESCRIPTION", deadTarget) end,
-    messageStart = function(T) return LT(T):Format("MISSION_DEAD_START", deadTarget) end,
-    messageEnd = function(T) return LT(T):Get("MISSION_DEAD_END") end,
-    startAction = function()
-        local MissionType = "DEAD"
-        bc:addMissionTag(deadTarget, MissionType)
-        bc:refreshZoneLabel(deadTarget)
-        if not missionCompleted then trigger.action.outSoundForCoalition(2,"ding.ogg") end
-    end,
-    endAction = function()
-        local MissionType = "DEAD"
-        bc:removeMissionTag(deadTarget, MissionType)
-        bc:refreshZoneLabel(deadTarget)
-        deadTarget = nil
-        if not missionCompleted then trigger.action.outSoundForCoalition(2,"cancel.ogg") end
-    end,
-    isActive = function()
-        if not deadTarget then return false end
-        local zn = bc:getZoneByName(deadTarget)
-        return zn and zn.side == 1 and not zn.suspended and not bc:HasSeadTargets(deadTarget)
-    end
-})
-
-function generateAttackMission()
-    if missionCompleted then return true end
-	local validzones = {}
-	local validSeen = {}
-	local redByBlue = {}
-	local created1 = false
-	local created2 = false
-
-	for _, v in ipairs(bc.connections) do
-		local from, to = bc:getConnectionZones(v)
-
-		if _isFrontlineConnectionEligible(from, to) then
-			if _isValidAttackMissionZone(from) and not validSeen[from.zone] then
-				validSeen[from.zone] = true
-				table.insert(validzones, from.zone)
-			end
-			if _isValidAttackMissionZone(to) and not validSeen[to.zone] then
-				validSeen[to.zone] = true
-				table.insert(validzones, to.zone)
-			end
-
-			if _isValidAttackMissionZone(from) and to and to.side == 2 then
-				redByBlue[to.zone] = redByBlue[to.zone] or {}
-				local found = false
-				for _, zoneName in ipairs(redByBlue[to.zone]) do
-					if zoneName == from.zone then found = true break end
-				end
-				if not found then table.insert(redByBlue[to.zone], from.zone) end
-			end
-			if _isValidAttackMissionZone(to) and from and from.side == 2 then
-				redByBlue[from.zone] = redByBlue[from.zone] or {}
-				local found = false
-				for _, zoneName in ipairs(redByBlue[from.zone]) do
-					if zoneName == to.zone then found = true break end
-				end
-				if not found then table.insert(redByBlue[from.zone], to.zone) end
-			end
-		end
-	end
-
-    if #validzones == 0 then return false end
-
-	if not attackTarget1 then
-		local pool = {}
-		for _, zoneName in ipairs(validzones) do
-			if zoneName ~= attackTarget2 and zoneName ~= attackTarget3 then
-				table.insert(pool, zoneName)
-			end
-		end
-		if #pool > 0 then
-			attackTarget1 = blueDirector:selectMissionTarget('ATTACK', pool, {
-				anchorZone = attackTarget2 or attackTarget3,
-				captureZone = captureTarget,
-			})
-			created1 = true
-		end
-	end
-
-	if not attackTarget2 then
-		local pool = {}
-		local seenPool = {}
-		local anchor = attackTarget1 or attackTarget2 or attackTarget3
-		if anchor then
-			for _, redList in pairs(redByBlue) do
-				local hasAnchor = false
-				for _, zoneName in ipairs(redList) do
-					if zoneName == anchor then
-						hasAnchor = true
-						break
-					end
-				end
-				if hasAnchor then
-					for _, zoneName in ipairs(redList) do
-						if zoneName ~= attackTarget1 and zoneName ~= attackTarget2
-							and zoneName ~= attackTarget3 and not seenPool[zoneName] then
-							seenPool[zoneName] = true
-							table.insert(pool, zoneName)
-						end
-					end
-				end
-			end
-		end
-		if #pool == 0 then
-			for _, zoneName in ipairs(validzones) do
-				if zoneName ~= attackTarget1 and zoneName ~= attackTarget2 and zoneName ~= attackTarget3 then
-					table.insert(pool, zoneName)
-				end
-			end
-		end
-		if #pool > 0 then
-			attackTarget2 = blueDirector:selectMissionTarget('ATTACK_SUPPORT', pool, { primaryZone = attackTarget1 })
-			created2 = true
-		end
-	end
-
-	if not attackTarget3 and attackTarget1 and attackTarget2 then
-		local thirdAttackDemand = blueDirector:hasBlueThirdAttackDemand(timer.getAbsTime())
-		if thirdAttackDemand then
-			local pool = {}
-			for _, zoneName in ipairs(validzones) do
-				if zoneName ~= attackTarget1 and zoneName ~= attackTarget2 then
-					pool[#pool + 1] = zoneName
-				end
-			end
-			if #pool > 0 then
-				attackTarget3 = blueDirector:selectMissionTarget('ATTACK_SUPPORT', pool, {
-					primaryZone = attackTarget1,
-					anchorZone = attackTarget2,
-					thirdAttack = true,
-				})
-			end
-		end
-	end
-
-	attackCombinedStart1 = nil
-	attackCombinedStart2 = nil
-	if created1 and created2 and attackTarget1 and attackTarget2 then
-		attackCombinedStart1 = attackTarget1
-		attackCombinedStart2 = attackTarget2
-	end
-
-	return attackTarget1 ~= nil or attackTarget2 ~= nil or attackTarget3 ~= nil
-end
-
-function generateSupplyMission()
-	if bc._blueZoneCountRaw <= 1 then return false end
-	local resupplyDemandCache = {}
-	local preferred = {}
-	local validzones = {}
-	local attackFrontSet = {}
-	local created1 = false
-	local created2 = false
-	if attackTarget1 then attackFrontSet[attackTarget1] = true end
-	if attackTarget2 then attackFrontSet[attackTarget2] = true end
-
-	for _, connection in ipairs(bc.connections or {}) do
-		local from, to = bc:getConnectionZones(connection)
-		if from and to and from.side ~= to.side and from.side ~= 0 and to.side ~= 0 and
-			((not to.suspended) or from.suspended) then
-			if from and to and attackFrontSet[from.zone] and to.side == 2
-				and bc:_regularSupplyTargetNeedsExternalSupply(2, to.zone, resupplyDemandCache) then
-				local found = false
-				for _, zoneName in ipairs(preferred) do
-					if zoneName == to.zone then found = true break end
-				end
-				if not found then table.insert(preferred, to.zone) end
-			end
-			if from and to and attackFrontSet[to.zone] and from.side == 2
-				and bc:_regularSupplyTargetNeedsExternalSupply(2, from.zone, resupplyDemandCache) then
-				local found = false
-				for _, zoneName in ipairs(preferred) do
-					if zoneName == from.zone then found = true break end
-				end
-				if not found then table.insert(preferred, from.zone) end
-			end
-		end
-	end
-
-	for _, v in ipairs(bc.zones) do
-		if v.side == 2
-			and bc:_regularSupplyTargetNeedsExternalSupply(2, v.zone, resupplyDemandCache) then
-			local found = false
-			for _, zoneName in ipairs(validzones) do
-				if zoneName == v.zone then found = true break end
-			end
-			if not found then table.insert(validzones, v.zone) end
-		end
-	end
-
-	if #validzones == 0 then return false end
-
-	if not resupplyTarget1 then
-		local pool = {}
-		for _, zoneName in ipairs(preferred) do
-			if zoneName ~= resupplyTarget2 then
-				table.insert(pool, zoneName)
-			end
-		end
-		if #pool == 0 then
-			for _, zoneName in ipairs(validzones) do
-				if zoneName ~= resupplyTarget2 then
-					table.insert(pool, zoneName)
-				end
-			end
-		end
-		if #pool > 0 then
-			resupplyTarget1 = pool[math.random(1, #pool)]
-			created1 = true
-		end
-	end
-
-	if not resupplyTarget2 then
-		local pool = {}
-		for _, zoneName in ipairs(preferred) do
-			if zoneName ~= resupplyTarget1 then
-				table.insert(pool, zoneName)
-			end
-		end
-		if #pool == 0 then
-			for _, zoneName in ipairs(validzones) do
-				if zoneName ~= resupplyTarget1 then
-					table.insert(pool, zoneName)
-				end
-			end
-		end
-		if #pool > 0 then
-			resupplyTarget2 = pool[math.random(1, #pool)]
-			created2 = true
-		end
-	end
-
-	resupplyCombinedStart1 = nil
-	resupplyCombinedStart2 = nil
-	if created1 and created2 and resupplyTarget1 and resupplyTarget2 then
-		resupplyCombinedStart1 = resupplyTarget1
-		resupplyCombinedStart2 = resupplyTarget2
-	end
-
-	return resupplyTarget1 ~= nil or resupplyTarget2 ~= nil
-end
 
 timer.scheduleFunction(function(_, time)
 	if generateCaptureMission() then
@@ -7060,12 +6900,12 @@ end, {}, timer.getTime() + 35)
 timer.scheduleFunction(function(_, time)
 	local hadThirdAttack = attackTarget3 ~= nil
 	if not hadThirdAttack and blueDirector:hasBlueThirdAttackDemand(timer.getAbsTime()) then
-		generateAttackMission()
+		generateAttackMission(true)
 	end
 	if not hadThirdAttack and attackTarget3 then
 		checkAndGenerateCASMission()
 		generateSEADMission()
-		generateRunwayStrikeMission()
+		checkAndGenerateRunwayMissions()
 	end
 	return time+30
 end, {}, timer.getTime() + 45)
@@ -7113,7 +6953,7 @@ timer.scheduleFunction(function(_,time)
 	end
 end, {}, timer.getTime() + 480)
 timer.scheduleFunction(function(_,time)
-    if generateRunwayStrikeMission() then
+    if checkAndGenerateRunwayMissions() then
         return time+300
     else
         return time+120
